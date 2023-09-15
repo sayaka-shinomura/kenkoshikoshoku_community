@@ -31,3 +31,6 @@
 
 ## 使用素材
 後ほど作成予定
+
+## 実装機能リスト
+https://docs.google.com/spreadsheets/d/1m24RfwMSCMr7agRmACsbpuUIzSGBJfBOVWGrdjerEyE/edit?usp=drive_link

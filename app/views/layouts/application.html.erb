@@ -12,7 +12,23 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
-    <%= yield %>
+    <header class="<%= (admin_signed_in? ? "admin_header" : "" ) %>">
+      <div class="header-content">
+        <ul class="flex">
+          <% if admin_signed_in? %>
+            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+          <% end %>
+
+      </div>
+    </header>
+
+
+
+    <main>
+      <%= yield %>
+    </main>
+
   </body>
 </html>

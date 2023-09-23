@@ -1,4 +1,10 @@
 ja:
+ enums:
+    user:
+      gender:
+        man: "男性"
+        woman: "女性"
+
   activerecord:
     attributes:
       user:

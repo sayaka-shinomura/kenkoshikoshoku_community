@@ -1,1 +1,35 @@
-<h1>マイページ</h1>
+<h3 class="my-5 text-center">マイページ</h3>
+
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-md-3">
+   <!--#ユーザー詳細-->
+    <h4 class="my-3 text-center">ユーザー情報</h4>
+    <table class="flex">
+     <tbody>
+       <tr>
+         <td class="col-md-3 text-left">アカウント名</td>
+       </tr>
+       <tr>
+        <td class="col-md-3 text-right"><%= @user.account_name %></td>
+       </tr>
+
+     </tbody>
+    </table>
+
+    <!--#編集画面へのボタン-->
+    <div class="row">
+     <% if @user == current_user %>
+    <%= link_to edit_information_path(@user.id), class:'btn btn-outline-secondary btn-block' do %>
+    <i class="fas fa-user-cog", area-hidden="true"></i>
+    <% end %>
+    <% else %>
+    <%= link_to edit_information_path(@user), class:'btn btn-outline-secondary btn-block' do %>
+    <i class="fas fa-user-cog", area-hidden="true"></i>
+    <% end %>
+    <% end %>
+   </div>
+
+  </div>
+ </div>
+</div>

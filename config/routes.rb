@@ -24,7 +24,7 @@ namespace :admin do
 scope module: :public do
     root 'homes#top'
 
-    get 'customers/mypage' => 'customers#show', as: 'mypage'
+    get 'users/mypage' => 'users#show', as: 'mypage'
 
   end
 

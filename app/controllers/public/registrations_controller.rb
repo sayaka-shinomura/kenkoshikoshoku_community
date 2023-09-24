@@ -41,9 +41,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:account_name, :telephone_number, :birth_date, :gender])
-  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

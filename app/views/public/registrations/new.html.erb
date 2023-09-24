@@ -30,9 +30,9 @@
         <tr>
           <td class="col-3"><%= f.label :gender %></td>
           <td class="col-6">
-            <%= f.radio_button :gender, "man", :checked => true %>
+            <%= f.radio_button :gender, "0", :checked => true %>
             <%= f.label :gender, User.genders_i18n[:man] %>
-            <%= f.radio_button :gender, "women" %>
+            <%= f.radio_button :gender, "1" %>
             <%= f.label :gender, User.genders_i18n[:woman] %>
           </td>
         </tr>

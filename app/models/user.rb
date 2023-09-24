@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #0が男性、1が女性
-  enum gender: { man: 0, woman: 1 }
+  enum gender: { man: "0", woman: "1" }
 
   validates :account_name, presence: true
   validates :email, presence: true, uniqueness: true

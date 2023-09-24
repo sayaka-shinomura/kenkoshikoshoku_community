@@ -1,2 +1,42 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h3 class="my-5 text-center"><%= @user.account_name %>さんのアカウント管理</h3>
+    <%= form_with model:@user, url: update_information_path do |f| %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <td><%= f.label :account_name, "アカウント名", class: "account_name" %></td>
+          <td><%= f.text_field :account_name, :placeholder =>"#{@user.account_name}" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :email, "メールアドレス" %></td>
+          <td><%= f.email_field :email, autocomplete: "email", :placeholder =>"#{@user.email}" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :telephone_number, "電話番号(ハイフンなし10or11桁)" %></td>
+          <td><%= f.text_field :telephone_number, :placeholder =>"#{@user.telephone_number}" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :birth_date, "生年月日(ハイフンなし8桁)" %></td>
+          <td><%= f.text_field :birth_date, :placeholder =>"#{@user.birth_date}" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :address, "性別" %></td>
+          <td>
+            <%= f.radio_button :gender, User.genders.key("0"), checked: true %>
+            <%= f.label :gender, User.genders_i18n[:man] %>
+            <%= f.radio_button :gender, User.genders.key("1") %>
+            <%= f.label :gender, User.genders_i18n[:woman] %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.submit "変更を保存する", class: "btn btn-primary" %></td>
+          <td><%= link_to "退会する", check_user_path, class: "btn btn-danger" %></td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -42,7 +42,8 @@
               <%= link_to 'マイページ', mypage_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-white' %></li>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
+            </li>
 
           <!--# ログイン前のヘッダー-->
           <% else %>
@@ -55,9 +56,14 @@
             <li class="nav-item">
               <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-white' %>
             </li>
+            <li class="nav-item">
+            　<%= link_to 'ゲストログイン', user_guest_sign_in_path, class: 'nav-link text-white' %>
+            </li>
           <% end %>
-
-      </div>
+          </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
 

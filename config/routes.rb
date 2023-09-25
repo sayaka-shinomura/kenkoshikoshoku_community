@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
 
+# ゲストログイン用
+devise_scope :user do
+    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in', as: 'user_guest_sign_in'
+    get 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+end
+
 # ユーザー用
 devise_for :users, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
 
 # 管理者用
 devise_for :admin, controllers: {

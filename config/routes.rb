@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'effects/index'
+    get 'effects/new'
+    get 'effects/show'
+    get 'effects/edit'
+  end
+  namespace :admin do
     get 'nutrients/index'
     get 'nutrients/new'
     get 'nutrients/show'

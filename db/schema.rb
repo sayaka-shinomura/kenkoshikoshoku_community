@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_25_023041) do
+ActiveRecord::Schema.define(version: 2023_09_25_024509) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2023_09_25_023041) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "effects", force: :cascade do |t|
+    t.integer "nutrient_id"
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["nutrient_id"], name: "index_effects_on_nutrient_id"
+  end
+
   create_table "nutrients", force: :cascade do |t|
     t.integer "vegetable_id"
     t.string "name", null: false
@@ -90,5 +99,6 @@ ActiveRecord::Schema.define(version: 2023_09_25_023041) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "effects", "nutrients"
   add_foreign_key "nutrients", "vegetables"
 end

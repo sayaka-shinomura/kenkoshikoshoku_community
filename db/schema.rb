@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_25_024509) do
+ActiveRecord::Schema.define(version: 2023_09_25_025053) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(version: 2023_09_25_024509) do
     t.index ["vegetable_id"], name: "index_nutrients_on_vegetable_id"
   end
 
+  create_table "recipes", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name", null: false
+    t.string "summary", null: false
+    t.text "introduction", null: false
+    t.integer "time", null: false
+    t.integer "difficulty", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -101,4 +113,5 @@ ActiveRecord::Schema.define(version: 2023_09_25_024509) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "effects", "nutrients"
   add_foreign_key "nutrients", "vegetables"
+  add_foreign_key "recipes", "users"
 end

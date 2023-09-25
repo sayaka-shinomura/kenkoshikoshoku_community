@@ -14,7 +14,7 @@
        　  </tr>
           <tr>
             <td><p>効能概要</p></td>
-            <td><%= @effect.introduction %></td>
+            <td><%=safe_join(@effect.introduction.split("\n"),tag(:br))%></td>
           </tr>
        </tbody>
      </table>

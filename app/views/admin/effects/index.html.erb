@@ -1,2 +1,29 @@
-<h1>Admin::Effects#index</h1>
-<p>Find me in app/views/admin/effects/index.html.erb</p>
+<div class="container">
+    <h4 class="my-3 text-center">効能一覧</h4>
+    <div class="text-right my-3">
+          <%= link_to "新規登録", new_admin_effect_path, class:"btn btn-outline-success" %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <table class="table">
+          <thead>
+            <tr>
+              <th align="left">効能ID</th>
+              <th align="left">効能名</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><% @effects.each do |effect| %></tr>
+              <td><%= effect.id %></td>
+              <td><%= effect.name %></td>
+              <td><%= link_to "詳細", admin_effect_path(effect) %></td>
+              <td><%= link_to "編集", edit_admin_effect_path(effect) %></td>
+              <% end %>
+          </tbody>
+        </table>
+        </div>
+      </div>
+</div>

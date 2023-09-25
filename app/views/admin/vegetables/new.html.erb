@@ -13,7 +13,7 @@
    </ul>
    <% end %>
 
-   <%= form_with model: Vegetable.new, url:new_admin_vegetable_path(@vegetable.id), method: :post do |f| %>
+   <%= form_with model: Vegetable.new, url:admin_vegetable_path(@vegetable.id), method: :post do |f| %>
    <div class="form-group">
      <table class="table table-borderless">
       <tbody>

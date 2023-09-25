@@ -19,8 +19,8 @@
             <tr><% @vegetables.each do |vegetable| %></tr>
               <td><%= vegetable.id %></td>
               <td><%= vegetable.name %></td>
-              <td><%= link_to "詳細", admin_vegetable_path(vegetables) %></td>
-              <td><%= link_to "編集", edit_admin_vegetable_path(vegetables) %></td>
+              <td><%= link_to "詳細", admin_vegetable_path(vegetable) %></td>
+              <td><%= link_to "編集", edit_admin_vegetable_path(vegetable) %></td>
               <% end %>
           </tbody>
         </table>

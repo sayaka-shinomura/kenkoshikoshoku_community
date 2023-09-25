@@ -13,7 +13,7 @@ class Admin::VegetablesController < ApplicationController
     if @vegetable.save
       redirect_to admin_vegetable_path(@vegetable.id)
     else
-      @vegetables = Vegetables.all
+      @vegetables = Vegetable.all
       render :new
     end
   end

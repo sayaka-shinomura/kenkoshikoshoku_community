@@ -36,6 +36,13 @@ class Admin::EffectsController < ApplicationController
     end
   end
 
+  def destroy
+    @effect = Effect.find(params[:id])
+    @effect.destroy
+    flash[:notice] = "削除を実行しました"
+    redirect_to admin_effects_path
+  end
+
   private
 
   def effect_params

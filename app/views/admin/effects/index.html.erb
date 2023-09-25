@@ -13,6 +13,7 @@
               <th align="left">効能名</th>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +22,7 @@
               <td><%= effect.name %></td>
               <td><%= link_to "詳細", admin_effect_path(effect) %></td>
               <td><%= link_to "編集", edit_admin_effect_path(effect) %></td>
+              <td><%= link_to "削除", admin_effect_path(effect), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
               <% end %>
           </tbody>
         </table>

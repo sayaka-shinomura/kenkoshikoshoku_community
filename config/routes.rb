@@ -1,23 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'effects/index'
-    get 'effects/new'
-    get 'effects/show'
-    get 'effects/edit'
-  end
-  namespace :admin do
-    get 'nutrients/index'
-    get 'nutrients/new'
-    get 'nutrients/show'
-    get 'nutrients/edit'
-  end
-  namespace :admin do
-    get 'vegetables/index'
-    get 'vegetables/new'
-    get 'vegetables/show'
-    get 'vegetables/edit'
-  end
 # ゲストログイン用
 devise_scope :user do
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in', as: 'user_guest_sign_in'
@@ -52,6 +34,10 @@ end
 
 namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+
+    resources :vegetables, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :nutrients, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :effects, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
 end

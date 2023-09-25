@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'nutrients/index'
+    get 'nutrients/new'
+    get 'nutrients/show'
+    get 'nutrients/edit'
+  end
+  namespace :admin do
+    get 'vegetables/index'
+    get 'vegetables/new'
+    get 'vegetables/show'
+    get 'vegetables/edit'
+  end
 # ゲストログイン用
 devise_scope :user do
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in', as: 'user_guest_sign_in'

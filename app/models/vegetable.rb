@@ -1,5 +1,7 @@
 class Vegetable < ApplicationRecord
 
+  has_many :nutrients
+
   has_one_attached :vegetable_image
 
   validates :name, presence: true

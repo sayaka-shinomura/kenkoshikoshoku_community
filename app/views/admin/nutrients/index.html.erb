@@ -1,2 +1,32 @@
-<h1>Admin::Nutrients#index</h1>
-<p>Find me in app/views/admin/nutrients/index.html.erb</p>
+<div class="container">
+    <h4 class="my-3 text-center">栄養素一覧</h4>
+    <div class="text-right my-3">
+          <%= link_to "新規登録", new_admin_nutrient_path, class:"btn btn-outline-success" %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <table class="table">
+          <thead>
+            <tr>
+              <th align="left">栄養素ID</th>
+              <th align="left">栄養素名</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><% @nutrients.each do |nutrient| %></tr>
+              <td><%= nutrient.id %></td>
+              <td><%= nutrient.name %></td>
+              <td><%= link_to "詳細", admin_nutrient_path(nutrient) %></td>
+              <td><%= link_to "編集", edit_admin_nutrient_path(nutrient) %></td>
+              <td><%= link_to "削除", admin_nutrient_path(nutrient), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+              <% end %>
+          </tbody>
+        </table>
+        <%= paginate @nutrients %>
+        </div>
+      </div>
+</div>

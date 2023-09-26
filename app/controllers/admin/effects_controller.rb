@@ -1,7 +1,7 @@
 class Admin::EffectsController < ApplicationController
 
   def index
-    @effects = Effect.all
+    @effects = Effect.page(params[:page]).per(10)
   end
 
   def new

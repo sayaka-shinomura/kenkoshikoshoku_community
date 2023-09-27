@@ -17,10 +17,8 @@
             <td><%=safe_join(@nutrient.introduction.split("\n"),tag(:br))%></td>
           </tr>
           <tr>
-            <% @nutrients.each do |nutrient| %>
             <td><p>効能</p></td>
-            <td><%= nutrient.effects.name %></td>
-            <% end %>
+            <td><%= @nutrient.effect %></td>
           </tr>
 
        </tbody>

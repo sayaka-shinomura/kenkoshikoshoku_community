@@ -11,7 +11,8 @@ class Admin::NutrientsController < ApplicationController
 
   def create
     @nutrient = Nutrient.new(nutrient_params)
-    params[:nutrient][:effects] ? @nutrient.effect = params[:nutrient][:effects].join(",") : false
+    params[:nutrient][:effect] ? @nutrient.effect = params[:nutrient][:effect].join(",") : false
+    byebug
     if @nutrient.save
       redirect_to admin_nutrient_path(@nutrient.id)
     else
@@ -23,12 +24,14 @@ class Admin::NutrientsController < ApplicationController
   def show
     @nutrient = Nutrient.find(params[:id])
     @nutrients = Nutrient.all
-    @effects = Effect.where(id: @nutrient.effect_ids.split(','))
+    @effect = Effect.where(id: @nutrient.effect_ids.split(','))
+
+    byebug
   end
 
   def edit
     @nutrient = Nutrient.find(params[:id])
-    @effects = Effect.all
+    @effect = Effect.all
   end
 
   def update

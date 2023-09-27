@@ -30,7 +30,7 @@
                <td class="col-2"><%= f.label :name, "効能" %></td>
                <td class="col-5">
                  <% @effect.each do |effect| %>
-                 <%= f.check_box :effect, { multiple: true, checked: @nutrient.effects.present? ? @nutrient.effects.split(",").include?(effects) : false }, effect, nil %>
+                 <%= f.check_box :effect, { multiple: true, checked: @nutrient.effect.present? ? @nutrient.effect.name.split(",").include?(effect) : false }, effect, nil %>
                  <span><%= effect.name %></span>
                  <% end %>
                </td>

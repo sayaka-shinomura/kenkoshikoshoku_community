@@ -1,2 +1,50 @@
-<h1>Admin::Nutrients#edit</h1>
-<p>Find me in app/views/admin/nutrients/edit.html.erb</p>
+<div class="container">
+  <h4 class="my-5 text-center">栄養素編集</h4>
+  <div class="row">
+   <div class="com-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+    <div class="form-body p-4">
+     <% if @nutrient.errors.any? %>
+     <ul class="alert alert-danger" role="alert">
+       <h6 class="alert-heading">
+        <%= @nutrient.errors.count %>error prohibited this obj from being saved:
+       </h6>
+       <% @nutrient.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+       <% end %>
+     </ul>
+     <% end %>
+   </div>
+
+   <%= form_with model: @nutrient, url: admin_nutrient_path(@nutrient.id), method: :patch do |f| %>
+   <div class="form-group">
+     <table class="table table-borderless">
+       <tbody>
+         <tr>
+           <td class="col-2"><%= f.label :name, "栄養素名" %></td>
+           <td class="col-5"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
+         </tr>
+         <tr>
+           <td class="col-2"><%= f.label :introduction, "栄養素概要" %></td>
+           <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
+         </tr>
+         <tr>
+           <td class="col-2"><%= f.label :name, "効能" %></td>
+           <td class="col-5">
+                 <% @effect.each do |effect| %>
+                 <%= f.check_box :effect, { multiple: true, checked: @nutrient.effects.present? ? @nutrient.effects.split(",").include?(effects) : false }, effect, nil %>
+                 <span><%= effect.name %></span>
+                 <% end %>
+               </td>
+      </tbody>
+     </table>
+
+    <div class="text-center">
+    <%= f.submit '保存', class:"btn btn-success col-3" %>
+    <% end %>
+    </div>
+
+   </div>
+  </div>
+</div>
+

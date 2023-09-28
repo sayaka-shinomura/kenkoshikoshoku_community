@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2023_09_25_030945) do
   create_table "effects", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction", null: false
-    t.string "effect", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -118,6 +117,7 @@ ActiveRecord::Schema.define(version: 2023_09_25_030945) do
     t.text "production_area", null: false
     t.text "keeping", null: false
     t.text "introduction", null: false
+    t.string "nutrient", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

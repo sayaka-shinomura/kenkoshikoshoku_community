@@ -3,7 +3,6 @@ class CreateEffects < ActiveRecord::Migration[6.1]
     create_table :effects do |t|
       t.string :name, null: false
       t.text :introduction, null: false
-      t.string :effect, null: false
       t.timestamps
     end
   end

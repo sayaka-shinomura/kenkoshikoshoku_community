@@ -11,8 +11,6 @@ class Admin::NutrientsController < ApplicationController
 
   def create
     @nutrient = Nutrient.new(nutrient_params)
-    params[:nutrient][:effect] ? @nutrient.effect = params[:nutrient][:effect].join(",") : false
-    byebug
     if @nutrient.save
       redirect_to admin_nutrient_path(@nutrient.id)
     else
@@ -24,7 +22,6 @@ class Admin::NutrientsController < ApplicationController
   def show
     @nutrient = Nutrient.find(params[:id])
     @nutrients = Nutrient.all
-    @effect = Effect.where(id: @nutrient.effect_ids.split(','))
 
     byebug
   end

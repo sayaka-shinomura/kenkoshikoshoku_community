@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_25_030945) do
+ActiveRecord::Schema.define(version: 2023_09_28_104628) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2023_09_25_030945) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_cookeries_on_recipe_id"
+  end
+
+  create_table "effect_tags", force: :cascade do |t|
+    t.integer "nutrient_id", null: false
+    t.integer "effect_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["effect_id"], name: "index_effect_tags_on_effect_id"
+    t.index ["nutrient_id"], name: "index_effect_tags_on_nutrient_id"
   end
 
   create_table "effects", force: :cascade do |t|
@@ -125,5 +134,7 @@ ActiveRecord::Schema.define(version: 2023_09_25_030945) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cookeries", "recipes"
+  add_foreign_key "effect_tags", "effects"
+  add_foreign_key "effect_tags", "nutrients"
   add_foreign_key "ingredients", "recipes"
 end

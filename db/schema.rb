@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_27_102338) do
+ActiveRecord::Schema.define(version: 2023_09_25_030945) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,12 +61,11 @@ ActiveRecord::Schema.define(version: 2023_09_27_102338) do
   end
 
   create_table "effects", force: :cascade do |t|
-    t.integer "nutrient_id"
     t.string "name", null: false
     t.text "introduction", null: false
+    t.string "effect", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["nutrient_id"], name: "index_effects_on_nutrient_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -79,17 +78,14 @@ ActiveRecord::Schema.define(version: 2023_09_27_102338) do
   end
 
   create_table "nutrients", force: :cascade do |t|
-    t.integer "vegetable_id"
     t.string "name", null: false
     t.text "introduction", null: false
+    t.string "nutrient", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "effect"
-    t.index ["vegetable_id"], name: "index_nutrients_on_vegetable_id"
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name", null: false
     t.string "summary", null: false
     t.text "introduction", null: false
@@ -97,7 +93,6 @@ ActiveRecord::Schema.define(version: 2023_09_27_102338) do
     t.integer "difficulty", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -131,6 +126,4 @@ ActiveRecord::Schema.define(version: 2023_09_27_102338) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cookeries", "recipes"
   add_foreign_key "ingredients", "recipes"
-  add_foreign_key "nutrients", "vegetables"
-  add_foreign_key "recipes", "users"
 end

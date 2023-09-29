@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="my-5 text-center">栄養素編集</h4>
+  <h4 class="my-5 text-center">効能編集</h4>
   <div class="row">
    <div class="com-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
@@ -29,13 +29,17 @@
            <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
          </tr>
          <tr>
-           <td class="col-2"><%= f.label :name, "効能" %></td>
+           <td class="col-2"><%= f.label :effect_tag, "効能" %></td>
            <td class="col-5">
-                 <% @effect.each do |effect| %>
-                 <%= f.check_box :effect, { multiple: true, checked: @nutrient.effects.present? ? @nutrient.effects.split(",").include?(effects) : false }, effect, nil %>
-                 <span><%= effect.name %></span>
+             <%= f.collection_check_boxes(:effect_tag_ids, Effect.all, :id, :name, { checked: @nutrient.effect_tag_ids.map(&:to_param) }) do |effecttag| %>
+                   <%= effecttag.label class: 'tag__item' do %>
+                     <%= effecttag.check_box class: 'tag__checkbox' %>
+                     <%= effecttag.text %>
+                   <% end %>
                  <% end %>
                </td>
+             </tr>
+
       </tbody>
      </table>
 

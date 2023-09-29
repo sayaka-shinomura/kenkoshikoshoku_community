@@ -29,9 +29,11 @@
              <tr>
                <td class="col-2"><%= f.label :name, "効能" %></td>
                <td class="col-5">
-                 <% @effect.each do |effect| %>
-                 <%= f.check_box :effect, { multiple: true, checked: @nutrient.effect.present? ? @nutrient.effect.name.split(",").include?(effect) : false }, effect, nil %>
-                 <span><%= effect.name %></span>
+                 <%= f.collection_check_boxes(:effect_tag_ids, Effect.all, :id, :name) do |effecttag| %>
+                   <%= effecttag.label class: 'tag__item' do %>
+                     <%= effecttag.check_box class: 'tag__checkbox' %>
+                     <%= effecttag.text %>
+                   <% end %>
                  <% end %>
                </td>
              </tr>

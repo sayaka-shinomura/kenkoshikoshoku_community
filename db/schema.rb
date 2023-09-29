@@ -77,18 +77,15 @@ ActiveRecord::Schema.define(version: 2023_09_28_104628) do
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.integer "recipe_id"
     t.string "content", null: false
     t.string "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "nutrients", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction", null: false
-    t.string "nutrient", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -126,7 +123,6 @@ ActiveRecord::Schema.define(version: 2023_09_28_104628) do
     t.text "production_area", null: false
     t.text "keeping", null: false
     t.text "introduction", null: false
-    t.string "nutrient", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -136,5 +132,4 @@ ActiveRecord::Schema.define(version: 2023_09_28_104628) do
   add_foreign_key "cookeries", "recipes"
   add_foreign_key "effect_tags", "effects"
   add_foreign_key "effect_tags", "nutrients"
-  add_foreign_key "ingredients", "recipes"
 end

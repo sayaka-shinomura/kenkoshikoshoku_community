@@ -3,7 +3,6 @@ class CreateNutrients < ActiveRecord::Migration[6.1]
     create_table :nutrients do |t|
       t.string :name, null: false
       t.text :introduction, null: false
-      t.string :nutrient, null: false
       t.timestamps
     end
   end

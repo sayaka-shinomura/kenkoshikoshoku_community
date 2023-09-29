@@ -6,7 +6,6 @@ class CreateVegetables < ActiveRecord::Migration[6.1]
       t.text :production_area, null: false
       t.text :keeping, null: false
       t.text :introduction, null: false
-      t.string :nutrient, null: false
       t.timestamps
     end
   end

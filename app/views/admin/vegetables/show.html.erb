@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="my-3 text-center">野菜詳細</h4>
+  <h4 class="my-3 text-center">野菜情報詳細</h4>
   <div class="row">
     <div class="col-4 px-5 px-sm-0 mx-auto">
       <div class="vegetable_image">
@@ -14,8 +14,9 @@
       </div>
     </div>
 
+
     <div class="col-6 px-5 px-sm-0 mx-auto">
-      <table class="table table-borderless">
+      <table class="table">
         <tbody>
           <tr>
             <td class="col-2"><p>野菜ID</p></td>
@@ -34,11 +35,21 @@
             </td>
           </tr>
           <tr>
-            <td><p>おすすめ情報</p></td>
-            <td><%=safe_join(@vegetable.introduction.split("\n"),tag(:br))%></td>
+            <td class="col-2"><p>旬の時期</p></td>
+            <td class="col-5"><%= @vegetable.seasonal %></td>
+       　  </tr
+          <tr>
+            <td class="col-2"><p>産地情報</p></td>
+            <td class="col-6"><%=safe_join(@vegetable.production_area.split("\n"),tag(:br))%></td>
           </tr>
-
-
+          <tr>
+            <td class="col-2"><p>保存方法</p></td>
+            <td class="col-6"><%=safe_join(@vegetable.keeping.split("\n"),tag(:br))%></td>
+          </tr>
+          <tr>
+            <td class="col-2"><p>おすすめ情報</p></td>
+            <td class="col-6"><%=safe_join(@vegetable.introduction.split("\n"),tag(:br))%></td>
+          </tr>
        </tbody>
      </table>
     </div>

@@ -12,9 +12,6 @@ class Admin::NutrientsController < ApplicationController
 
   def create
     @nutrient = Nutrient.new(nutrient_params)
-    @nutrient_id = params[:nutrient_id]
-    @effect_id = params[:effect_id]
-    @effect_tags = EffectTag.new(effect_id: @effect_id, nutrient_id: @nutrient_id)
     if @nutrient.save
       redirect_to admin_nutrient_path(@nutrient.id)
     else
@@ -27,7 +24,7 @@ class Admin::NutrientsController < ApplicationController
   end
 
   def edit
-    @nutrient = Nutrient.find(params[:id])
+     @nutrient= Nutrient.find(params[:id])
   end
 
   def update

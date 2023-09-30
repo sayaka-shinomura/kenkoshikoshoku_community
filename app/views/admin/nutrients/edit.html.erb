@@ -31,7 +31,7 @@
          <tr>
            <td class="col-2"><%= f.label :effect_tag, "効能" %></td>
            <td class="col-5">
-             <%= f.collection_check_boxes(:effect_tag_ids, Effect.all, :id, :name, { checked: @nutrient.effect_tag_ids.map(&:to_param) }) do |effecttag| %>
+             <%= f.collection_check_boxes(:effect_ids, Effect.all, :id, :name, { checked: @nutrient.effect_ids.map(&:to_param) }) do |effecttag| %>
                    <%= effecttag.label class: 'tag__item' do %>
                      <%= effecttag.check_box class: 'tag__checkbox' %>
                      <%= effecttag.text %>

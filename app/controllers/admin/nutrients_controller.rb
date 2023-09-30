@@ -1,6 +1,5 @@
 class Admin::NutrientsController < ApplicationController
 
-
   def index
     @nutrients = Nutrient.page(params[:page]).per(10)
   end

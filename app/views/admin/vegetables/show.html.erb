@@ -1,2 +1,46 @@
-<h1>Admin::Vegetables#show</h1>
-<p>Find me in app/views/admin/vegetables/show.html.erb</p>
+<div class="container">
+  <h4 class="my-3 text-center">野菜詳細</h4>
+  <div class="row">
+    <div class="col-4 px-5 px-sm-0 mx-auto">
+      <div class="vegetable_image">
+        <% if @vegetable.vegetable_image.attached? %>
+          <%= image_tag @vegetable.vegetable_image, size: "320x250" %>
+        <% else %>
+          <%= image_tag 'no-image', size: "120x100" %>
+        <% end %>
+      </div>
+      <div class="text-center my-3">
+        <%= link_to "編集", edit_admin_vegetable_path(@vegetable), class:"btn btn-primary col-3" %>
+      </div>
+    </div>
+
+    <div class="col-6 px-5 px-sm-0 mx-auto">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="col-2"><p>野菜ID</p></td>
+            <td class="col-5"><%= @vegetable.id %></td>
+       　　</tr>
+          <tr>
+            <td class="col-2"><p>野菜名</p></td>
+            <td class="col-5"><%= @vegetable.name %></td>
+       　  </tr>
+       　  <tr>
+            <td><p>栄養素</p></td>
+            <td>
+              <% @vegetable.nutrient_tags.each do |nutrient_tag| %>
+                <%= nutrient_tag.nutrient.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><p>おすすめ情報</p></td>
+            <td><%=safe_join(@vegetable.introduction.split("\n"),tag(:br))%></td>
+          </tr>
+
+
+       </tbody>
+     </table>
+    </div>
+  </div>
+</div>

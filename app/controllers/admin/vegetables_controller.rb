@@ -1,11 +1,12 @@
 class Admin::VegetablesController < ApplicationController
 
   def index
-    @vegetables = Vegetable.all
+    @vegetables = Vegetable.page(params[:page]).per(10)
   end
 
   def new
     @vegetable = Vegetable.new
+    @vegetable.nutrient_tags.build
   end
 
   def create
@@ -13,14 +14,12 @@ class Admin::VegetablesController < ApplicationController
     if @vegetable.save
       redirect_to admin_vegetable_path(@vegetable.id)
     else
-      @vegetables = Vegetable.all
       render :new
     end
   end
 
   def show
     @vegetable = Vegetable.find(params[:id])
-    @vegetables = Vegetable.all
   end
 
   def edit
@@ -36,10 +35,19 @@ class Admin::VegetablesController < ApplicationController
     end
   end
 
+  def destroy
+    @vegetable = Vegetable.find(params[:id])
+    @vegetable.destroy
+    flash[:notice] = "削除を実行しました"
+    redirect_to admin_vegetables_path
+  end
+
+
   private
 
+
   def vegetable_params
-    params.require(:vegetable).permit(:vegetable_image, :name, :seasonal, :production_area, :keeping, :introduction)
+    params.require(:vegetable).permit(:vegetable_image, :name, :seasonal, :production_area, :keeping, :introduction, nutrient_ids: [])
   end
 
 end

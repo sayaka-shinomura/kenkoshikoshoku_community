@@ -7,10 +7,14 @@ class Admin::NutrientsController < ApplicationController
 
   def new
     @nutrient = Nutrient.new
+    @nutrient.effect_tags.build
   end
 
   def create
     @nutrient = Nutrient.new(nutrient_params)
+    @nutrient_id = params[:nutrient_id]
+    @effect_id = params[:effect_id]
+    @effect_tags = EffectTag.new(effect_id: @effect_id, nutrient_id: @nutrient_id)
     if @nutrient.save
       redirect_to admin_nutrient_path(@nutrient.id)
     else
@@ -47,7 +51,7 @@ class Admin::NutrientsController < ApplicationController
 
 
   def nutrient_params
-    params.require(:nutrient).permit(:name, :introduction, effect_tags_ids: [])
+    params.require(:nutrient).permit(:name, :introduction, effect_ids: [])
   end
 
 

@@ -1,2 +1,45 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h3 class="my-5 text-center"><%= @user.account_name %>さんのアカウント編集</h3>
+
+    <%= form_with model:@user, url: admin_user_path(@user) do |f| %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <td>アカウント名</td>
+          <td><%= @user.account_name %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= @user.telephone_number %></td>
+        </tr>
+        <tr>
+          <td>生年月日</td>
+          <td><%= @user.birth_date %></td>
+        </tr>
+        <tr>
+          <td>性別</td>
+          <td><%= @user.gender %></td>
+        </tr>
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <%= f.radio_button :is_active, true %><%= f.label :is_active, "有効", class: "text-active" %>
+            <%= f.radio_button :is_active, false %><%= f.label :is_active, "退会済み", class: "text-invalid" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center">
+    <%= f.submit '保存', class:"btn btn-success col-3" %>
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>

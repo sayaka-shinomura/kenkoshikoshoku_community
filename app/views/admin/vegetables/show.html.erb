@@ -37,13 +37,7 @@
            <tr>
             <td><p>効能</p></td>
             <td>
-              <% @vegetable.nutrient_tags.each do %>
-                <% @nutrient.effect_tags.each do |effect_tag| %>
-                <% @effect.each do |effect| %>
-                <%= effect.name %>
-                <% end %>
-                <% end %>
-              <% end %>
+              <%= @effects.uniq.join(" ") %>
             </td>
           </tr>
           <tr>

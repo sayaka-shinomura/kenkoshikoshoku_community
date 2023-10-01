@@ -21,8 +21,15 @@ class Admin::VegetablesController < ApplicationController
   def show
     @vegetable = Vegetable.find(params[:id])
     @nutrient = Nutrient.find(params[:id])
-    @effect = Effect.where(id: params[:id])
-
+    @effects = []
+    @vegetable.nutrients.each do |nutrient|
+      # @nutrient.effect_tags.each do |effect_tag|
+      #= effect_tag.effect.name
+      # end
+       nutrient.effects.each do |effect|
+         @effects << effect.name
+       end
+     end
   end
 
   def edit

@@ -47,7 +47,14 @@ class Admin::VegetablesController < ApplicationController
 
 
   def vegetable_params
-    params.require(:vegetable).permit(:vegetable_image, :name, :seasonal, :production_area, :keeping, :introduction, nutrient_ids: [])
+    params.require(:vegetable).permit(
+      :vegetable_image,
+      :name,
+      :seasonal,
+      :production_area,
+      :keeping,
+      :introduction,
+      nutrient_ids: [])
   end
 
 end

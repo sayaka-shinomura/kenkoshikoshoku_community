@@ -4,9 +4,9 @@
     <div class="col-4 px-5 px-sm-0 mx-auto">
       <div class="vegetable_image">
         <% if @vegetable.vegetable_image.attached? %>
-          <%= image_tag @vegetable.vegetable_image, size: "320x250" %>
+          <%= image_tag @vegetable.vegetable_image, size: "340x250" %>
         <% else %>
-          <%= image_tag 'no-image', size: "120x100" %>
+          <%= image_tag 'no-image', size: "340x250" %>
         <% end %>
       </div>
       <div class="text-center my-3">

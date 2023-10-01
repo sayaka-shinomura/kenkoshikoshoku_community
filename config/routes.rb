@@ -21,6 +21,7 @@ devise_for :admin, controllers: {
 
 scope module: :public do
     root 'homes#top'
+    get 'homes/about' => 'homes#about', as: 'about'
 
     get 'users/mypage' => 'users#show', as: 'mypage'
     get 'users/information/edit' => 'users#edit', as: 'edit_information'

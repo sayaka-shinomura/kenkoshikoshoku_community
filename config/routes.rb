@@ -35,6 +35,7 @@ end
 namespace :admin do
     get 'top' => 'homes#top', as: 'top'
 
+    resources :users, only: [:index, :show, :edit, :update]
     resources :vegetables, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :nutrients, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :effects, only: [:index, :new, :create, :show, :edit, :update, :destroy]

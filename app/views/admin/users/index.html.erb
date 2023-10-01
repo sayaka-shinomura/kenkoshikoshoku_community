@@ -1,0 +1,35 @@
+<div class="container">
+    <h4 class="my-3 text-center">ユーザー一覧</h4>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <table class="table">
+          <thead>
+            <tr>
+              <th align="left">ユーザーID</th>
+              <th align="left">ユーザー名</th>
+              <th align="left">ステータス</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><% @users.each do |user| %></tr>
+              <td><%= user.id %></td>
+              <td><%= user.account_name %></td>
+              <td>
+                <% if user.is_active? %>
+                  <span class="text-warning">有効</span>
+                <% else %>
+                  <span class="text-muted">退会済み</span>
+                <% end %>
+              </td>
+              <td><%= link_to "詳細", admin_user_path(user) %></td>
+              <td><%= link_to "編集", edit_admin_user_path(user) %></td>
+              <% end %>
+          </tbody>
+        </table>
+        <%= paginate @users %>
+        </div>
+      </div>
+</div>

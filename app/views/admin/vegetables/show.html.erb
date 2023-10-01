@@ -2,7 +2,7 @@
   <h4 class="my-3 text-center">野菜情報詳細</h4>
   <div class="row">
     <div class="col-4 px-5 px-sm-0 mx-auto">
-      <div class="vegetable_image">
+      <div class="text-center">
         <% if @vegetable.vegetable_image.attached? %>
           <%= image_tag @vegetable.vegetable_image, size: "340x250" %>
         <% else %>
@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <div class="text-center my-3">
-        <%= link_to "編集", edit_admin_vegetable_path(@vegetable), class:"btn btn-primary col-3" %>
+        <%= link_to "編集", edit_admin_vegetable_path(@vegetable), class:"btn btn-primary col-5" %>
       </div>
     </div>
 
@@ -31,6 +31,18 @@
             <td>
               <% @vegetable.nutrient_tags.each do |nutrient_tag| %>
                 <%= nutrient_tag.nutrient.name %>
+              <% end %>
+            </td>
+          </tr>
+           <tr>
+            <td><p>効能</p></td>
+            <td>
+              <% @vegetable.nutrient_tags.each do %>
+                <% @nutrient.effect_tags.each do |effect_tag| %>
+                <% @effect.each do |effect| %>
+                <%= effect.name %>
+                <% end %>
+                <% end %>
               <% end %>
             </td>
           </tr>

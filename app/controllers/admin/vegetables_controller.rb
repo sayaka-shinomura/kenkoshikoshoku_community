@@ -20,6 +20,9 @@ class Admin::VegetablesController < ApplicationController
 
   def show
     @vegetable = Vegetable.find(params[:id])
+    @nutrient = Nutrient.find(params[:id])
+    @effect = Effect.where(id: params[:id])
+
   end
 
   def edit

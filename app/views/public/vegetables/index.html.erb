@@ -9,6 +9,11 @@
             <%= image_tag vegetable.vegetable_image, format: "jpeg", fallback: "no-image.png", size: "250x180" %>
             <% end %>
             <p class="ml-1 text-dark"><%= vegetable.name %></p>
+            <p class="ml-1 text-dark">栄養素：
+              <% vegetable.nutrient_tags.each do |nutrient_tag| %>
+                <%= nutrient_tag.nutrient.name %>
+              <% end %>
+            </p>
 
         <% end %>
       </div>

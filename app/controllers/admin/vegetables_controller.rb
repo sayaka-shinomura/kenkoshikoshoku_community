@@ -20,7 +20,6 @@ class Admin::VegetablesController < ApplicationController
 
   def show
     @vegetable = Vegetable.find(params[:id])
-    @nutrient = Nutrient.all
 
     #配列の最初に空を作成
     @nutrients = []

@@ -21,17 +21,11 @@
        　  </tr>
        　  <tr>
             <td><p>栄養素</p></td>
-            <td>
-              <% @vegetable.nutrient_tags.each do |nutrient_tag| %>
-                <%= nutrient_tag.nutrient.name %>
-              <% end %>
-            </td>
+            <td><%= @nutrients.uniq.join(" ") %></td>
           </tr>
            <tr>
             <td><p>効能</p></td>
-            <td>
-              <%= @effects.uniq.join(" ") %>
-            </td>
+            <td><%= @effects.uniq.join(" ") %></td>
           </tr>
           <tr>
             <td class="col-2"><p>旬の時期</p></td>

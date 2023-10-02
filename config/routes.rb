@@ -30,6 +30,8 @@ scope module: :public do
     put 'users/information' => 'users#update'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
 
+    resources :vegetables, only: [:index, :show]
+
 end
 
 

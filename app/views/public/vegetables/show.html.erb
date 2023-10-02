@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="my-3 text-center">野菜情報詳細</h4>
+  <h4 class="my-3 text-center">野菜を知ろう</h4>
   <div class="row">
     <div class="col-4 px-5 px-sm-0 mx-auto">
       <div class="text-center">
@@ -9,9 +9,6 @@
           <%= image_tag 'no-image', size: "340x250" %>
         <% end %>
       </div>
-      <div class="text-center my-3">
-        <%= link_to "編集", edit_admin_vegetable_path(@vegetable), class:"btn btn-primary col-5" %>
-      </div>
     </div>
 
 
@@ -19,20 +16,22 @@
       <table class="table">
         <tbody>
           <tr>
-            <td class="col-2"><p>野菜ID</p></td>
-            <td class="col-5"><%= @vegetable.id %></td>
-       　　</tr>
-          <tr>
             <td class="col-2"><p>野菜名</p></td>
             <td class="col-5"><%= @vegetable.name %></td>
        　  </tr>
        　  <tr>
             <td><p>栄養素</p></td>
-            <td><%= @nutrients.uniq.join(" ") %></td>
+            <td>
+              <% @vegetable.nutrient_tags.each do |nutrient_tag| %>
+                <%= nutrient_tag.nutrient.name %>
+              <% end %>
+            </td>
           </tr>
            <tr>
             <td><p>効能</p></td>
-            <td><%= @effects.uniq.join(" ") %></td>
+            <td>
+              <%= @effects.uniq.join(" ") %>
+            </td>
           </tr>
           <tr>
             <td class="col-2"><p>旬の時期</p></td>

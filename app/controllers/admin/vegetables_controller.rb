@@ -38,7 +38,7 @@ class Admin::VegetablesController < ApplicationController
   end
 
   def update
-     @vegetable = Vegetable.find(params[:id])
+    @vegetable = Vegetable.find(params[:id])
     if @vegetable.update(vegetable_params)
       redirect_to admin_vegetable_path(@vegetable.id)
     else

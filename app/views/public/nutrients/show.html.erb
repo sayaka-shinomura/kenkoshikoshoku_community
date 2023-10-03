@@ -1,2 +1,36 @@
-<h1>Public::Nutrients#show</h1>
-<p>Find me in app/views/public/nutrients/show.html.erb</p>
+<div class="container">
+  <h4 class="my-3 text-center"><%= @nutrient.name %>について</h4>
+  <div class="row">
+    <div class="px-5 px-sm-0 mx-auto">
+      <table class="table table-borderless">
+        <tbody>
+            <td><p>栄養素概要</p></td>
+            <td><%=safe_join(@nutrient.introduction.split("\n"),tag(:br))%></td>
+          </tr>
+       </tbody>
+     </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 px-5 px-sm-0 mx-auto">
+      <p class="text-center">
+        <strong>摂取したい栄養素</strong>
+      </p>
+      <div class="d-flex flex-wrap">
+        <%= @effects.uniq.join(" ") %>
+      </div>
+    </div>
+
+    <div class="col-6 px-5 px-sm-0 mx-auto">
+      <p class="text-center">
+        <strong>摂取したい野菜</strong>
+      </p>
+          <button type="button" class="btn btn-outline-success btn-lg">
+            <%= @vegetables.uniq.join(" ") %>
+          </button>
+    </div>
+
+
+  </div>
+</div>

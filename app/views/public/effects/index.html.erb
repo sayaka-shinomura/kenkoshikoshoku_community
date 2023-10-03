@@ -1,0 +1,14 @@
+<div class="container">
+  <h4 class="my-3 text-center">自分の体調に合った野菜を探そう◆効能一覧</h4>
+  <div class="row">
+    <div class="col">
+      <div class="d-flex flex-wrap">
+        <% @effects.each do |effect| %>
+        <div class="mr-3 d-flex flex-column mb-4">
+          <%= link_to effect.name, effect_path(effect), class:"btn btn-outline-info" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

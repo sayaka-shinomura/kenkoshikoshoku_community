@@ -3,7 +3,6 @@ class Public::VegetablesController < ApplicationController
 
   def index
     @vegetables = Vegetable.page(params[:page]).per(6)
-
   end
 
   def show
@@ -13,7 +12,6 @@ class Public::VegetablesController < ApplicationController
     @vegetable.nutrients.each do |nutrient|
        @nutrients << nutrient.name
        nutrient.effects.each do |effect|
-         #配列に効能名を入れる
          @effects << effect.name
        end
     end

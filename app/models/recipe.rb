@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
 
   has_many :ingredients
   has_many :cookerys
-  
+
   has_many :vegetable_tags, dependent: :destroy
   has_many :vegetables, through: :vegetable_tags
 

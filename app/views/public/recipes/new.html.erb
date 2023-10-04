@@ -1,62 +1,63 @@
 <div class="container">
   <h4 class="my-3 text-center">レシピ投稿</h4>
   <div class="row">
+    <div class="col-6 px-5 px-sm-0 mx-auto">
 
-    <%= form_with(model: @recipe, local: true) do |f| %>
-    <div class="col-4 px-5 px-sm-0 mx-auto">
+      <%= form_with(model: @recipe, local: true) do |f| %>
       <div class="form-group">
         <table class="table table-borderless">
           <tbody>
             <tr>
-              <td><%= f.label :name, "レシピ名" %></td>
+              <td class="col-2"><%= f.label :name, "レシピ名" %></td>
+              <td class="col-5"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
             </tr>
             <tr>
-              <td><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :name, "メイン野菜" %></td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.collection_check_boxes(:vegetable_ids, Vegetable.all, :id, :name) do |vegetable| %>
+               <td class="col-2"><%= f.label :name, "メイン野菜" %></td>
+               <td class="col-5">
+                 <%= f.collection_check_boxes(:vegetable_ids, Vegetable.all, :id, :name) do |vegetable| %>
                   <%= vegetable.label class: 'tag__item' do %>
                     <%= vegetable.check_box class: 'tag__checkbox' %>
                     <%= vegetable.text %>
                   <% end %>
                 <% end %>
+               </td>
+             </tr>
+            <tr>
+              <td class="col-2"><%= f.label :recipe_image, "完成品画像" %></td>
+              <td class="col-5"><%= f.file_field :recipe_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :summary, "一言で説明すると" %></td>
+              <td class="col-5"><%= f.text_field :summary, autofocus: true, id:"inputSummary", class:"form-control" %></td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :time, "調理時間" %></td>
+              <td class="col-5"><%= f.text_field :time, autofocus: true, id:"inputTime", class:"form-control", placeholder: "単位は分です。数字を入力してください。" %></td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :introduction, "おすすめ情報" %></td>
+              <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :difficulty, "難易度" %></td>
+              <td class="col-5"><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "指定なし" }, class: "mb-3 sm:mb-0 mr-9 border border-line-100 rounded-[3px] rounded-[3px] py-3 pl-6 w-52 h-12 font-bold" %></td>
+            </tr>
+
+            <tr>
+              <td class="col-2"></td>
+              <td class="col-5">
+                <%= f.submit 'レシピを投稿する', class:"btn btn-success" %>
+                <% end %>
               </td>
-            </tr>
-            <tr>
-              <td><%= f.label :recipe_image, "完成品画像" %></td>
-            </tr>
-            <tr>
-              <td><%= f.file_field :recipe_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :summary, "一言で説明すると" %></td>
-            </tr>
-            <tr>
-              <td><%= f.text_field :summary, autofocus: true, id:"inputSummary", class:"form-control" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :time, "調理時間" %></td>
-            </tr>
-            <tr>
-              <td><%= f.text_field :time, autofocus: true, id:"inputTime", class:"form-control" %>分</td>
-            </tr>
-            <tr>
-              <td><%= f.label :difficulty, "難易度" %></td>
-            </tr>
-            <tr>
-              <td>
-                <%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "指定なし" }, class: "mb-3 sm:mb-0 mr-9 border border-line-200 rounded-[3px] rounded-[3px] py-3 pl-6 w-52 h-12 font-bold" %>
             </tr>
           </tbody>
        </table>
-       <% end %>
      </div>
    </div>
   </div>
 </div>
+
+
+
 
 

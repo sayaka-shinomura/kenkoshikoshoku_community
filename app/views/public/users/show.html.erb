@@ -28,15 +28,21 @@
     <!--#編集画面へのボタン-->
     <div class="row">
      <% if @user == current_user %>
-    <%= link_to edit_information_path(@user.id), class:'btn btn-outline-secondary btn-block' do %>
-    <i class="fas fa-user-cog", area-hidden="true"></i>
-    <% end %>
-    <% else %>
-    <%= link_to edit_information_path(@user), class:'btn btn-outline-secondary btn-block' do %>
-    <i class="fas fa-user-cog", area-hidden="true"></i>
-    <% end %>
-    <% end %>
-   </div>
+       <%= link_to edit_information_path(@user.id), class:'btn btn-outline-secondary btn-block' do %>
+       <i class="fas fa-user-cog", area-hidden="true">
+         <span>アカウント管理</span>
+       </i>
+       <% end %>
+     <% else %>
+       <%= link_to edit_information_path(@user), class:'btn btn-outline-secondary btn-block' do %>
+       <i class="fas fa-user-cog", area-hidden="true"></i>
+       <% end %>
+     <% end %>
+    </div>
+
+    <div class="row text-center my-3">
+     <%= link_to "レシピを投稿する", new_recipe_path, class:"btn btn-outline-success btn-block" %>
+    </div>
 
   </div>
  </div>

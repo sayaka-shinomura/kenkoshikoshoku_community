@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_30_115835) do
+ActiveRecord::Schema.define(version: 2023_10_04_111533) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -126,6 +126,15 @@ ActiveRecord::Schema.define(version: 2023_09_30_115835) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vegetable_tags", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "vegetable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_vegetable_tags_on_recipe_id"
+    t.index ["vegetable_id"], name: "index_vegetable_tags_on_vegetable_id"
+  end
+
   create_table "vegetables", force: :cascade do |t|
     t.string "name", null: false
     t.string "seasonal", null: false
@@ -143,4 +152,6 @@ ActiveRecord::Schema.define(version: 2023_09_30_115835) do
   add_foreign_key "effect_tags", "nutrients"
   add_foreign_key "nutrient_tags", "nutrients"
   add_foreign_key "nutrient_tags", "vegetables"
+  add_foreign_key "vegetable_tags", "recipes"
+  add_foreign_key "vegetable_tags", "vegetables"
 end

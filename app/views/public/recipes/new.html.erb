@@ -1,53 +1,59 @@
 <div class="container">
   <h4 class="my-3 text-center">レシピ投稿</h4>
   <div class="row">
-    
+
     <%= form_with(model: @recipe, local: true) do |f| %>
     <div class="col-4 px-5 px-sm-0 mx-auto">
       <div class="form-group">
         <table class="table table-borderless">
           <tbody>
-            <tr>レシピ名 %></tr>
-            <tr><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></tr>
-            <tr><%= f.label :name, "メイン野菜" %></tr>
-               <td class="col-5">
-                 <%= f.collection_check_boxes(:nutrient_ids, Vegetable.all, :id, :name) do |nutrienttag| %>
-                   <%= nutrienttag.label class: 'tag__item' do %>
-                     <%= nutrienttag.check_box class: 'tag__checkbox' %>
-                     <%= nutrienttag.text %>
-                   <% end %>
-                 <% end %>
-               </td>
-             </tr>
             <tr>
-              <td class="col-2"><%= f.label :vegetable_image, "野菜画像" %></td>
-              <td class="col-5"><%= f.file_field :vegetable_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
+              <td><%= f.label :name, "レシピ名" %></td>
             </tr>
             <tr>
-              <td class="col-2"><%= f.label :seasonal, "旬の時期" %></td>
-              <td class="col-5"><%= f.text_field :seasonal, autofocus: true, id:"inputSeasonal", class:"form-control" %></td>
+              <td><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
             </tr>
             <tr>
-              <td class="col-2"><%= f.label :production_area, "産地情報" %></td>
-              <td class="col-5"><%= f.text_area :production_area, autofocus: true, id:"inputProductionArea", class:"form-control", :size=>"40x6" %></td>
+              <td><%= f.label :name, "メイン野菜" %></td>
             </tr>
             <tr>
-              <td class="col-2"><%= f.label :keeping, "保存方法" %></td>
-              <td class="col-5"><%= f.text_area :keeping, autofocus: true, id:"inputKeeping", class:"form-control", :size=>"40x6" %></td>
-            </tr>
-            <tr>
-              <td class="col-2"><%= f.label :introduction, "おすすめ情報" %></td>
-              <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
-            </tr>
-            <tr>
-              <td class="col-2"></td>
-              <td class="col-5">
-                <%= f.submit '新規登録', class:"btn btn-success" %>
+              <td>
+                <%= f.collection_check_boxes(:vegetable_ids, Vegetable.all, :id, :name) do |vegetable| %>
+                  <%= vegetable.label class: 'tag__item' do %>
+                    <%= vegetable.check_box class: 'tag__checkbox' %>
+                    <%= vegetable.text %>
+                  <% end %>
                 <% end %>
               </td>
             </tr>
+            <tr>
+              <td><%= f.label :recipe_image, "完成品画像" %></td>
+            </tr>
+            <tr>
+              <td><%= f.file_field :recipe_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :summary, "一言で説明すると" %></td>
+            </tr>
+            <tr>
+              <td><%= f.text_field :summary, autofocus: true, id:"inputSummary", class:"form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :time, "調理時間" %></td>
+            </tr>
+            <tr>
+              <td><%= f.text_field :time, autofocus: true, id:"inputTime", class:"form-control" %>分</td>
+            </tr>
+            <tr>
+              <td><%= f.label :difficulty, "難易度" %></td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "指定なし" }, class: "mb-3 sm:mb-0 mr-9 border border-line-200 rounded-[3px] rounded-[3px] py-3 pl-6 w-52 h-12 font-bold" %>
+            </tr>
           </tbody>
        </table>
+       <% end %>
      </div>
    </div>
   </div>

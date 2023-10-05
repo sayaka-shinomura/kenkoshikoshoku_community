@@ -32,7 +32,7 @@
             </tr>
             <tr>
               <td class="col-2"><%= f.label :time, "調理時間" %></td>
-              <td class="col-5"><%= f.text_field :time, autofocus: true, id:"inputTime", class:"form-control", placeholder: "単位は分です。数字を入力してください。" %></td>
+              <td class="col-5"><%= f.text_field :time, placeholder: "数字を入力" %>分</td>
             </tr>
             <tr>
               <td class="col-2"><%= f.label :introduction, "おすすめ情報" %></td>
@@ -40,7 +40,7 @@
             </tr>
             <tr>
               <td class="col-2"><%= f.label :difficulty, "難易度" %></td>
-              <td class="col-5"><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "指定なし" }, class: "mb-3 sm:mb-0 mr-9 border border-line-100 rounded-[3px] rounded-[3px] py-3 pl-6 w-52 h-12 font-bold" %></td>
+              <td class="col-5"><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "難易度を選択" } %></td>
             </tr>
 
             <tr>
@@ -56,8 +56,3 @@
    </div>
   </div>
 </div>
-
-
-
-
-

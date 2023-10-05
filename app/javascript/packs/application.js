@@ -12,9 +12,12 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"; 
+import "../stylesheets/application";
 
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+//= require nested_form_field
+//= require jquery3

@@ -35,12 +35,24 @@
               <td class="col-5"><%= f.text_field :time, placeholder: "数字を入力" %>分</td>
             </tr>
             <tr>
-              <td class="col-2"><%= f.label :introduction, "おすすめ情報" %></td>
+              <td class="col-2"><%= f.label :introduction, "レシピ紹介" %></td>
               <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
             </tr>
             <tr>
+              <td class="col-2"><%= f.label :ingredient, "材料" %></td>
+              <td class="col-5">
+                <%= f.fields_for :ingredients do |ingredient| %>
+                  <%= f.text_field :content, placeholder: "材料", class:"ingredient__content"%>
+                  <%= f.text_field :quantity, placeholder: "分量", class:"ingredient__quantity" %>
+                  <%= link_to '#' , class: "remove-field-btn" do %>
+                  <% end %>
+                <% end %>
+                <%= link_to_add_fields "材料の追加", f, :ingredients %>
+              </td>
+            </tr>
+            <tr>
               <td class="col-2"><%= f.label :difficulty, "難易度" %></td>
-              <td class="col-5"><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "難易度を選択" } %></td>
+              <td class="col-5"><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "難易度を選択" } %>　簡単：★　　難しい：★★★★★</td>
             </tr>
 
             <tr>

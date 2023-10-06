@@ -39,6 +39,24 @@
               <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
             </tr>
             <tr>
+              <td class="col-2"><%= f.label :cookery, "材料" %></td>
+              <td class="col-5">
+                <div id="ingredient-fields-template" style="display: none;">
+                  <%= f.fields_for :ingredients, Ingredient.new, child_index: "new_ingredient" do |ingredient_field| %>
+                    <%= render 'ingredient_fields', f: ingredient_field %>
+                  <% end %>
+                </div>
+                <%= f.fields_for :ingredients do |ingredient_field| %>
+                  <%= render 'ingredient_fields', f: ingredient_field %>
+                <% end %>
+                <div id="ingredients"></div>
+                <div>
+                  <button type="button" id="add-ingredient" class="btn btn-info">材料を追加</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
               <td class="col-2"><%= f.label :cookery, "作り方" %></td>
               <td class="col-5">
                 <div id="cookery-fields-template" style="display: none;">

@@ -1,0 +1,27 @@
+<div class="ingredient-fields row align-items-center">
+    <%= f.hidden_field :_destroy %>
+  <div class="col">
+    <div class="form-group">
+      <%= f.text_field :content, placeholder: "材料名", class: 'form-control light-placeholder' %>
+    </div>
+  </div>
+  <div class="col">
+    <div class="form-group">
+      <%= f.text_field :quantity, placeholder: "分量", class: "form-control light-placeholder" %>
+    </div>
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-danger remove-ingredient mb-3">
+      <i class="fas fa-trash-alt"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $(document).on('click', '.remove-ingredient', function(){
+      $(this).closest('.ingredient-fields').find("input[name$='[_destroy]']").val('true');
+      $(this).closest('.ingredient-fields').hide();
+    });
+  });
+</script>

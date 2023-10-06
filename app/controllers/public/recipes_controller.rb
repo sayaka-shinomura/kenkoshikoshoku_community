@@ -10,6 +10,7 @@ class Public::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.vegetable_tags.build
+    @recipe.ingredients.build
     @recipe.cookerys.build
   end
 

@@ -1,9 +1,9 @@
 class Recipe < ApplicationRecord
 
   has_many :ingredients
-  accepts_nested_attributes_for :ingredients, allow_destroy: true
+  accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
   has_many :cookerys
-  accepts_nested_attributes_for :cookerys, allow_destroy: true
+  accepts_nested_attributes_for :cookerys, reject_if: :all_blank, allow_destroy: true
 
   has_many :vegetable_tags, dependent: :destroy
   has_many :vegetables, through: :vegetable_tags

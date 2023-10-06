@@ -19,5 +19,5 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+//= require jquery
 //= require nested_form_field
-//= require jquery3

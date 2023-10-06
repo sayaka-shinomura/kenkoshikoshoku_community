@@ -1,7 +1,7 @@
 <div class="proces-field form-group">
   <%= f.hidden_field :_destroy %>
   <div class="form-group">
-    <%= f.label :process, raw("手順" + content_tag(:span, "（必須）", class: "required-label")) %>
+    <%= f.label :process, "手順" %>
     <div class="input-group">
       <%= f.text_area :process, class: "form-control", rows: "3" %>
       <div class="input-group-append">

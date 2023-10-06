@@ -10,7 +10,7 @@ class Public::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.vegetable_tags.build
-    @ingredient = @recipe.ingredients.build
+    @recipe.cookerys.build
   end
 
   def create
@@ -64,8 +64,8 @@ class Public::RecipesController < ApplicationController
       :difficulty,
       :user_id,
       vegetable_ids: [],
-      ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
-      cookerys_attributes: [:id, :recipe_id, :process, :_destroy])
+      #ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
+      cookerys_attributes: [:id, :process, :_destroy])
   end
 
 

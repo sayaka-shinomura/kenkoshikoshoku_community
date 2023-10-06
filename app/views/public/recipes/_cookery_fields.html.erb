@@ -1,0 +1,23 @@
+<div class="proces-field form-group">
+  <%= f.hidden_field :_destroy %>
+  <div class="form-group">
+    <%= f.label :process, raw("手順" + content_tag(:span, "（必須）", class: "required-label")) %>
+    <div class="input-group">
+      <%= f.text_area :process, class: "form-control", rows: "3" %>
+      <div class="input-group-append">
+        <button type="button" class="btn btn-danger remove-proces">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $(document).on('click', '.remove-proces', function(){
+      $(this).closest('.proces-field').find("input[name$='[_destroy]']").val('true');
+      $(this).closest('.proces-field').hide();
+    });
+  });
+</script>

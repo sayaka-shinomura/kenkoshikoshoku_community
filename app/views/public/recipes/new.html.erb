@@ -39,19 +39,21 @@
               <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
             </tr>
             <tr>
-              <td class="col-2"><%= f.label :ingredient, "材料" %></td>
+              <td class="col-2"><%= f.label :cookery, "作り方" %></td>
               <td class="col-5">
-                <%= f.nested_fields_for :ingredients, wrapper_tag: :tr do |q| %>
-                  <%= q.text_field :content, placeholder: "材料", class:'form-control' %>
-                  <%= q.text_field :quantity, placeholder: "分量", class:"ingredient__quantity" %>
+                <div id="cookery-fields-template" style="display: none;">
+                   <%= f.fields_for :cookerys, Cookery.new, child_index: "new_cookery" do |cookery_field| %>
+                     <%= render 'cookery_fields', f: cookery_field %>
+                   <% end %>
+                </div>
+                <%= f.fields_for :cookerys do |cookery_field| %>
+                  <%= render 'cookery_fields', f: cookery_field %>
                 <% end %>
+                <div id="cookerys"></div>
+                <div>
+                  <button type="button" id="add-cookery" class="btn btn-warning">手順を追加</button>
+                </div>
               </td>
-            <tr>
-              <td class="col-2"></td>
-              <td class="col-5">
-                <%= f.add_nested_fields_link :ingredients, '材料の追加', class: 'btn btn-primary', role: 'button' %>
-              </td>
-            </tr>
             </tr>
             <tr>
               <td class="col-2"><%= f.label :difficulty, "難易度" %></td>

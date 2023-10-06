@@ -29,6 +29,7 @@ scope module: :public do
     get 'users/check' => 'users#check', as: 'check_user'
     put 'users/information' => 'users#update'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
+    get 'users/myrecipe' => 'users#index', as: 'myrecipe'
 
     resources :recipes, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :vegetables, only: [:index, :show]

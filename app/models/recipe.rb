@@ -19,14 +19,14 @@ class Recipe < ApplicationRecord
   validates :introduction, presence: true, length: { maximum: 140}
 
   validate :require_any_ingredients
-  validate :require_any_steps
+  validate :require_any_cookerys
 
   def require_any_ingredients
     errors.add(:base, "材料は1つ以上登録してください。") if self.ingredients.blank?
   end
 
-  def require_any_steps
-    errors.add(:base, "作り方は1つ以上登録してください。") if self.steps.blank?
+  def require_any_cookerys
+    errors.add(:base, "作り方は1つ以上登録してください。") if self.cookerys.blank?
   end
 
 

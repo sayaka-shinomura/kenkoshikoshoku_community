@@ -17,23 +17,22 @@ class Public::RecipesController < ApplicationController
   def create
      @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to recipe_path(@recipe.id), flash: { notice: "「#{recipe.name}」のレシピを投稿しました。" }
+      redirect_to recipe_path(@recipe.id), flash: { notice: "「#{@recipe.name}」のレシピを投稿しました。" }
     else
       render :new
     end
   end
-  def show
 
+  def show
     @recipe = Recipe.find(params[:id])
+    @vegetables = []
+    @recipe.vegetables.each do |vegetable|
+      @vegetables << vegetable.name
+    end
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
-    if @recipe.user == current_user
-      render "edit"
-    else
-      redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは編集できません" }
-    end
   end
 
   def update
@@ -63,9 +62,8 @@ class Public::RecipesController < ApplicationController
       :introduction,
       :time,
       :difficulty,
-      :user_id,
       vegetable_ids: [],
-      #ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
+      ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
       cookerys_attributes: [:id, :process, :_destroy])
   end
 

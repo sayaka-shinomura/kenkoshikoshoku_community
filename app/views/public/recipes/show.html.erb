@@ -1,2 +1,54 @@
-<h1>Public::Recipes#show</h1>
-<p>Find me in app/views/public/recipes/show.html.erb</p>
+<div class="container">
+  <h4 class="my-3 text-center"><%= @vegetables.uniq.join(" ") %>を使ったレシピ</h4>
+  <h6 class="my-1 text-right">レシピNo.<%= @recipe.id %></h6>
+  <div class="row">
+    <div class="col-4 px-5 px-sm-0 mx-auto">
+      <div class="text-center">
+        <% if @recipe.recipe_image.attached? %>
+          <%= image_tag @recipe.recipe_image, size: "340x250" %>
+        <% else %>
+          <%= image_tag 'no-image', size: "340x250" %>
+        <% end %>
+      </div>
+      <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>投稿ユーザー</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>投稿日</td>
+              <td><%= @recipe.created_at %></td>
+            </tr>
+            <tr>
+              <td>難易度</td>
+              <td><%= @recipe.difficulty %></td>
+            </tr>
+          </tbody>
+        </table>
+      <div class="text-center my-3">
+        <%= link_to "編集", edit_recipe_path(@recipe), class:"btn btn-primary col-5" %>
+      </div>
+    </div>
+
+
+    <div class="col-6 px-5 px-sm-0 mx-auto">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="col-2"><p>レシピ名</p></td>
+            <td class="col-5"><%= @recipe.name %></td>
+       　  </tr>
+          <tr>
+            <td class="col-2"><p>調理時間の目安</p></td>
+            <td class="col-5"><%= @recipe.time %></td>
+          </tr>
+          <tr>
+            <td class="col-2"><p>おすすめ情報</p></td>
+            <td class="col-6"><%=safe_join(@recipe.introduction.split("\n"),tag(:br))%></td>
+          </tr>
+       </tbody>
+     </table>
+    </div>
+  </div>
+</div>

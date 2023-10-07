@@ -1,5 +1,7 @@
 class Recipe < ApplicationRecord
 
+  belongs_to :user
+
   has_many :ingredients
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
   has_many :cookerys
@@ -7,6 +9,8 @@ class Recipe < ApplicationRecord
 
   has_many :vegetable_tags, dependent: :destroy
   has_many :vegetables, through: :vegetable_tags
+
+  has_many :myrecipes, dependent: :destroy
 
   has_one_attached :recipe_image
 

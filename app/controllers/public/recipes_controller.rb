@@ -62,7 +62,9 @@ class Public::RecipesController < ApplicationController
       :introduction,
       :time,
       :difficulty,
+      :user_id,
       vegetable_ids: [],
+      myrecipe_ids: [],
       ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
       cookerys_attributes: [:id, :process, :_destroy])
   end

@@ -77,10 +77,12 @@ ActiveRecord::Schema.define(version: 2023_10_04_111533) do
   end
 
   create_table "ingredients", force: :cascade do |t|
+    t.integer "recipe_id"
     t.string "content", null: false
     t.string "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "nutrient_tags", force: :cascade do |t|
@@ -100,6 +102,7 @@ ActiveRecord::Schema.define(version: 2023_10_04_111533) do
   end
 
   create_table "recipes", force: :cascade do |t|
+    t.integer "user_id"
     t.string "name", null: false
     t.string "summary", null: false
     t.text "introduction", null: false
@@ -107,6 +110,7 @@ ActiveRecord::Schema.define(version: 2023_10_04_111533) do
     t.integer "difficulty", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -150,8 +154,10 @@ ActiveRecord::Schema.define(version: 2023_10_04_111533) do
   add_foreign_key "cookeries", "recipes"
   add_foreign_key "effect_tags", "effects"
   add_foreign_key "effect_tags", "nutrients"
+  add_foreign_key "ingredients", "recipes"
   add_foreign_key "nutrient_tags", "nutrients"
   add_foreign_key "nutrient_tags", "vegetables"
+  add_foreign_key "recipes", "users"
   add_foreign_key "vegetable_tags", "recipes"
   add_foreign_key "vegetable_tags", "vegetables"
 end

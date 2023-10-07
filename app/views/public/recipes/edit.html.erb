@@ -1,2 +1,94 @@
-<h1>Public::Recipes#edit</h1>
-<p>Find me in app/views/public/recipes/edit.html.erb</p>
+<div class="container">
+  <h4 class="my-3 text-center">レシピ投稿</h4>
+  <div class="row">
+    <div class="col-6 px-5 px-sm-0 mx-auto">
+
+      <%= form_with(model: @recipe, local: true) do |f| %>
+      <div class="form-group">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td class="col-2"><%= f.label :name, "レシピ名" %></td>
+              <td class="col-5"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
+            </tr>
+            <tr>
+               <td class="col-2"><%= f.label :name, "メイン野菜" %></td>
+               <td class="col-5">
+                 <%= f.collection_check_boxes(:vegetable_ids, Vegetable.all, :id, :name) do |vegetable| %>
+                  <%= vegetable.label class: 'tag__item' do %>
+                    <%= vegetable.check_box class: 'tag__checkbox' %>
+                    <%= vegetable.text %>
+                  <% end %>
+                <% end %>
+               </td>
+             </tr>
+            <tr>
+              <td class="col-2"><%= f.label :recipe_image, "完成品画像" %></td>
+              <td class="col-5"><%= f.file_field :recipe_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :summary, "一言で説明すると" %></td>
+              <td class="col-5"><%= f.text_field :summary, autofocus: true, id:"inputSummary", class:"form-control" %></td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :time, "調理時間" %></td>
+              <td class="col-5">およそ<%= f.text_field :time, placeholder: "数字を入力" %>分</td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :introduction, "レシピ紹介" %></td>
+              <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :cookery, "材料" %></td>
+              <td class="col-5">
+                <div id="ingredient-fields-template" style="display: none;">
+                  <%= f.fields_for :ingredients, Ingredient.new, child_index: "new_ingredient" do |ingredient_field| %>
+                    <%= render 'ingredient_fields', f: ingredient_field %>
+                  <% end %>
+                </div>
+                <%= f.fields_for :ingredients do |ingredient_field| %>
+                  <%= render 'ingredient_fields', f: ingredient_field %>
+                <% end %>
+                <div id="ingredients"></div>
+                <div>
+                  <button type="button" id="add-ingredient" class="btn btn-info">材料を追加</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="col-2"><%= f.label :cookery, "作り方" %></td>
+              <td class="col-5">
+                <div id="cookery-fields-template" style="display: none;">
+                   <%= f.fields_for :cookerys, Cookery.new, child_index: "new_cookery" do |cookery_field| %>
+                     <%= render 'cookery_fields', f: cookery_field %>
+                   <% end %>
+                </div>
+                <%= f.fields_for :cookerys do |cookery_field| %>
+                  <%= render 'cookery_fields', f: cookery_field %>
+                <% end %>
+                <div id="cookerys"></div>
+                <div>
+                  <button type="button" id="add-cookery" class="btn btn-info">手順を追加</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-2"><%= f.label :difficulty, "難易度" %></td>
+              <td class="col-5"><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "難易度を選択" } %>　簡単：★　　難しい：★★★★★</td>
+            </tr>
+
+            <tr>
+              <td class="col-2"></td>
+              <td class="col-5">
+                <%= f.submit 'レシピを変更する', class:"btn btn-success" %>
+                <%= link_to "削除", recipe_path(@recipe), method: :delete, class:"btn btn-danger", data: { confirm: "本当に削除しますか？" } %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+       </table>
+     </div>
+   </div>
+  </div>
+</div>

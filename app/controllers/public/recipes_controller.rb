@@ -4,7 +4,7 @@ class Public::RecipesController < ApplicationController
 
 
   def index
-    @recipes = @recipes.page(params[:page]).per(6)
+    @recipes = Recipe.page(params[:page]).per(6)
   end
 
   def new
@@ -34,6 +34,11 @@ class Public::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    if @recipe.user == current_user
+      render "edit"
+    else
+      redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは編集できません" }
+    end
   end
 
   def update

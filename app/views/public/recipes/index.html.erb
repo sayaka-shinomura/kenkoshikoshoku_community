@@ -1,2 +1,23 @@
-<h1>Public::Recipes#index</h1>
-<p>Find me in app/views/public/recipes/index.html.erb</p>
+<div class="container">
+  <h4 class="my-3 text-center">レシピを探そう</h4>
+  <div class="row">
+    <div class="col">
+      <div class="d-flex flex-wrap">
+        <% @recipes.each do |recipe| %>
+        <div class="mr-3 d-flex flex-column mb-4">
+          <%= link_to recipe_path(recipe.id) do %>
+            <%= image_tag recipe.recipe_image, format: "jpeg", fallback: "no-image.png", size: "280x180" %>
+            <% end %>
+            <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></p>
+            <p class="ml-1 text-dark text-wrap">一言紹介：<%= recipe.summary %></p>
+            <p class="ml-1 text-dark text-wrap">投稿ユーザー：<%= recipe.user.account_name %></p>
+        </div>
+        <% end %>
+      </div>
+
+    <div class="d-flex justify-content-center text-center">
+      <%= paginate @recipes %>
+    </div>
+  </div>
+</div>
+</div>

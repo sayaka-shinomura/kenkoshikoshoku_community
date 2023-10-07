@@ -2,9 +2,9 @@ class Recipe < ApplicationRecord
 
   belongs_to :user
 
-  has_many :ingredients
+  has_many :ingredients, dependent: :destroy
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
-  has_many :cookerys
+  has_many :cookerys, dependent: :destroy
   accepts_nested_attributes_for :cookerys, reject_if: :all_blank, allow_destroy: true
 
   has_many :vegetable_tags, dependent: :destroy

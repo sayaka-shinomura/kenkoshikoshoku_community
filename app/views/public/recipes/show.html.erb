@@ -14,11 +14,11 @@
           <tbody>
             <tr>
               <td>投稿ユーザー</td>
-              <td></td>
+              <td><%= @recipe.user.account_name %></td>
             </tr>
             <tr>
               <td>投稿日</td>
-              <td><%= @recipe.created_at %></td>
+              <td><%= @recipe.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
             <tr>
               <td>難易度</td>
@@ -41,11 +41,29 @@
        　  </tr>
           <tr>
             <td class="col-2"><p>調理時間の目安</p></td>
-            <td class="col-5"><%= @recipe.time %></td>
+            <td class="col-5"><%= @recipe.time %>　分</td>
           </tr>
           <tr>
             <td class="col-2"><p>おすすめ情報</p></td>
             <td class="col-6"><%=safe_join(@recipe.introduction.split("\n"),tag(:br))%></td>
+          </tr>
+          <tr>
+            <td class="col-2"><p>材料</p></td>
+            <td class="col-6">
+              <% @recipe.ingredients.each do |ingredient| %>
+                <div class="my-1">
+                  <%= ingredient.content %>  <%= ingredient.quantity %>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-2"><p>作り方</p></td>
+            <td class="col-6">
+              <% @recipe.cookerys.each do |cookery| %>
+                <div class="my-1"><%= cookery.process %></div>
+              <% end %>
+            </td>
           </tr>
        </tbody>
      </table>

@@ -92,3 +92,23 @@
    </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("add-ingredient").addEventListener("click", function() {
+      var content = document.getElementById("ingredient-fields-template").innerHTML;
+      var uniqueId = new Date().getTime();
+      content = content.replace(/new_ingredient/g, uniqueId);
+      document.getElementById("ingredients").insertAdjacentHTML('beforeend', content);
+    });
+  });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('#add-cookery').addEventListener('click', () => {
+        let content = document.getElementById('cookery-fields-template').innerHTML;
+        let uniqueId = new Date().getTime();
+        content = content.replace(/new_cookery/g, uniqueId);
+        document.getElementById('cookerys').insertAdjacentHTML('beforeend', content);
+      });
+    });
+</script>

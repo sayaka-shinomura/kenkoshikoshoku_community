@@ -93,7 +93,7 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("turbolinks:load", function() {
     document.getElementById("add-ingredient").addEventListener("click", function() {
       var content = document.getElementById("ingredient-fields-template").innerHTML;
       var uniqueId = new Date().getTime();
@@ -101,12 +101,12 @@
       document.getElementById("ingredients").insertAdjacentHTML('beforeend', content);
     });
   });
-    
-    document.addEventListener('DOMContentLoaded', () => {
+
+    document.addEventListener('turbolinks:load', () => {
       document.querySelector('#add-cookery').addEventListener('click', () => {
         let content = document.getElementById('cookery-fields-template').innerHTML;
         let uniqueId = new Date().getTime();
-        content = content.replace(/new_coolery/g, uniqueId);
+        content = content.replace(/new_cookery/g, uniqueId);
         document.getElementById('cookerys').insertAdjacentHTML('beforeend', content);
       });
     });

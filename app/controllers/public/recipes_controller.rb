@@ -10,12 +10,13 @@ class Public::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.vegetable_tags.build
+    @recipe.myrecipes.build
     @recipe.ingredients.build
     @recipe.cookerys.build
   end
 
   def create
-     @recipe = Recipe.new(recipe_params)
+     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
       redirect_to recipe_path(@recipe.id), flash: { notice: "「#{@recipe.name}」のレシピを投稿しました。" }
     else
@@ -64,7 +65,6 @@ class Public::RecipesController < ApplicationController
       :difficulty,
       :user_id,
       vegetable_ids: [],
-      myrecipe_ids: [],
       ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
       cookerys_attributes: [:id, :process, :_destroy])
   end

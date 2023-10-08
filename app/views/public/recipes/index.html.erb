@@ -6,10 +6,14 @@
         <% @recipes.each do |recipe| %>
         <div class="mr-3 d-flex flex-column mb-4">
           <%= link_to recipe_path(recipe.id) do %>
-            <%= image_tag recipe.recipe_image, format: "jpeg", fallback: "no-image.png", size: "280x180" %>
+          <% if recipe.recipe_image.attached? %>
+          <%= image_tag recipe.recipe_image, size: "340x250" %>
+        <% else %>
+          <%= image_tag 'no-image', size: "340x250" %>
+        <% end %>
             <% end %>
             <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></p>
-            <p class="ml-1 text-dark text-wrap">一言紹介：<%= recipe.summary %></p>
+            <p class="ml-1 text-dark text-wrap"><%= recipe.summary %></p>
             <p class="ml-1 text-dark text-wrap">投稿ユーザー：<%= recipe.user.account_name %></p>
         </div>
         <% end %>

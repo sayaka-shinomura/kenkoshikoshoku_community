@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'want_to_make_lists/index'
-  end
 # ゲストログイン用
 devise_scope :user do
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in', as: 'user_guest_sign_in'
@@ -34,7 +31,10 @@ scope module: :public do
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
     get 'users/myrecipe' => 'users#index', as: 'myrecipe'
 
-    resources :recipes, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :recipes do
+        resources :want_to_make_lists, only: [:index, :create, :destroy]
+    end
+
     resources :vegetables, only: [:index, :show]
     resources :nutrients, only: [:index, :show]
     resources :effects, only: [:index, :show]

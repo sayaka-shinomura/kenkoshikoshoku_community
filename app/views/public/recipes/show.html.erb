@@ -29,6 +29,7 @@
       <div class="text-center my-3">
         <%= link_to "編集", edit_recipe_path(@recipe), class:"btn btn-primary col-5" %>
       </div>
+      <%= render "want_to_make_list", recipe: @recipe %>
     </div>
 
 

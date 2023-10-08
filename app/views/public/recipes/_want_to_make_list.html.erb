@@ -1,0 +1,9 @@
+<% if current_user != @recipe.user %>
+  <div class="text-center my-3">
+    <% if @recipe.find_want_to_make_list(current_user).blank? %>
+      <%= link_to "作ってみたいリストに登録", recipe_want_to_make_lists_path(@recipe), method: :post, class: "btn btn-warning" %>
+    <% else %>
+      <%= link_to "作ってみたいリストから解除", recipe_want_to_make_list_path(@recipe,@recipe.find_want_to_make_list(current_user)), method: :delete, class: "btn btn-outline-warning" %>
+    <% end %>
+  </div>
+<% end %>

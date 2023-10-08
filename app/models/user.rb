@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_many :myrecipes, dependent: :destroy
 
+  has_many :want_to_make_lists, dependent: :destroy
+
   validates :account_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ }

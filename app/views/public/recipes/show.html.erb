@@ -30,6 +30,9 @@
         <%= link_to "編集", edit_recipe_path(@recipe), class:"btn btn-info col-5" %>
       </div>
       <div class="text-center my-3">
+        <%= link_to "削除", recipe_path(@recipe), method: :delete, class:"btn btn-danger col-5", data: { confirm: "本当に削除しますか？" } %>
+      </div>
+      <div class="text-center my-3">
         <%= render "want_to_make_list", recipe: @recipe %>
       </div>
       <div class="text-center my-3">

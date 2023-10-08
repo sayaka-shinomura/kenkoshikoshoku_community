@@ -52,8 +52,12 @@ class Public::RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy
-    redirect_to mypage_path, flash: { notice: "「#{@recipe.name}」のレシピを削除しました。" }
+    if @recipe.user == current_user
+      @recipe.destroy
+      redirect_to mypage_path, flash: { notice: "「#{@recipe.name}」のレシピを削除しました。" }
+    else
+      redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは編集できません" }
+    end
   end
 
 

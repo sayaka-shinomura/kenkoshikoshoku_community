@@ -39,9 +39,13 @@ class Recipe < ApplicationRecord
 
   # 現在サインインしているユーザーがお気に入り登録しているかどうか判断するためのメソッド
   # find_byでuser_idとend_user.idが一致するwant_to_make_listsを探し、なければnilを返します。
-def find_want_to_make_list(user)
+  def find_want_to_make_list(user)
     want_to_make_lists.find_by(user_id: user.id)
-end
+  end
+
+  def find_made_list(user)
+    made_lists.find_by(user_id: user.id)
+  end
 
 
 end

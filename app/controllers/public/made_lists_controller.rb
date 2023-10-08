@@ -3,6 +3,8 @@ class Public::MadeListsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    made_lists = MadeList.where(user_id: current_user.id).pluck(:recipe_id)
+    @made_list = Recipe.find(made_lists)
   end
 
   def create

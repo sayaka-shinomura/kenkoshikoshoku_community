@@ -34,6 +34,8 @@ scope module: :public do
     resources :recipes do
         resources :want_to_make_lists, only: [:index, :create, :destroy]
         resources :made_lists, only: [:index, :create, :destroy]
+        get :want_to_make_lists, on: :collection
+        get :made_lists, on: :collection
     end
 
     resources :vegetables, only: [:index, :show]

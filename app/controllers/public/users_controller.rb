@@ -2,6 +2,13 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
+    @recipes = @user.recipes
+
+    want_to_make_lists = WantToMakeList.where(user_id: current_user.id).pluck(:recipe_id)
+    @want_list = Recipe.find(want_to_make_lists).first(3)
+
+    made_lists = MadeList.where(user_id: current_user.id).pluck(:recipe_id)
+    @made_list = Recipe.find(made_lists).first(3)
   end
 
   def index

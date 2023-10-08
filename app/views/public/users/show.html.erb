@@ -1,49 +1,86 @@
+<div class="container">
+  <h4 class="my-3 text-center">マイページ</h4>
 
 
-<h3 class="my-5 text-center">マイページ</h3>
-
-<div class="container px-5 px-sm-0">
- <div class="row">
-  <div class="col-md-3">
-   <!--#ユーザー詳細-->
-    <h4 class="my-3 text-center">ユーザー情報</h4>
-    <table class="flex">
-     <tbody>
-       <tr>
-         <td class="col-md-3 text-left">アカウント名</td>
-       </tr>
-       <tr>
-        <td class="col-md-3 text-right"><%= @user.account_name %></td>
-       </tr>
-       <tr>
-         <td class="col-md-3 text-left">性別</td>
-       </tr>
-       <tr>
-        <td class="col-md-3 text-right"><%= @user.gender %></td>
-       </tr>
-
-     </tbody>
-    </table>
-
-    <!--#編集画面へのボタン-->
+  <div class="container px-5 px-sm-0">
     <div class="row">
-     <% if @user == current_user %>
-       <%= link_to edit_information_path(@user.id), class:'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog", area-hidden="true">
-         <span>アカウント管理</span>
-       </i>
-       <% end %>
-     <% else %>
-       <%= link_to edit_information_path(@user), class:'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog", area-hidden="true"></i>
-       <% end %>
-     <% end %>
-    </div>
+     <div class="col-md-3">
+     <!--#ユーザー詳細-->
+       <h4 class="my-3 text-center">ユーザー情報</h4>
+         <table class="flex">
+           <tbody>
+             <tr>
+               <td class="col-md-3 text-left">アカウント名</td>
+             </tr>
+             <tr>
+               <td class="col-md-3 text-right"><%= @user.account_name %></td>
+             </tr>
+           </tbody>
+         </table>
 
-    <div class="row text-center my-3">
-     <%= link_to "レシピを投稿する", new_recipe_path, class:"btn btn-outline-success btn-block" %>
-    </div>
+         <!--#編集画面へのボタン-->
+         <div class="row">
+           <% if @user == current_user %>
+             <%= link_to edit_information_path(@user.id), class:'btn btn-outline-secondary btn-block' do %>
+               <i class="fas fa-user-cog", area-hidden="true">
+                 <span>アカウント管理</span>
+               </i>
+             <% end %>
+           <% else %>
+             <%= link_to edit_information_path(@user), class:'btn btn-outline-secondary btn-block' do %>
+               <i class="fas fa-user-cog", area-hidden="true"></i>
+             <% end %>
+           <% end %>
+         </div>
 
-  </div>
+         <div class="row text-center my-3">
+           <%= link_to "レシピを投稿する", new_recipe_path, class:"btn btn-outline-success btn-block" %>
+         </div>
+     </div>
+
+     <div class="col-md-9">
+      <h4 class="my-3 text-center">作ってみたいリスト</h4>
+        <div class="mr-3 d-flex flex-column mb-4">
+         <% if @want_list.present? %>
+           <% @want_list.each do |recipe| %>
+             <%= link_to recipe_path(recipe.id) do %>
+               <% if recipe.recipe_image.attached? %>
+                 <%= image_tag recipe.recipe_image, size: "200x150" %>
+               <% else %>
+                 <%= image_tag 'no-image', size: "200x150" %>
+               <% end %>
+             <% end %>
+             <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></p>
+           <% end %>
+         <% end %>
+         <div class="text-right my-1">
+           <%= link_to "作ってみたいリスト一覧へ", recipe_want_to_make_lists_path(@user) %>
+         </div>
+        </div>
+      </div>
+
+      <h4 class="my-3 text-center">作ってみたリスト</h4>
+      <div class="d-flex flex-wrap">
+        <div class="mr-3 d-flex flex-column mb-4">
+         <% if @made_list.present? %>
+           <% @made_list.each do |recipe| %>
+             <%= link_to recipe_path(recipe.id) do %>
+               <% if recipe.recipe_image.attached? %>
+                 <%= image_tag recipe.recipe_image, size: "200x150" %>
+               <% else %>
+                 <%= image_tag 'no-image', size: "200x150" %>
+               <% end %>
+             <% end %>
+             <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></p>
+           <% end %>
+         <% end %>
+         <div class="text-right my-1">
+           <%= link_to "作ってみたリスト一覧へ", recipe_made_lists_path(@user) %>
+         </div>
+        </div>
+      </div>
+     </div>
+
+
  </div>
 </div>

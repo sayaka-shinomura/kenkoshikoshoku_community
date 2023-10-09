@@ -18,6 +18,7 @@ devise_for :admin, controllers: {
   sessions: "admin/sessions"
 }
 
+get "search" => "searches#search"
 
 scope module: :public do
     root 'homes#top'
@@ -30,6 +31,9 @@ scope module: :public do
     put 'users/information' => 'users#update'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
     get 'users/myrecipe' => 'users#index', as: 'myrecipe'
+
+
+
 
     resources :recipes do
         resources :want_to_make_lists, only: [:index, :create, :destroy]

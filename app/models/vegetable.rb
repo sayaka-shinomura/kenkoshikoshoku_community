@@ -14,5 +14,17 @@ class Vegetable < ApplicationRecord
   validates :keeping, presence: true
   validates :introduction, presence: true
 
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Vegetable.where(name: content)
+    elsif method == 'forward'
+      Vegetable.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Vegetable.where('name LIKE ?', '%' + content)
+    else
+      Vegetable.where('name LIKE ?', '%' + content + '%')
+    end
+  end
+
 
 end

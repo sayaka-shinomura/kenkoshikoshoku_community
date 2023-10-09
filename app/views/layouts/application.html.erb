@@ -88,6 +88,7 @@
           <% end %>
           </ul>
           </div>
+
         </div>
       </nav>
     </header>
@@ -95,6 +96,11 @@
 
 
     <main>
+      <%= flash[:notice] %>
+      <div class="d-flex justify-content-center my-2">
+        <%= render "searches/form" %>
+      </div>
+
       <%= yield %>
     </main>
 

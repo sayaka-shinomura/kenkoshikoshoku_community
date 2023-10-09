@@ -1,46 +1,60 @@
 <div class="container">
   <h4 class="my-5 text-center">検索結果</h4>
 
-
-  <table class="table table-hover table-inverse">
   <% if @range == "Recipe" %>
-    <tbody>
+  <div class="row">
+    <div class="mr-3 d-flex flex-column mb-4">
       <% @recipes.each do |recipe| %>
-        <tr>
-          <td><%= recipe.name %></td>
-        </tr>
+        <%= link_to recipe_path(recipe.id) do %>
+          <% if recipe.recipe_image.attached? %>
+            <%= image_tag recipe.recipe_image, size: "200x150" %>
+          <% else %>
+            <%= image_tag 'no-image', size: "200x150" %>
+          <% end %>
+        <% end %>
+        <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></p>
+        <p class="ml-1 text-dark text-wrap"><%= recipe.summary %></p>
+        <p class="ml-1 text-dark text-wrap">投稿ユーザー：<%= recipe.user.account_name %></p>
       <% end %>
-    </tbody>
+    </div>
+  </div>
+
+
   <% elsif @range == "Vegetable" %>
-    <tbody>
-      <% @vegetables.each do |vegetable| %>
-        <tr>
-          <td><%= vegetable.name %></td>
-        </tr>
+  <div class="mr-3 d-flex flex-column mb-4">
+    <% @vegetables.each do |vegetable| %>
+      <%= link_to vegetable_path(vegetable.id) do %>
+        <%= image_tag vegetable.vegetable_image, format: "jpeg", fallback: "no-image.png", size: "280x180" %>
       <% end %>
-    </tbody>
+      <p class="ml-1 text-dark"><strong><%= vegetable.name %></strong></p>
+      <p class="ml-1 text-dark text-wrap">栄養素：
+        <% vegetable.nutrient_tags.each do |nutrient_tag| %>
+          <%= nutrient_tag.nutrient.name %>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+
   <% elsif @range == "Nutrient" %>
+  <table class="table table-hover table-inverse">
     <tbody>
       <% @nutrients.each do |nutrient| %>
         <tr>
-          <td><%= nutrient.name %></td>
+          <td><%= link_to nutrient.name, nutrient_path(nutrient), class:"btn btn-outline-warning btn-lg" %></td>
+          <td><%= nutrient.introduction %></td>
         </tr>
       <% end %>
     </tbody>
-  <% elsif @range == "Effect" %>
+
+  <% else %>
     <tbody>
       <% @effects.each do |effect| %>
         <tr>
-          <td><%= effect.name %></td>
+          <td><%= link_to effect.name, effect_path(effect), class:"btn btn-outline-info btn-lg" %></td>
           <td><%= effect.introduction %></td>
         </tr>
       <% end %>
     </tbody>
-  <% else %>
-    <h5>該当結果はありません</h5>
   <% end %>
-</table>
-
-
-
+  </table>
 </div>

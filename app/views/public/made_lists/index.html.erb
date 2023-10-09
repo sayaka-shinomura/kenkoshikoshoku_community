@@ -5,7 +5,7 @@
       <div class="d-flex flex-wrap">
         <% @made_list.each do |made| %>
         <div class="mr-3 d-flex flex-column mb-4">
-          <%= link_to recipes_path do %>
+          <%= link_to recipe_path(made) do %>
             <% if made.recipe_image.attached? %>
               <%= image_tag made.recipe_image, size: "340x250" %>
             <% else %>

@@ -12,6 +12,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
+    @myrecipes = Recipe.where(user_id: current_user.id).includes(:user)
   end
 
   def edit

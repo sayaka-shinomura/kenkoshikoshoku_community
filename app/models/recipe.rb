@@ -16,6 +16,9 @@ class Recipe < ApplicationRecord
 
   has_many :made_lists, dependent: :destroy
 
+  has_many :tag_relations, dependent: :destroy
+  has_many :tags, through: :tag_relations, dependent: :destroy
+
   has_one_attached :recipe_image
 
 

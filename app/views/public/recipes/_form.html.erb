@@ -72,7 +72,17 @@
               <td class="col-2"><%= f.label :difficulty, "難易度" %></td>
               <td class="col-5"><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "難易度を選択" } %>　簡単：★　　難しい：★★★★★</td>
             </tr>
-
+            <tr>
+               <td class="col-2"><%= f.label :name, "タグ" %></td>
+               <td class="col-5">
+                 <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                  <%= tag.label class: 'tag__item' do %>
+                    <%= tag.check_box class: 'tag__checkbox' %>
+                    <%= tag.text %>
+                  <% end %>
+                <% end %>
+               </td>
+             </tr>
             <tr>
               <td class="col-2"></td>
               <td class="col-5">

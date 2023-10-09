@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_08_041037) do
+ActiveRecord::Schema.define(version: 2023_10_09_062806) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -132,6 +132,21 @@ ActiveRecord::Schema.define(version: 2023_10_08_041037) do
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
+  create_table "tag_relations", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_tag_relations_on_recipe_id"
+    t.index ["tag_id"], name: "index_tag_relations_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -191,6 +206,8 @@ ActiveRecord::Schema.define(version: 2023_10_08_041037) do
   add_foreign_key "nutrient_tags", "nutrients"
   add_foreign_key "nutrient_tags", "vegetables"
   add_foreign_key "recipes", "users"
+  add_foreign_key "tag_relations", "recipes"
+  add_foreign_key "tag_relations", "tags"
   add_foreign_key "vegetable_tags", "recipes"
   add_foreign_key "vegetable_tags", "vegetables"
   add_foreign_key "want_to_make_lists", "recipes"

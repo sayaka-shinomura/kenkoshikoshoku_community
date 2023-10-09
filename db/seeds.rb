@@ -11,3 +11,12 @@ Admin.create!(
   password: "000000"
 )
 
+Tag.create([
+  { name: 'メイン' },
+  { name: 'スープ' },
+  { name: 'サラダ' },
+  { name: '丼・ワンプレート' },
+  { name: 'プラスワン' },
+  { name: 'おつまみ' },
+  { name: 'デザート' }
+])

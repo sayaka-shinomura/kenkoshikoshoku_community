@@ -3,7 +3,6 @@
 
 
   <table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
   <% if @range == "Recipe" %>
     <tbody>
       <% @recipes.each do |recipe| %>
@@ -12,8 +11,23 @@
         </tr>
       <% end %>
     </tbody>
-  <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+  <% elsif @range == "Vegetable" %>
+    <tbody>
+      <% @vegetables.each do |vegetable| %>
+        <tr>
+          <td><%= vegetable.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% elsif @range == "Nutrient" %>
+    <tbody>
+      <% @nutrients.each do |nutrient| %>
+        <tr>
+          <td><%= nutrient.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% elsif @range == "Effect" %>
     <tbody>
       <% @effects.each do |effect| %>
         <tr>
@@ -22,6 +36,8 @@
         </tr>
       <% end %>
     </tbody>
+  <% else %>
+    <h5>該当結果はありません</h5>
   <% end %>
 </table>
 

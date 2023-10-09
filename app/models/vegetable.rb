@@ -14,15 +14,14 @@ class Vegetable < ApplicationRecord
   validates :keeping, presence: true
   validates :introduction, presence: true
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Vegetable.where(name: content)
-    elsif method == 'forward'
-      Vegetable.where('name LIKE ?', content + '%')
-    elsif method == 'backward'
-      Vegetable.where('name LIKE ?', '%' + content)
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @vegetable = Vegetable.where("name LIKE?","#{word}")
+    elsif search == "partial_match"
+      @vegetable = Vegetable.where("name LIKE?","%#{word}%")
     else
-      Vegetable.where('name LIKE ?', '%' + content + '%')
+      @vegetable = Vegetable.all
     end
   end
 

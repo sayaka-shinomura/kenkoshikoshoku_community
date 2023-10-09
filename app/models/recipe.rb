@@ -50,7 +50,7 @@ class Recipe < ApplicationRecord
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @recipe = Recipe.where("name LIKE?", "#{word}")
+      @recipe = Recipe.where("name LIKE?","#{word}")
     elsif search == "partial_match"
       @recipe = Recipe.where("name LIKE?","%#{word}%")
     else

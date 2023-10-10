@@ -22,13 +22,14 @@ ActiveStorage.start()
 //= require jquery
 //= require nested_form_field
 
-require("jquery")  
+require("jquery")
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
 
-import Raty from "raty.js"
+import Raty from "packs/raty.js"
 window.raty = function(elem,opt) {
   let raty =  new Raty(elem,opt)
   raty.init();
   return raty;
 }
+

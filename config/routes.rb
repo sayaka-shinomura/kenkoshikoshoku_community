@@ -45,6 +45,7 @@ scope module: :public do
     resources :vegetables, only: [:index, :show]
     resources :nutrients, only: [:index, :show]
     resources :effects, only: [:index, :show]
+    resources :reviews, only: [:index, :new, :create, :edit, :update, :destroy]
 
 end
 

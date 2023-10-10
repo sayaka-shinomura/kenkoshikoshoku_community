@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col">
       <div class="d-flex flex-wrap">
-        <% @recipe.each do |recipe| %>
+        <% @recipes.each do |recipe| %>
         <div class="mr-3 d-flex flex-column mb-4">
           <%= link_to recipe_path(recipe.id) do %>
           <% if recipe.recipe_image.attached? %>

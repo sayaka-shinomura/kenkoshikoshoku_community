@@ -1,9 +1,15 @@
 <div class="container">
-  <h4 class="my-3 text-center">レシピを探そう</h4>
+  <h4 class="my-5 text-center">レシピを探そう</h4>
+  <div class="row my-2">
+    <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
+      <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]), {prompt: 'カテゴリーから絞り込み検索', onchange: 'submit(this.form);' } %>
+    <% end %>
+  </div>
+
   <div class="row">
     <div class="col">
       <div class="d-flex flex-wrap">
-        <% @recipes.each do |recipe| %>
+        <% @recipe.each do |recipe| %>
         <div class="mr-3 d-flex flex-column mb-4">
           <%= link_to recipe_path(recipe.id) do %>
           <% if recipe.recipe_image.attached? %>
@@ -20,7 +26,7 @@
       </div>
 
     <div class="d-flex justify-content-center text-center">
-      <%= paginate @recipes %>
+      <%= paginate @recipe %>
     </div>
   </div>
 </div>

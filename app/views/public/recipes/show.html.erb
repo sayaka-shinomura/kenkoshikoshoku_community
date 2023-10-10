@@ -24,6 +24,14 @@
               <td>難易度</td>
               <td><%= @recipe.difficulty %></td>
             </tr>
+            <tr>
+              <td>カテゴリー</td>
+              <td>
+                <% @recipe.tags.each do |tag| %>
+                  <%= tag.name %>
+                <% end %>
+              </td>
+            </tr>
           </tbody>
         </table>
       <div class="text-center my-3">

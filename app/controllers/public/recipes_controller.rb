@@ -4,7 +4,8 @@ class Public::RecipesController < ApplicationController
 
 
   def index
-    @recipes = Recipe.page(params[:page]).per(6)
+    @recipe = Recipe.page(params[:page]).per(6)
+    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe.all
   end
 
   def new

@@ -1,0 +1,32 @@
+<%= form_with(model: @review, local: true) do |f| %>
+    <div class="form-group" id="star">
+      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+      <div id="post_raty"></div>
+    </div>
+
+    <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+
+        elem.innerHTML = ""
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'book[star]',
+        };
+        raty(elem, opt);
+      });
+    </script>
+
+    <div class="form-group">
+      <%= f.text_area :comment, autofocus: true, id:"inputComment", class:"form-control", :size=>"20x4", placeholder: comment_text %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit submit, class: 'btn btn-info' %>
+    </div>
+<% end %>
+
+

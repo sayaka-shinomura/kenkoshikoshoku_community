@@ -24,6 +24,13 @@ class Public::RecipesController < ApplicationController
     else
       render :new
     end
+
+    @review = current_user.reviews.new(review_params)
+    if @review.save
+      redirect_to reviews_path, flash: { notice: "レビューを投稿しました。" }
+    else
+      render :new
+    end
   end
 
   def show
@@ -32,6 +39,8 @@ class Public::RecipesController < ApplicationController
     @recipe.vegetables.each do |vegetable|
       @vegetables << vegetable.name
     end
+
+    @review = Review.new
   end
 
   def edit

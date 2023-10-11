@@ -5,17 +5,27 @@ class Public::ReviewsController < ApplicationController
   end
 
   def new
+    @recipe = Recipe.find(params[:recipe_id])
     @review = Review.new
   end
 
   def create
     @review = current_user.reviews.new(review_params)
-    if @review.save
-      redirect_to reviews_path, flash: { notice: "レビューを投稿しました。" }
+    @recipe = @review.recipe
+    review_count = Review.where(recipe_id: params[:recipe_id]).where(user_id: current_user.id).count
+    if @review.valid?
+      if review_count < 1
+        @review.save
+        redirect_to reviews_path, notice: "レビューを保存しました"
+      else
+        redirect_to reviews_path, notice: "レビューの投稿は一度までです"
+      end
     else
-      render :new
+      flash.now[:alert] = "レビューの保存に失敗しました"
+      render :index
     end
   end
+
 
   def edit
     @review = Review.find(params[:id])
@@ -49,9 +59,10 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:comment, :star).merge(
-      user_id: current_user.id, recipe_id: params[:recipe_id]
+    params.require(:review).permit(:comment, :star).
+    merge(user_id: current_user.id, recipe_id: params[:recipe_id]
     )
   end
+
 
 end

@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   has_many :made_lists, dependent: :destroy
 
+  has_many :reviews, dependent: :destroy
+
   validates :account_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ }

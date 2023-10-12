@@ -46,7 +46,7 @@
               <td>
                 <div class="review_link">
                   <%= link_to "レビューを編集する", edit_review_path(review) %>
-                  <%= link_to "レビューを削除する", reviews_path, method: :delete,  data: { confirm: "本当に削除しますか？" } %>
+                  <%= link_to "レビューを削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
                 </div>
               </td>
             </tr>

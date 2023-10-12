@@ -25,20 +25,6 @@ class Public::RecipesController < ApplicationController
       render :new
     end
 
-   @review = current_user.reviews.new(review_params)
-    @recipe = @review.recipe
-    review_count = Review.where(recipe_id: params[:recipe_id]).where(user_id: current_user.id).count
-    if @review.valid?
-      if review_count < 1
-        @review.save
-        redirect_to reviews_path, notice: "レビューを保存しました"
-      else
-        redirect_to reviews_path, notice: "レビューの投稿は一度までです"
-      end
-    else
-      flash.now[:alert] = "レビューの保存に失敗しました"
-      render :index
-    end
   end
 
   def show
@@ -97,7 +83,6 @@ class Public::RecipesController < ApplicationController
       ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
       cookerys_attributes: [:id, :process, :_destroy])
   end
-
 
 
 end

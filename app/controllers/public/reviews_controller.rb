@@ -37,7 +37,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def update
-    @reviews = Review.find(params[:id])
+    @review = Review.find(params[:id])
+    @recipe = @review.recipe
     if @review.update(review_params)
       redirect_to reviews_path, flash: { notice: "レビューを更新しました。" }
     else

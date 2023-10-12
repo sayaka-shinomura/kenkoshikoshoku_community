@@ -35,10 +35,10 @@
           </tbody>
         </table>
       <div class="text-center my-3">
-        <%= link_to "編集", edit_recipe_path(@recipe), class:"btn btn-info col-5" %>
+        <%= link_to "レシピを編集する", edit_recipe_path(@recipe), class:"btn btn-info" %>
       </div>
       <div class="text-center my-3">
-        <%= link_to "削除", recipe_path(@recipe), method: :delete, class:"btn btn-danger col-5", data: { confirm: "本当に削除しますか？" } %>
+        <%= link_to "レシピを削除する", recipe_path(@recipe), method: :delete, class:"btn btn-danger", data: { confirm: "本当に削除しますか？" } %>
       </div>
       <div class="text-center my-3">
         <%= render "want_to_make_list", recipe: @recipe %>
@@ -50,7 +50,9 @@
       <div class="text-center my-3">
       <%= render "public/reviews/form", itme: @review, url: reviews_path(@review), submit: 'レビューを投稿する' %>
       </div>
-      
+      <div class="text-center my-3">
+        <%= link_to "レビューを見る", reviews_path(@review), class:"btn btn-info" %>
+      </div>
     </div>
 
 

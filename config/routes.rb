@@ -58,6 +58,7 @@ namespace :admin do
     resources :vegetables, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :nutrients, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :effects, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :reviews, only: [:index, :show, :destroy]
 
   end
 

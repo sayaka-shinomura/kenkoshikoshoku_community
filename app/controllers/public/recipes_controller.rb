@@ -47,7 +47,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def update
-    @recipes = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to @recipe, flash: { notice: "「#{@recipe.name}」のレシピを更新しました。" }
     else

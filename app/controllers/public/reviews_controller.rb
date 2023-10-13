@@ -2,6 +2,9 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.page(params[:page]).per(10)
+    reviews = Review.where(user_id: current_user.id).pluck(:recipe_id)
+    @review = Recipe.find(reviews)
+
   end
 
   def new
@@ -26,7 +29,6 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
-
   def edit
     @review = Review.find(params[:id])
     if @review.user == current_user
@@ -40,11 +42,12 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @recipe = @review.recipe
     if @review.update(review_params)
-      redirect_to reviews_path(review), flash: { notice: "レビューを更新しました。" }
+      redirect_to reviews_path, flash: { notice: "レビューを更新しました。" }
     else
       render :edit
     end
   end
+
 
   def destroy
     @review = Review.find(params[:id])

@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :recipe
 
   validates :star, numericality: {

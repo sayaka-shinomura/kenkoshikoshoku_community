@@ -5,11 +5,11 @@
       <%= form_for [@recipe, @review] do |f| %>
     <div class="form-group" id="star">
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
-      <div id="star_<%= @review.id %>"></div>
+      <div id="post_raty-<%= @review.id %>"></div>
     </div>
     <script>
       $(document).on('turbolinks:load', function() {
-        let elem = document.querySelector('#star_<%= @review.id %>');
+        let elem = document.querySelector('#post_raty-<%= @review.id %>');
         if (elem == null) return;
 
         elem.innerHTML = ""
@@ -23,26 +23,8 @@
       });
     </script>
 
-    <div class="form-group" id="star">
-      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
-      <div id="post_raty"></div>
-    </div>
 
-    <script>
-      $(document).on('turbolinks:load', function() {
-        let elem = document.querySelector('#star_<%= @review.star %>');
-        if (elem == null) return;
 
-        elem.innerHTML = "";
-        let opt = {
-          starOn: "<%= asset_path('star-on.png') %>",
-          starOff: "<%= asset_path('star-off.png') %>",
-          score: "<%= @review.star %>",
-          readOnly: true,
-        };
-        raty(elem, opt);
-        });
-    </script>
 
     <div class="form-group">
       <%= f.text_area :comment, autofocus: true, id:"inputComment", class:"form-control", :size=>"20x4", placeholder: comment_text %>

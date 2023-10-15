@@ -2,14 +2,14 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.page(params[:page]).per(10)
-    reviews = Review.where(user_id: current_user.id).pluck(:recipe_id)
-    @review = Recipe.find(reviews)
+    @review = @reviews.where(recipe_id: params[:recipe_id]) if params[:recipe_id].present?
 
   end
 
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @review = Review.new
+    @recipe.reviews.build
   end
 
   def create
@@ -59,6 +59,14 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
+  def search
+    reviews = Review.all
+    reviews = reviews.where(recipe_id: review_params[:recipe_id]) if review_params[:recipe_id].present?
+    reviews = reviews.where(star: review_params[:star]) if review_params[:stae].present?
+
+    render json:{ status: 200, users: users }
+  end
+
 
   private
 
@@ -66,6 +74,7 @@ class Public::ReviewsController < ApplicationController
     params.require(:review).permit(:comment, :star).
     merge(user_id: current_user.id, recipe_id: params[:recipe_id])
   end
+
 
 
 end

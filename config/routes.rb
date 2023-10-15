@@ -48,6 +48,7 @@ scope module: :public do
     resources :effects, only: [:index, :show]
     resources :reviews, only: [:index, :new, :create, :edit, :destroy]
     patch 'reviews/:recipe_id' => 'reviews#update'
+    get 'reviews/search' => 'reviews#search', as: 'search_review'
 
 end
 

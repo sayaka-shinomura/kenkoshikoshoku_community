@@ -1,13 +1,17 @@
 <div class="container">
     <h4 class="my-3 text-center">レビュー一覧</h4>
-    <h6 class="my-2 text-center"><%= @review.count %>件のレビューが投稿されています</h6>
+    <h6 class="my-2 text-center"><%= @reviews.count %>件のレビューが投稿されています</h6>
 
     <div class="row">
-      <div class="col-md-8 offset-md-1">
+      <div class="offset-md-1">
         <table class="table table-borderless">
           <% if @reviews.present? %>
           <tbody>
             <% @reviews.each do |review| %>
+            <tr>
+              <th align="left">レビューレシピ</td>
+              <td><%= review.recipe.name %></td>
+            </tr>
             <tr>
               <th align="left">投稿ユーザー</td>
               <td><%= review.user.account_name %></td>

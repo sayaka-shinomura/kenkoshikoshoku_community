@@ -3,25 +3,25 @@
   <div class="row">
     <div class="col-6 px-5 px-sm-0 mx-auto">
       <%= form_for [@recipe, @review], url: review_path(@review.id), method: :patch do |f| %>
-    <div class="form-group" id="star">
-      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
-      <div id="post_raty-<%= @review.id %>"></div>
-    </div>
-    <script>
-      $(document).on('turbolinks:load', function() {
-        let elem = document.querySelector('#post_raty-<%= @review.id %>');
-        if (elem == null) return;
+        <div class="form-group" id="star">
+          <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+          <div id="post_raty-<%= @review.id %>"></div>
+        </div>
+        <script>
+          $(document).on('turbolinks:load', function() {
+            let elem = document.querySelector('#post_raty-<%= @review.id %>');
+            if (elem == null) return;
 
-        elem.innerHTML = ""
-        let opt = {
-          starOn: "<%= asset_path('star-on.png') %>",
-          starOff: "<%= asset_path('star-off.png') %>",
-          starHalf: "<%= asset_path('star-half.png') %>",
-          scoreName: 'review[star]',
-        };
-        raty(elem, opt);
-      });
-    </script>
+            elem.innerHTML = ""
+            let opt = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            scoreName: 'review[star]',
+            score: "<%= @review.star %>",
+           };
+           raty(elem, opt);
+            });
+        </script>
 
 
 

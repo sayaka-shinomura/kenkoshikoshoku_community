@@ -39,7 +39,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:recipe_id])
     @recipe = @review.recipe
     if @review.update(review_params)
       redirect_to reviews_path, flash: { notice: "レビューを更新しました。" }
@@ -64,8 +64,7 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:comment, :star).
-    merge(user_id: current_user.id, recipe_id: params[:recipe_id]
-    )
+    merge(user_id: current_user.id, recipe_id: params[:recipe_id])
   end
 
 

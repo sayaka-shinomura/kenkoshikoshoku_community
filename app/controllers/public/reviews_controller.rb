@@ -60,11 +60,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def search
-    reviews = Review.all
-    reviews = reviews.where(recipe_id: review_params[:recipe_id]) if review_params[:recipe_id].present?
-    reviews = reviews.where(star: review_params[:star]) if review_params[:stae].present?
-
-    render json:{ status: 200, users: users }
+    @reviews = Review.search(params[:keyword])
   end
 
 

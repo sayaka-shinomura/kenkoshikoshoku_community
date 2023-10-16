@@ -1,16 +1,6 @@
-<div class="container">
-    <h4 class="my-3 text-center">レビュー一覧</h4>
-    <h6 class="my-2 text-center"><%= @reviews.count %>件のレビューが投稿されています</h6>
-    <%= form_with(url: search_reviews_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "レビューを検索する", class: "search-input" %>
-      <%= form.submit "検索", class: "search-btn" %>
-    <% end %>
-
-
-    <div class="row">
+<div class="row">
       <div class="offset-md-1">
         <table class="table table-borderless">
-          <% if @reviews.present? %>
           <tbody>
             <% @reviews.each do |review| %>
             <tr>
@@ -66,13 +56,5 @@
               <% end %>
           </tbody>
         </table>
-        <% end %>
-        <div class="d-flex justify-content-center text-center">
-         <%= paginate @reviews %>
-        </div>
       </div>
     </div>
-  </div>
-</div>
-
-

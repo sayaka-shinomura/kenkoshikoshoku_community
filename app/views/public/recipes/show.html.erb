@@ -91,14 +91,14 @@
             </td>
           </tr>
        </tbody>
-     </table>
+      </table>
 
-     <div class="my-5"></div>
-     <h5 class="text-center">レシピへのレビュー</h5>
-     <table class="table table-borderless">
-          <% if @recipe.reviews.present? %>
-          <tbody>
-            <% @recipe.reviews.each do |review| %>
+      <div class="my-5"></div>
+      <h5 class="text-center">レシピへのレビュー</h5>
+      <table class="table table-borderless">
+        <% if @recipe.reviews.present? %>
+        <tbody>
+          <% @recipe.reviews.each do |review| %>
             <tr>
               <th align="left">投稿ユーザー</td>
               <td><%= review.user.account_name %></td>
@@ -138,9 +138,10 @@
               </td>
             </tr>
           <% end %>
-          </tbody>
-        </table>
-        <% end %>
+        </tbody>
+      </table>
+      <% end %>
       </div>
+    </div>
   </div>
 </div>

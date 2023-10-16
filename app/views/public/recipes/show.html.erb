@@ -47,6 +47,7 @@
         <%= render "made_list", recipe: @recipe %>
       </div>
       <div class="my-5"></div>
+      <h6 class="text-center">レビューを投稿はこちらから</h6>
       <div class="text-center my-3">
       <%= render "public/reviews/form", itme: @review, url: reviews_path(@review), submit: 'レビューを投稿する' %>
       </div>
@@ -91,6 +92,55 @@
           </tr>
        </tbody>
      </table>
-    </div>
+
+     <div class="my-5"></div>
+     <h5 class="text-center">レシピへのレビュー</h5>
+     <table class="table table-borderless">
+          <% if @recipe.reviews.present? %>
+          <tbody>
+            <% @recipe.reviews.each do |review| %>
+            <tr>
+              <th align="left">投稿ユーザー</td>
+              <td><%= review.user.account_name %></td>
+            </tr>
+            <tr>
+              <th align="left">評価</th>
+              <td>
+                <div id="star_<%= review.id %>"></div>
+                <script>
+                  $(document).on('turbolinks:load', function() {
+                  let elem = document.querySelector('#star_<%= review.id %>');
+                  if (elem == null) return;
+
+                  elem.innerHTML = "";
+                  let opt = {
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    score: "<%= review.star %>",
+                    readOnly: true,
+                  };
+                  raty(elem, opt);
+                  });
+                </script>
+              </td>
+            </tr>
+            <tr>
+              <th align="left">コメント</th>
+              <td><%=safe_join(review.comment.split("\n"),tag(:br))%></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <div class="review_link">
+                  <%= link_to "レビューを編集する", edit_review_path(review) %>
+                  <%= link_to "レビューを削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <% end %>
+      </div>
   </div>
 </div>

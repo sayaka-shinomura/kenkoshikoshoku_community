@@ -1,3 +1,11 @@
-<h1>Top</h1>
+<div class="container">
+  <div class="row my-2">
+    <%= render "public/homes/vegetable_rank", itme: @vegetable_ranks, url: root_path %>
 
-<%= render "public/homes/want_rank", itme: @want_ranks, url: root_path(@want_ranks) %>
+    <div class="col-5 px-5 px-sm-0 mx-auto">
+
+    </div>
+
+    <%= render "public/homes/want_rank", itme: @want_ranks, url: root_path %>
+  </div>
+</div>

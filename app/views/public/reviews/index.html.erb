@@ -10,7 +10,11 @@
             <% @reviews.each do |review| %>
             <tr>
               <th align="left">レビューレシピ</td>
-              <td><%= review.recipe.name %></td>
+              <td>
+                <%= link_to recipe_path(review.recipe.id) do %>
+                <%= review.recipe.name %>
+                <% end %>
+              </td>
             </tr>
             <tr>
               <th align="left">投稿ユーザー</td>
@@ -20,7 +24,6 @@
               <th align="left">評価</th>
               <td>
                 <div id="star_<%= review.id %>"></div>
-
                 <script>
                   $(document).on('turbolinks:load', function() {
                   let elem = document.querySelector('#star_<%= review.id %>');
@@ -59,9 +62,12 @@
           </tbody>
         </table>
         <% end %>
-        <%= paginate @reviews %>
+        <div class="d-flex justify-content-center text-center">
+         <%= paginate @reviews %>
         </div>
       </div>
+    </div>
+  </div>
 </div>
 
 

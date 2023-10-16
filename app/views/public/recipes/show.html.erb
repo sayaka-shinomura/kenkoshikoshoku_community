@@ -32,6 +32,11 @@
                 <% end %>
               </td>
             </tr>
+            <tr>
+              <td>レビュー評価</td>
+              <td><%= @recipe.reviews.average(:star) %></td>
+            </tr>
+
           </tbody>
         </table>
       <div class="text-center my-3">

@@ -8,7 +8,7 @@ class Review < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Review.where(['recipe_id LIKE(?) OR comment LIKE(?)', "%#{search}%", "%#{search}%"])
+      Review.where(['recipe_id LIKE(?) OR user_id LIKE(?) OR comment LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
     else
       Review.includes(:user).order('created_at DESC')
     end

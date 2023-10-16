@@ -35,6 +35,7 @@ class Public::RecipesController < ApplicationController
     end
 
     @review = Review.new
+    @want_ranks = Recipe.find(WantToMakeList.group(:recipe_id).order('count(recipe_id) desc').pluck(:recipe_id))
   end
 
   def edit
@@ -63,6 +64,10 @@ class Public::RecipesController < ApplicationController
     else
       redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは編集できません" }
     end
+  end
+
+  def ranking
+    @want_ranks = Recipe.find(WantToMakeList.group(:recipe_id).order('count(recipe_id) desc').pluck(:recipe_id))
   end
 
 

@@ -2,7 +2,6 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.page(params[:page]).per(10)
-    @review = @reviews.where(recipe_id: params[:recipe_id]) if params[:recipe_id].present?
 
   end
 

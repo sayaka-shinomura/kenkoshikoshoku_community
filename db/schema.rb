@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_10_054032) do
+ActiveRecord::Schema.define(version: 2023_10_17_124742) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -132,6 +132,14 @@ ActiveRecord::Schema.define(version: 2023_10_10_054032) do
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.text "content", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "star", null: false
     t.text "comment"
@@ -217,6 +225,7 @@ ActiveRecord::Schema.define(version: 2023_10_10_054032) do
   add_foreign_key "nutrient_tags", "nutrients"
   add_foreign_key "nutrient_tags", "vegetables"
   add_foreign_key "recipes", "users"
+  add_foreign_key "requests", "users"
   add_foreign_key "reviews", "recipes"
   add_foreign_key "reviews", "users"
   add_foreign_key "tag_relations", "recipes"

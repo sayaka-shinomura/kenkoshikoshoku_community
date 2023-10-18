@@ -65,6 +65,10 @@ class Public::RecipesController < ApplicationController
     end
   end
 
+  def search
+    @recipes = Recipe.search(params[:keyword])
+  end
+
 
   private
 

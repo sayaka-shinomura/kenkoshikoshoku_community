@@ -4,7 +4,7 @@ class Public::RecipesController < ApplicationController
 
 
   def index
-    @recipe = Recipe.page(params[:page]).per(6)
+    @recipe = Recipe.page(params[:page]).per(15)
     @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe.all
   end
 
@@ -24,7 +24,6 @@ class Public::RecipesController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show

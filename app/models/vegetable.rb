@@ -26,4 +26,5 @@ class Vegetable < ApplicationRecord
   end
 
 
+
 end

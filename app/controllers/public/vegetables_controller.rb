@@ -20,5 +20,4 @@ class Public::VegetablesController < ApplicationController
 
 
 
-
 end

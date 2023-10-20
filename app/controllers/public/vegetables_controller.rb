@@ -2,7 +2,7 @@ class Public::VegetablesController < ApplicationController
 
 
   def index
-    @vegetables = Vegetable.page(params[:page]).per(6)
+    @vegetable = Vegetable.page(params[:page]).per(6)
   end
 
   def show
@@ -17,7 +17,9 @@ class Public::VegetablesController < ApplicationController
     end
   end
 
-
+  def search
+    @vegetable = Vegetable.search(params[:keyword])
+  end
 
 
 end

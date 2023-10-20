@@ -1,0 +1,25 @@
+<div class="text-center my-2">
+  <%= form_with(url: search_vegetables_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "野菜を検索する", class: "search-input" %>
+    <%= form.submit "含有栄養素で絞り込む", class: "search-btn" %>
+    <p>◆摂取したい栄養素名を入力してください◆</p>
+  <% end %>
+</div>
+
+<div class="row">
+    <div class="col">
+      <div class="d-flex flex-wrap">
+        <% @vegetable.each do |vegetable| %>
+        <div class="mr-3 d-flex flex-column mb-4">
+          <%= link_to vegetable_path(vegetable.id) do %>
+            <%= image_tag vegetable.vegetable_image, format: "jpeg", fallback: "no-image.png", size: "280x180" %>
+            <% end %>
+            <p class="ml-1 text-dark"><strong><%= vegetable.name %></strong></p>
+            <p class="ml-1 text-dark text-wrap">栄養素：
+              <% vegetable.nutrient_tags.each do |nutrient_tag| %>
+                <%= nutrient_tag.nutrient.name %>
+              <% end %>
+            </p>
+        </div>
+        <% end %>
+      </div>

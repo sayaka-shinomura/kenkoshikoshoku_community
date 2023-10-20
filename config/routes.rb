@@ -34,6 +34,7 @@ scope module: :public do
 
 
     get 'recipes/search' => 'recipes#search', as: 'search_recipes'
+    get 'vegetables/search' => 'vegetables#search', as: 'search_vegetables'
 
     resources :recipes do
         resources :want_to_make_lists, only: [:index, :create, :destroy]
@@ -50,7 +51,6 @@ scope module: :public do
     resources :reviews, only: [:index, :new, :create, :edit, :destroy]
     patch 'reviews/:recipe_id' => 'reviews#update'
     get 'reviews/search' => 'reviews#search', as: 'search_reviews'
-
 
 end
 

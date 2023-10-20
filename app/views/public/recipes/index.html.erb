@@ -1,41 +1,9 @@
 <div class="container">
   <h4 class="my-5 text-center">レシピを探そう</h4>
+  <%= render "public/recipes/index_form", itme: @recipes, url: recipes_path(@recipe) %>
 
-  <div class="text-center my-2">
-    <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "レシピを検索する", class: "search-input" %>
-      <%= form.submit "キーワード検索", class: "search-btn" %>
-    <% end %>
-  </div>
 
-  <div class="row my-2">
-    <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]), {prompt: 'カテゴリーから絞り込む', onchange: 'submit(this.form);' } %>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <div class="d-flex flex-wrap">
-        <% @recipes.each do |recipe| %>
-        <div class="mr-3 d-flex flex-column mb-4">
-          <%= link_to recipe_path(recipe.id) do %>
-          <% if recipe.recipe_image.attached? %>
-          <%= image_tag recipe.recipe_image, size: "340x250" %>
-        <% else %>
-          <%= image_tag 'no-image', size: "340x250" %>
-        <% end %>
-            <% end %>
-            <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></p>
-            <p class="ml-1 text-dark text-wrap"><%= recipe.summary %></p>
-            <p class="ml-1 text-dark text-wrap">投稿ユーザー：<%= recipe.user.account_name %></p>
-        </div>
-        <% end %>
-      </div>
-
-      <div class="d-flex justify-content-center text-center">
-        <%= paginate @recipe %>
-      </div>
-    </div>
+  <div class="d-flex justify-content-center text-center">
+    <%= paginate @recipe %>
   </div>
 </div>

@@ -68,11 +68,6 @@ class Public::RecipesController < ApplicationController
     @recipes = Recipe.search(params[:keyword])
   end
 
-  def search_part
-    @recipes = Recipe.search(params[:keyword])
-  end
-
-
 
   private
 

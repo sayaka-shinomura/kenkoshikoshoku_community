@@ -1,17 +1,18 @@
 <div class="row center">
+
 <div class="text-center mx-auto">
   <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
     <%= form.text_field :keyword, placeholder: "レシピを検索する", class: "search-input" %>
-    <%= form.submit "キーワード検索", class: "search-btn" %>
-    <p>◆投稿ユーザー名または材料名を入力してください◆</p>
+    <%= form.submit "野菜から絞り込む", class: "search-btn" %>
+    <p>◆検索したい野菜名を入力してください◆</p>
   <% end %>
 </div>
 
 <div class="text-center mx-auto">
-  <%= form_with(url: search_part_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
     <%= form.text_field :keyword, placeholder: "レシピを検索する", class: "search-input" %>
-    <%= form.submit "野菜から絞り込む", class: "search-btn" %>
-    <p>◆検索したい野菜名を入力してください◆</p>
+    <%= form.submit "栄養素から絞り込む", class: "search-btn" %>
+    <p>◆検索したい栄養素名を入力してください◆</p>
   <% end %>
 </div>
 </div>

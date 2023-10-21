@@ -133,8 +133,10 @@ ActiveRecord::Schema.define(version: 2023_10_17_124742) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.text "content", null: false
     t.integer "user_id", null: false
+    t.text "content", null: false
+    t.boolean "confirm", default: true
+    t.text "reply"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_requests_on_user_id"

@@ -34,6 +34,7 @@ scope module: :public do
 
 
     get 'recipes/search' => 'recipes#search', as: 'search_recipes'
+    get 'recipes/search_part' => 'recipes#search_part', as: 'search_part_recipes'
     get 'vegetables/search' => 'vegetables#search', as: 'search_vegetables'
 
     resources :recipes do

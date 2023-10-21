@@ -72,6 +72,14 @@ class Recipe < ApplicationRecord
     end
   end
 
+  def self.part_search(search)
+    if search != ""
+      Recipe.joins(:vegetables).where(['vegetables.name LIKE(?)', "%#{search}%"])
+    else
+      Recipe.all
+    end
+  end
+
 
 
 end

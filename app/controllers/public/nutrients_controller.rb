@@ -1,7 +1,7 @@
 class Public::NutrientsController < ApplicationController
 
   def index
-    @nutrients = Nutrient.all
+    @nutrients = Nutrient.order :name
   end
 
   def show

@@ -5,8 +5,8 @@ class Admin::VegetablesController < ApplicationController
   end
 
   def new
-    @vegetable = Vegetable.new
-    @vegetable.nutrient_tags.build
+    
+@vegetable = Vegetable.new    @vegetable.nutrient_tags.build
   end
 
   def create

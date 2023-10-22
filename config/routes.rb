@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'requests/new'
-    get 'requests/index'
-    get 'requests/show'
-  end
 # ゲストログイン用
 devise_scope :user do
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in', as: 'user_guest_sign_in'
@@ -56,6 +51,7 @@ scope module: :public do
     resources :reviews, only: [:index, :new, :create, :edit, :destroy]
     patch 'reviews/:recipe_id' => 'reviews#update'
     get 'reviews/search' => 'reviews#search', as: 'search_reviews'
+    resources :requests, only: [:index, :new, :create, :show, :destroy]
 
 end
 

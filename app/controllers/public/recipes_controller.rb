@@ -18,7 +18,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def create
-     @recipe = current_user.recipes.new(recipe_params)
+    @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
       redirect_to recipe_path(@recipe.id), flash: { notice: "「#{@recipe.name}」のレシピを投稿しました。" }
     else
@@ -60,7 +60,7 @@ class Public::RecipesController < ApplicationController
       @recipe.destroy
       redirect_to mypage_path, flash: { notice: "「#{@recipe.name}」のレシピを削除しました。" }
     else
-      redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは編集できません" }
+      redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは削除できません" }
     end
   end
 

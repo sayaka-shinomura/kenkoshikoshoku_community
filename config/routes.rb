@@ -64,6 +64,7 @@ namespace :admin do
     resources :nutrients, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :effects, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :reviews, only: [:index, :show, :destroy]
+    resources :requests, only: [:index, :show, :edit, :update, :destroy]
 
   end
 

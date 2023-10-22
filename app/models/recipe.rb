@@ -66,7 +66,9 @@ class Recipe < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Recipe.joins(:user, :vegetables, :ingredients, vegetables: :nutrients).where(['users.account_name LIKE(?) OR vegetables.name LIKE(?) OR summary LIKE(?) OR ingredients.content LIKE(?) OR nutrients.name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
+      Recipe.joins(:user, :vegetables, :ingredients, vegetables: :nutrient, vegetables: [{nutrients: :effects}])
+      .where(['users.account_name LIKE(?) OR vegetables.name LIKE(?) OR summary LIKE(?) OR ingredients.content LIKE(?) OR nutrients.name LIKE(?) OR effects.name LIKE(?)',
+      "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
     else
       Recipe.all
     end

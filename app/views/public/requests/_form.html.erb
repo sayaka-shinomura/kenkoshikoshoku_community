@@ -4,9 +4,11 @@
       <tbody>
         <td class ="text-center">
           <%= f.label :content, "ご意見・ご要望" %>
-          <%= f.text_area :content, autofocus: true, id:"inputContent", class:"form-control", :size=>"40x6" %>
+          <%= f.text_area :content, autofocus: true, id:"inputContent", class:"form-control", :size=>"40x6", placeholder: content_text %>
           <%= f.submit 'リクエストを投稿する', class:"btn btn-success my-2" %>
         </td>
       </tbody>
     </table>
 <% end %>
+
+

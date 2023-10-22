@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="offset-md-1">
+    <table class="table table-borderless">
+      <% if @requests.present? %>
+        <tbody>
+          <% @requests.each do |request| %>
+          </tr>
+          <tr>
+            <th align="left">投稿ユーザー</td>
+            <td><%= request.user.account_name %></td>
+          </tr>
+          <tr>
+            <th align="left">ご意見・ご要望内容</th>
+            <td><%=safe_join(request.content.split("\n"),tag(:br))%></td>
+          </tr>
+          <tr>
+            <th align="left">投稿日</th>
+            <td><%= request.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="request_link">
+                <%= link_to "詳細を見る", request_path(request) %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class="d-flex justify-content-center text-center">
+  <%= paginate @requests %>
+</div>

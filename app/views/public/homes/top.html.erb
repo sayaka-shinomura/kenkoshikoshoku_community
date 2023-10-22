@@ -4,6 +4,10 @@
 
     <div class="col-5 px-5 px-sm-0 mx-auto">
       <%= render "public/requests/index", itme: @requests, url: root_path %>
+
+      <div class="text-center my-3">
+        <%= link_to "全てのご意見・ご要望を見る", requests_path, class:"btn btn-info" %>
+      </div>
     </div>
 
     <div class="col-4 px-5 px-sm-0 mx-auto">

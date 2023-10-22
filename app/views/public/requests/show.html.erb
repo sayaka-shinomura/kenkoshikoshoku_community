@@ -1,2 +1,20 @@
-<h1>Public::Requests#show</h1>
-<p>Find me in app/views/public/requests/show.html.erb</p>
+<div class="container">
+  <h4 class="my-3 text-center">リクエスト投稿詳細</h4>
+  <div class="row">
+    <div class="col-6 px-5 px-sm-0 mx-auto">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="col-2"><p>リクエストID</p></td>
+            <td class="col-5"><%= @request.id %></td>
+       　　</tr>
+          <tr>
+            <td><p>効能概要</p></td>
+            <td><%=safe_join(@request.content.split("\n"),tag(:br))%></td>
+          </tr>
+       </tbody>
+     </table>
+    </div>
+
+
+</div>

@@ -6,6 +6,7 @@ class Public::HomesController < ApplicationController
     @made_ranks = Recipe.find(MadeList.group(:recipe_id).order('count(recipe_id) desc').limit(5).pluck(:recipe_id))
 
     @request = Request.new
+    @requests = Request.page(params[:page]).per(5).order(created_at: :desc)
   end
 
  def about

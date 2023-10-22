@@ -2,10 +2,11 @@
   <div class="row my-2">
     <%= render "public/homes/vegetable_rank", itme: @vegetable_ranks, url: root_path %>
 
-    <div class="col-5 px-5 px-sm-0 mx-auto">
+    <%= render "public/requests/index", itme: @requests, url: root_path %>
 
+    <div class="col-4 px-5 px-sm-0 mx-auto">
+      <%= render "public/homes/want_rank", itme: @want_ranks, url: root_path %>
+      <%= render "public/requests/form", itme: @request, url: root_path %>
     </div>
-
-    <%= render "public/homes/want_rank", itme: @want_ranks, url: root_path %>
   </div>
 </div>

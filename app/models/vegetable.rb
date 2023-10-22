@@ -27,7 +27,9 @@ class Vegetable < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Vegetable.joins(:nutrients).where(['nutrients.name LIKE(?)', "%#{search}%"])
+      Vegetable.joins(:nutrients, nutrients: :effects)
+      .where(['nutrients.name LIKE(?) OR effects.name LIKE(?)',
+      "%#{search}%", "%#{search}%"])
     else
       Vegetable.all
     end

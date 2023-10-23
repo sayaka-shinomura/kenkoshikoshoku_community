@@ -1,2 +1,39 @@
-<h1>Admin::Requests#show</h1>
-<p>Find me in app/views/admin/requests/show.html.erb</p>
+<div class="container">
+  <h4 class="my-3 text-center">リクエスト投稿詳細</h4>
+  <div class="row">
+    <div class="col-6 px-5 px-sm-0 mx-auto">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="col-2">リクエストID</td>
+            <td class="col-5"><%= @request.id %></td>
+       　　</tr>
+          <tr>
+            <td class="col-2">投稿ユーザー</td>
+            <td class="col-5"><%= @request.user.account_name %></td>
+       　　</tr>
+          <tr>
+            <td class="col-2">受付日</th>
+            <td class="col-5"><%= @request.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td class="col-2">ご意見・ご要望</td>
+            <td class="col-5"><%=safe_join(@request.content.split("\n"),tag(:br))%></td>
+          </tr>
+          <tr>
+            <td class="col-2">対応内容</td>
+            <td class="col-5"><%= @request.reply %></td>
+          </tr>
+          <tr>
+            <td class="col-2">対応ステータス</td>
+            <td class="col-5"><%= @request.confirm %></td>
+       　　</tr>
+       </tbody>
+     </table>
+
+    <div class="text-center my-3">
+      <%= link_to "リクエスト対応を行う", edit_admin_request_path(@request), class:"btn btn-primary" %>
+    </div>
+</div>
+
+</div>

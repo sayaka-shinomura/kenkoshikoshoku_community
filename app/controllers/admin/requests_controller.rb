@@ -1,7 +1,6 @@
 class Admin::RequestsController < ApplicationController
 
   before_action :authenticate_admin!
-  before_action :ensure_user, only: [:show, :edit, :update]
 
 
   def index
@@ -35,13 +34,10 @@ class Admin::RequestsController < ApplicationController
 
   private
 
-  def effect_params
-    params.require(:request).permit(:user_id, :content, :confirm)
+  def request_params
+    params.require(:request).permit(:reply, :confirm)
   end
 
-  def ensure_user
-    @user = User.find(params[:id])
-  end
 
 
 end

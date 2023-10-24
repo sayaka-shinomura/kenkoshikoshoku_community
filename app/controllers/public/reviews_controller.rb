@@ -1,7 +1,7 @@
 class Public::ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.page(params[:page]).per(10)
+    @reviews = Review.page(params[:page]).per(10).all.order(created_at: :desc)
 
   end
 
@@ -59,7 +59,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def search
-    @reviews = Review.search(params[:keyword])
+    @reviews = Review.search(params[:keyword]).all.order(created_at: :desc)
   end
 
 

@@ -4,8 +4,8 @@ class Public::RecipesController < ApplicationController
 
 
   def index
-    @recipe = Recipe.page(params[:page]).per(15)
-    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe.all
+    @recipe = Recipe.page(params[:page]).per(15).all.order(created_at: :desc)
+    @recipes = params[:tag_id].present? ? Tag.find(params[:tag_id]).recipes : Recipe.all.all.order(created_at: :desc)
   end
 
   def new
@@ -32,7 +32,6 @@ class Public::RecipesController < ApplicationController
     @recipe.vegetables.each do |vegetable|
       @vegetables << vegetable.name
     end
-
     @review = Review.new
   end
 
@@ -65,7 +64,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.search(params[:keyword])
+    @recipes = Recipe.search(params[:keyword]).all.order(created_at: :desc)
   end
 
 

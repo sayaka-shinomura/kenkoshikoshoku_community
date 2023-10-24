@@ -1,13 +1,44 @@
-<h4 class="my-3 text-center">皆様からのご意見・ご要望</h4>
-  <table class="my-2">
-    <tbody>
-      <% @requests.each do |request| %>
-        <tr>
-          <td><%= request.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr><td><%= request.content %></td></tr>
-        <tr><td class="text-right"><%= link_to "詳細", request_path(request) %></td></tr>
+<div class="text-center my-2">
+  <%= form_with(url: search_requests_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "リクエストを検索", class: "search-input" %>
+    <%= form.submit "キーワード検索", class: "search-btn" %>
+    <p>
+      ◆気になるワードを入力して、どんなご意見・ご要望が投稿されているか探してみよう◆<br>
+      ◆ユーザー名で検索すると、自分の投稿内容を簡単に閲覧できます◆
+    </p>
+  <% end %>
+</div>
 
+<div class="row">
+  <div class="offset-md-1">
+    <table class="table table-borderless">
+      <% if @requests.present? %>
+        <tbody>
+          <% @requests.each do |request| %>
+          </tr>
+          <tr>
+            <td class="col-2">投稿ユーザー</td>
+            <td class="col-7"><%= request.user.account_name %></td>
+          </tr>
+          <tr>
+            <td class="col-2">ご意見・ご要望内容</th>
+            <td class="col-7"><%=safe_join(request.content.split("\n"),tag(:br))%></td>
+          </tr>
+          <tr>
+            <td class="col-2">投稿日</th>
+            <td class="col-7"><%= request.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="request_link">
+                <%= link_to "詳細を見る", request_path(request) %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
       <% end %>
-    </tbody>
-  </table>
+    </table>
+  </div>
+</div>

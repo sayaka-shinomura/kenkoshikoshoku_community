@@ -3,7 +3,7 @@ class Public::RequestsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
-    @requests = Request.page(params[:page]).per(10)
+    @requests = Request.page(params[:page]).per(10).all.order(created_at: :desc)
   end
 
   def new
@@ -31,6 +31,10 @@ class Public::RequestsController < ApplicationController
     else
       redirect_back fallback_location: root_path, flash: { alert: "他人のリクエストは削除できません" }
     end
+  end
+
+  def search
+    @requests = Request.search(params[:keyword]).all.order(created_at: :desc)
   end
 
 

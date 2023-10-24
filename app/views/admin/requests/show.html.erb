@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <td class="col-2">対応内容</td>
-            <td class="col-5"><%= @request.reply %></td>
+            <td class="col-5"><%=safe_join(@request.reply.split("\n"),tag(:br))%></td>
           </tr>
           <tr>
             <td class="col-2">対応ステータス</td>

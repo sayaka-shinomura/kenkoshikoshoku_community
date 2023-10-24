@@ -4,7 +4,7 @@ class Admin::RequestsController < ApplicationController
 
 
   def index
-    @requests = Request.page(params[:page]).per(15)
+    @requests = Request.page(params[:page]).per(15).all.order(created_at: :desc)
   end
 
   def show
@@ -30,6 +30,10 @@ class Admin::RequestsController < ApplicationController
     @request.destroy
     flash[:notice] = "削除を実行しました"
     redirect_to admin_requests_path
+  end
+
+  def search
+    @requests = Request.search(params[:keyword]).all.order(created_at: :desc)
   end
 
   private

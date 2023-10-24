@@ -35,6 +35,7 @@ scope module: :public do
 
     get 'recipes/search' => 'recipes#search', as: 'search_recipes'
     get 'vegetables/search' => 'vegetables#search', as: 'search_vegetables'
+    get 'res/search' => 'requests#search', as: 'search_requests'
 
     resources :recipes do
         resources :want_to_make_lists, only: [:index, :create, :destroy]

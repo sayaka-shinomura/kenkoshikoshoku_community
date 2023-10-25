@@ -1,5 +1,16 @@
 <div class="container">
   <h4 class="my-5 text-center">皆様からのご意見・ご要望</h4>
+  <div class="text-center my-2">
+    <%= form_with(url: search_requests_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "リクエストを検索", class: "search-input" %>
+      <%= form.submit "キーワード検索", class: "search-btn" %>
+      <p>
+        ◆気になるワードを入力して、どんなご意見・ご要望が投稿されているか探してみよう◆<br>
+        ◆ユーザー名で検索すると、自分の投稿内容を簡単に確認できます◆
+      </p>
+    <% end %>
+  </div>
+
   <%= render "public/requests/index", itme: @requests, url: requests_path(@requests) %>
 
   <div class="d-flex justify-content-center text-center">

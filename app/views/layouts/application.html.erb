@@ -56,41 +56,40 @@
           <!--# ユーザーログイン後のヘッダー-->
           <% elsif user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'Top', root_path, class: 'nav-link text-dark' %>
+              <%= link_to 'Top', root_path, class: 'nav-link text-dark fa-solid fa-book-open' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'マイページ', mypage_path, class: 'nav-link text-dark' %>
+              <%= link_to 'マイページ', mypage_path, class: 'nav-link text-dark fa-solid fa-user' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'レシピ一覧', recipes_path, class: 'nav-link text-dark' %>
+              <%= link_to 'レシピ', recipes_path, class: 'nav-link text-dark fa-solid fa-utensils' %>
             </li>
             <li class="nav-item">
-              
-              <%= link_to '野菜一覧', vegetables_path, class: 'nav-link text-dark' %>
+              <%= link_to '野菜', vegetables_path, class: 'nav-link text-dark fa-solid fa-carrot' %>
             </li>
             <li class="nav-item">
-              <%= link_to '栄養素一覧', nutrients_path, class: 'nav-link text-dark' %>
+              <%= link_to '栄養素', nutrients_path, class: 'nav-link text-dark fa-solid fa-star-of-life' %>
             </li>
             <li class="nav-item">
-              <%= link_to '効能一覧', effects_path, class: 'nav-link text-dark' %>
+              <%= link_to '効能', effects_path, class: 'nav-link text-dark fa-solid fa-heart' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark fa-solid fa-right-from-bracket' %>
             </li>
 
           <!--# ログイン前のヘッダー-->
           <% else %>
             <li class="nav-item">
-              <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
+              <%= link_to 'About', about_path, class: 'nav-link text-dark fa-solid fa-star' %>
             </li>
             <li class="nav-item">
-              <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark' %>
+              <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark fa-solid fa-user-plus' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
+              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark fa-solid fa-right-to-bracket' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ゲストログイン', user_guest_sign_in_path, class: 'nav-link text-dark' %>
+              <%= link_to 'ゲストログイン', user_guest_sign_in_path, class: 'nav-link text-dark fa-solid fa-face-smile' %>
             </li>
           <% end %>
           </ul>

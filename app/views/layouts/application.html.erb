@@ -80,7 +80,7 @@
           <!--# ログイン前のヘッダー-->
           <% else %>
             <li class="nav-item">
-              <%= link_to 'About', about_path, class: 'nav-link text-dark fa-solid fa-star' %>
+              <%= link_to 'About', about_path, data: { "turbolinks" => false }, class: 'nav-link text-dark fa-solid fa-star' %>
             </li>
             <li class="nav-item">
               <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark fa-solid fa-user-plus' %>

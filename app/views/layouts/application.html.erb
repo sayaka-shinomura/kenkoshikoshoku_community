@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/a7b743e44e.js" crossorigin="anonymous"></script>"
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   </head>
 
 
@@ -103,10 +104,9 @@
 
     <main>
       <%= flash[:notice] %>
-      <div class="d-flex justify-content-center my-2">
+      <div class="d-flex justify-content-center my-3">
         <%= render "searches/form" %>
       </div>
-
       <%= yield %>
     </main>
 

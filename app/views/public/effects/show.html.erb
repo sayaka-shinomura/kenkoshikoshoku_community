@@ -2,18 +2,18 @@
   <h4 class="my-3 text-center" style="background-color: #ffb830"><%= @effect.name %>について</h4>
   <div class="my-3 text-center"><%=safe_join(@effect.introduction.split("\n"),tag(:br))%></div>
 
-  <div class="my-5 text-center">
-    <p class="text-center" style="background-color: #c66358">
-      <strong>摂取したい栄養素</strong>
-    </p>
-        <%= @nutrients.uniq.join(" ・ ") %>
+    <div class="my-5 text-center">
+      <p class="text-center" style="background-color: #c66358">
+        <strong>摂取したい栄養素</strong>
+      </p>
+      <%= link_to @nutrients.uniq.join(" ・ "), nutrients_path, style: "color: black;" %>
     </div>
 
     <div class="my-5 text-center">
       <p class="text-center" style="background-color: #c66358">
         <strong>摂取したい野菜</strong>
       </p>
-        <%= @vegetables.uniq.join(" ・ ") %>
+      <%= link_to @vegetables.uniq.join(" ・ "), vegetables_path, style: "color: black;" %>
     </div>
 
   </div>

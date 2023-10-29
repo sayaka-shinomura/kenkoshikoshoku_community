@@ -1,36 +1,21 @@
 <div class="container">
-  <h4 class="my-3 text-center"><%= @nutrient.name %>について</h4>
-  <div class="row">
-    <div class="px-5 px-sm-0 mx-auto">
-      <table class="table table-borderless">
-        <tbody>
-            <td><p>栄養素概要</p></td>
-            <td><%=safe_join(@nutrient.introduction.split("\n"),tag(:br))%></td>
-          </tr>
-       </tbody>
-     </table>
-    </div>
-  </div>
+  <h4 class="my-3 text-center" style="background-color: #ffb830"><%= @nutrient.name %>について</h4>
+  <div class="my-3 text-center"><%=safe_join(@nutrient.introduction.split("\n"),tag(:br))%></div>
 
-  <div class="row">
-    <div class="col-4 px-5 px-sm-0 mx-auto">
-      <p class="text-center">
-        <strong>摂取したい栄養素</strong>
-      </p>
-      <div class="d-flex flex-wrap">
-        <%= @effects.uniq.join(" ") %>
-      </div>
-    </div>
-
-    <div class="col-6 px-5 px-sm-0 mx-auto">
-      <p class="text-center">
+    <div class="my-5 text-center">
+      <p class="text-center" style="background-color: #c66358">
         <strong>摂取したい野菜</strong>
       </p>
-          <button type="button" class="btn btn-outline-success btn-lg">
-            <%= @vegetables.uniq.join(" ") %>
-          </button>
+      <%= link_to @vegetables.uniq.join(" ・ "), vegetables_path, style: "color: black;" %>
     </div>
 
+    <div class="my-5 text-center">
+      <p class="text-center" style="background-color: #c66358">
+        <strong>期待できる効能</strong>
+      </p>
+      <%= link_to @effects.uniq.join(" ・ "), effects_path, style: "color: black;" %>
+    </div>
 
   </div>
 </div>
+

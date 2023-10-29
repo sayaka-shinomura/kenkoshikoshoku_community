@@ -1,14 +1,12 @@
-<<div class="container">
-  <h4 class="my-3 text-center">摂取したい野菜を探そう◆栄養素一覧</h4>
-  <div class="row">
-    <div class="col-10">
-      <div class="d-flex flex-wrap align-center">
-        <% @nutrients.each do |nutrient| %>
+<div class="container">
+  <h4 class="my-3 text-center" style="background-color: #ffff55">栄養素から摂取したい野菜を探そう</h4>
+  <div class="my-3">
+    <div class="d-flex flex-wrap align-center">
+      <% @nutrients.each do |nutrient| %>
         <div class="mr-4 d-flex flex-column mb-4">
-          <%= link_to nutrient.name, nutrient_path(nutrient), class:"btn btn-warning btn-lg" %>
+          <%= link_to nutrient.name, nutrient_path(nutrient), class:"btn btn-outline-info btn-lg" %>
         </div>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-</div>
+</diV>

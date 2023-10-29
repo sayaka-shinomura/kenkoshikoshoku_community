@@ -3,9 +3,10 @@
     <%= render "public/homes/vegetable_rank", itme: @vegetable_ranks, url: root_path %>
 
     <div class="col-5 px-5 px-sm-0 mx-auto">
-      <%= image_tag 'image2', size: "400x350" %>
-
-      <h4 class="my-3 text-center" style="background-color: #ffff55">皆様からのご意見・ご要望</h4>
+      <div style="text-align: center">
+        <%= image_tag 'image2', size: "400x350" %>
+      </div>
+      <h4 class="my-3 text-center" style="background-color: #ffb830">皆様からのご意見・ご要望</h4>
       <table class="mx-auto">
         <tbody>
           <% @requests.each do |request| %>
@@ -17,7 +18,7 @@
           <% end %>
         </tbody>
       </table>
-      <div class="text-center my-5">
+      <div class="text-center my-3">
         <%= link_to "全てのご意見・ご要望を見る", requests_path, class:"btn btn-info" %>
       </div>
     </div>

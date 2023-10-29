@@ -1,11 +1,10 @@
 <div class="container">
-  <h4 class="my-3 text-center"><%= @effect.name %>について</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffb830"><%= @effect.name %>について</h4>
   <div class="row">
     <div class="px-5 px-sm-0 mx-auto">
       <table class="table table-borderless">
         <tbody>
-            <td><p>効能概要</p></td>
-            <td><%=safe_join(@effect.introduction.split("\n"),tag(:br))%></td>
+            <td class="text-center"><%=safe_join(@effect.introduction.split("\n"),tag(:br))%></td>
           </tr>
        </tbody>
      </table>

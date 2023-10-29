@@ -33,25 +33,25 @@
           <!--# 管理者ログイン後のヘッダー-->
           <% if admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to '会員', admin_users_path, class: 'nav-link text-dark' %>
+              <%= link_to '会員', admin_users_path, class: 'nav-link text-dark fa-solid fa-user' %>
             </li>
             <li class="nav-item">
-              <%= link_to '野菜', admin_vegetables_path, class: 'nav-link text-dark' %>
+              <%= link_to '野菜', admin_vegetables_path, class: 'nav-link text-dark fa-solid fa-carrot' %>
             </li>
             <li class="nav-item">
-              <%= link_to '栄養素', admin_nutrients_path, class: 'nav-link text-darke' %>
+              <%= link_to '栄養素', admin_nutrients_path, class: 'nav-link text-dark fa-solid fa-star-of-life' %>
             </li>
             <li class="nav-item">
-              <%= link_to '効能', admin_effects_path, class: 'nav-link text-dark' %>
+              <%= link_to '効能', admin_effects_path, class: 'nav-link text-dark fa-solid fa-heart' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'レビュー', admin_reviews_path, class: 'nav-link text-dark' %>
+              <%= link_to 'レビュー', admin_reviews_path, class: 'nav-link text-dark fa-solid fa-pencil' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'リクエスト', admin_requests_path, class: 'nav-link text-dark' %>
+              <%= link_to 'リクエスト', admin_requests_path, class: 'nav-link text-dark fa-solid fa-envelope' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark fa-solid fa-right-from-bracket' %>
             </li>
 
           <!--# ユーザーログイン後のヘッダー-->

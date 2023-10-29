@@ -2,26 +2,26 @@
     作ってみたいリスト<br>
     ランキング
   </h5>
-  <table>
+  <table class="text-left">
   <% @want_ranks.each.with_index(1) do |rank, i| %>
     <% if i == 1 %>
       <tr>
-        <td class="col-1"><%= i %>位</td>
-        <td class="col-2"><%= rank.name %></td>
+        <td><%= i %>位：</td>
+        <td><%= rank.name %></td>
       </tr>
     <% elsif i == 2 %>
     <tr>
-      <td><%= i %>位</td>
+      <td><%= i %>位：</td>
       <td><%= rank.name %></td>
     </tr>
     <% elsif i == 3 %>
     <tr>
-      <td><%= i %>位</td>
+      <td><%= i %>位：</td>
       <td><%= rank.name %></td>
     </tr>
     <% else %>
     <tr>
-      <td><%= i %>位</td>
+      <td><%= i %>位：</td>
       <td><%= rank.name %></td>
     </tr>
     <% end %>
@@ -36,22 +36,22 @@
   <% @made_ranks.each.with_index(1) do |rank, i| %>
     <% if i == 1 %>
       <tr>
-        <td><%= i %>位</td>
+        <td><%= i %>位：</td>
         <td><%= rank.name %></td>
       </tr>
     <% elsif i == 2 %>
     <tr>
-      <td><%= i %>位</td>
+      <td><%= i %>位：</td>
       <td><%= rank.name %></td>
     </tr>
     <% elsif i == 3 %>
     <tr>
-      <td><%= i %>位</td>
+      <td><%= i %>位：</td>
       <td><%= rank.name %></td>
     </tr>
     <% else %>
     <tr>
-      <td><%= i %>位</td>
+      <td><%= i %>位：</td>
       <td><%= rank.name %></td>
     </tr>
     <% end %>

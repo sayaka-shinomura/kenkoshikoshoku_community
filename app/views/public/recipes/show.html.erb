@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="my-3 text-center"><%= @vegetables.uniq.join("＆") %>を使ったレシピ</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffb830"><%= @vegetables.uniq.join("＆") %>を使ったレシピ</h4>
   <h6 class="my-1 text-right">レシピID.<%= @recipe.id %></h6>
   <div class="row">
     <div class="col-4 px-5 px-sm-0 mx-auto">
@@ -10,40 +10,40 @@
           <%= image_tag 'no-image', size: "340x250" %>
         <% end %>
       </div>
-      <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <td>投稿ユーザー</td>
-              <td><%= @recipe.user.account_name %></td>
-            </tr>
-            <tr>
-              <td>投稿日</td>
-              <td><%= @recipe.created_at.strftime('%Y/%m/%d') %></td>
-            </tr>
-            <tr>
-              <td>難易度</td>
-              <td><%= @recipe.difficulty %></td>
-            </tr>
-            <tr>
-              <td>カテゴリー</td>
-              <td>
-                <% @recipe.tags.each do |tag| %>
-                  <%= tag.name %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>レビュー評価</td>
-              <td><%= @recipe.reviews.average(:star) %></td>
-            </tr>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>投稿ユーザー</th>
+            <td><%= @recipe.user.account_name %></td>
+          </tr>
+          <tr>
+            <th>投稿日</th>
+            <td><%= @recipe.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <th>難易度</th>
+            <td><%= @recipe.difficulty %></td>
+          </tr>
+          <tr>
+            <th>カテゴリー</th>
+            <td>
+              <% @recipe.tags.each do |tag| %>
+                ・<%= tag.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>レビュー評価</th>
+            <td><%= @recipe.reviews.average(:star) %></td>
+          </tr>
+        </tbody>
+      </table>
 
-          </tbody>
-        </table>
       <div class="text-center my-3">
-        <%= link_to "レシピを編集する", edit_recipe_path(@recipe), class:"btn btn-info" %>
+        <%= link_to "レシピを編集する", edit_recipe_path(@recipe), class:"btn btn-outline-secondary" %>
       </div>
       <div class="text-center my-3">
-        <%= link_to "レシピを削除する", recipe_path(@recipe), method: :delete, class:"btn btn-danger", data: { confirm: "本当に削除しますか？" } %>
+        <%= link_to "レシピを削除する", recipe_path(@recipe), method: :delete, class:"btn btn-outline-danger", data: { confirm: "本当に削除しますか？" } %>
       </div>
       <div class="text-center my-3">
         <%= render "want_to_make_list", recipe: @recipe %>
@@ -51,10 +51,9 @@
       <div class="text-center my-3">
         <%= render "made_list", recipe: @recipe %>
       </div>
-      <div class="my-5"></div>
-      <h6 class="text-center">レビューを投稿はこちらから</h6>
+      <h6 class="text-center mt-5">レビューを投稿はこちらから</h6>
       <div class="text-center my-3">
-      <%= render "public/reviews/form", itme: @review, url: reviews_path(@review), submit: 'レビューを投稿する' %>
+        <%= render "public/reviews/form", itme: @review, url: reviews_path(@review), submit: 'レビューを投稿する' %>
       </div>
       <div class="text-center my-3">
         <%= link_to "全てのレビューを見る", reviews_path(@review), class:"btn btn-info" %>
@@ -62,90 +61,101 @@
     </div>
 
 
-    <div class="col-6 px-5 px-sm-0 mx-auto">
+    <div class="col-7 px-5 px-sm-0 mx-auto">
       <table class="table">
         <tbody>
           <tr>
-            <td class="col-2"><p>レシピ名</p></td>
+            <th class="col-2">レシピ名</th>
             <td class="col-5"><%= @recipe.name %></td>
        　  </tr>
           <tr>
-            <td class="col-2"><p>調理時間の目安</p></td>
-            <td class="col-5"><%= @recipe.time %>　分</td>
+            <th>調理時間の目安</th>
+            <td><%= @recipe.time %>　分</td>
           </tr>
           <tr>
-            <td class="col-2"><p>おすすめ情報</p></td>
-            <td class="col-6"><%=safe_join(@recipe.introduction.split("\n"),tag(:br))%></td>
+            <th>おすすめ情報</th>
+            <td><%=safe_join(@recipe.introduction.split("\n"),tag(:br))%></td>
           </tr>
           <tr>
-            <td class="col-2"><p>材料</p></td>
-            <td class="col-6">
-              <% @recipe.ingredients.each do |ingredient| %>
-                <div class="my-1">
-                  <%= ingredient.content %>  <%= ingredient.quantity %>
-                </div>
-              <% end %>
+            <th>材料</th>
+            <td>
+              <table class="table table-borderless">
+                <tbody>
+                  <% @recipe.ingredients.each do |ingredient| %>
+                  <tr>
+                    <td class="col-3"><%= ingredient.content %></td>
+                    <td class="col-2"><%= ingredient.quantity %></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </td>
           </tr>
           <tr>
-            <td class="col-2"><p>作り方</p></td>
-            <td class="col-6">
-              <% @recipe.cookerys.each do |cookery| %>
-                <div class="my-1"><%= cookery.process %></div>
-              <% end %>
+            <th>作り方</th>
+            <td>
+              <table class="table table-borderless">
+                <tbody>
+                  <% @recipe.cookerys.each do |cookery| %>
+                  <tr>
+                    <td><%= cookery.id %></td>
+                    <td><%= cookery.process %></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+
             </td>
           </tr>
        </tbody>
       </table>
 
-      <div class="my-5"></div>
-      <h5 class="text-center">レシピへのレビュー（全<%= @recipe.reviews.count %>件）</h5>
-      <table class="table table-borderless">
-        <% if @recipe.reviews.present? %>
-        <tbody>
-          <% @recipe.reviews.each do |review| %>
-            <tr>
-              <th align="left">投稿ユーザー</td>
-              <td><%= review.user.account_name %></td>
-            </tr>
-            <tr>
-              <th align="left">評価</th>
-              <td>
-                <div id="star_<%= review.id %>"></div>
-                <script>
-                  $(document).on('turbolinks:load', function() {
-                  let elem = document.querySelector('#star_<%= review.id %>');
-                  if (elem == null) return;
+      <div class="my-5">
+        <h5 class="text-center" style="background-color: #c66358">レビュー（全<%= @recipe.reviews.count %>件）</h5>
+        <table class="table table-borderless">
+          <% if @recipe.reviews.present? %>
+          <tbody>
+            <% @recipe.reviews.each do |review| %>
+              <tr>
+                <th class="col-2">投稿ユーザー</td>
+                <td class="col-5"><%= review.user.account_name %></td>
+              </tr>
+              <tr>
+                <th>評価</th>
+                <td>
+                  <div id="star_<%= review.id %>"></div>
+                  <script>
+                    $(document).on('turbolinks:load', function() {
+                    let elem = document.querySelector('#star_<%= review.id %>');
+                    if (elem == null) return;
 
-                  elem.innerHTML = "";
-                  let opt = {
-                    starOn: "<%= asset_path('star-on.png') %>",
-                    starOff: "<%= asset_path('star-off.png') %>",
-                    score: "<%= review.star %>",
-                    readOnly: true,
-                  };
-                  raty(elem, opt);
-                  });
-                </script>
-              </td>
-            </tr>
-            <tr>
-              <th align="left">コメント</th>
-              <td><%=safe_join(review.comment.split("\n"),tag(:br))%></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <div class="review_link">
-                  <%= link_to "レビューを編集する", edit_review_path(review) %>
-                  <%= link_to "レビューを削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <% end %>
+                    elem.innerHTML = "";
+                    let opt = {
+                      starOn: "<%= asset_path('star-on.png') %>",
+                      starOff: "<%= asset_path('star-off.png') %>",
+                      score: "<%= review.star %>",
+                      readOnly: true,
+                    };
+                    raty(elem, opt);
+                    });
+                  </script>
+                </td>
+              </tr>
+              <tr>
+                <th>コメント</th>
+                <td><%=safe_join(review.comment.split("\n"),tag(:br))%></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                    <%= link_to "レビューを編集する", edit_review_path(review) %>／
+                    <%= link_to "削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
       </div>
     </div>
   </div>

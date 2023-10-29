@@ -4,7 +4,7 @@
       <div class="d-flex flex-wrap align-center">
         <% @effects.each do |effect| %>
         <div class="mr-4 d-flex flex-column mb-4">
-          <%= link_to effect.name, effect_path(effect), class:"btn btn-outline-info btn-lg" %>
+          <%= link_to effect.name, effect_path(effect), class:"btn btn-outline-info btn-lg", data: {"turbolinks" => false} %>
         </div>
         <% end %>
       </div>

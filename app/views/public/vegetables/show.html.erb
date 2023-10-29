@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="my-3 text-center">野菜を知ろう</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffb830">野菜を知ろう</h4>
   <div class="row">
     <div class="col-4 px-5 px-sm-0 mx-auto">
       <div class="text-center">
@@ -16,32 +16,32 @@
       <table class="table">
         <tbody>
           <tr>
-            <td class="col-2"><p>野菜名</p></td>
+            <td class="col-2">野菜名</td>
             <td class="col-5"><%= @vegetable.name %></td>
        　  </tr>
        　  <tr>
-            <td><p>栄養素</p></td>
-            <td><%= @nutrients.uniq.join(" ") %></td>
+            <td>栄養素</td>
+            <td><%= @nutrients.uniq.join("・") %></td>
           </tr>
            <tr>
-            <td><p>効能</p></td>
-            <td><%= @effects.uniq.join(" ") %></td>
+            <td>効能</td>
+            <td><%= @effects.uniq.join("・") %></td>
           </tr>
           <tr>
-            <td class="col-2"><p>旬の時期</p></td>
-            <td class="col-5"><%= @vegetable.seasonal %></td>
-       　  </tr
-          <tr>
-            <td class="col-2"><p>産地情報</p></td>
-            <td class="col-6"><%=safe_join(@vegetable.production_area.split("\n"),tag(:br))%></td>
+            <td>旬の時期</td>
+            <td><%= @vegetable.seasonal %></td>
           </tr>
           <tr>
-            <td class="col-2"><p>保存方法</p></td>
-            <td class="col-6"><%=safe_join(@vegetable.keeping.split("\n"),tag(:br))%></td>
+            <td>産地情報</td>
+            <td><%=safe_join(@vegetable.production_area.split("\n"),tag(:br))%></td>
           </tr>
           <tr>
-            <td class="col-2"><p>おすすめ情報</p></td>
-            <td class="col-6"><%=safe_join(@vegetable.introduction.split("\n"),tag(:br))%></td>
+            <td>保存方法</td>
+            <td><%=safe_join(@vegetable.keeping.split("\n"),tag(:br))%></td>
+          </tr>
+          <tr>
+            <td>おすすめ情報</td>
+            <td><%=safe_join(@vegetable.introduction.split("\n"),tag(:br))%></td>
           </tr>
        </tbody>
      </table>

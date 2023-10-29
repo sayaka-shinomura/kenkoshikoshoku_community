@@ -6,7 +6,7 @@
       <p class="text-center" style="background-color: #c66358">
         <strong>摂取したい野菜</strong>
       </p>
-      <%= link_to @vegetables.uniq.join(" ・ "), vegetables_path, style: "color: black;" %>
+      <%= link_to @vegetables.uniq.join(" ・ "), vegetables_path, style: "color: black;", data: {"turbolinks" => false} %>
     </div>
 
     <div class="my-5 text-center">

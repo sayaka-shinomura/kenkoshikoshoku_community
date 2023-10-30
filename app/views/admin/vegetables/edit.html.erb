@@ -1,73 +1,23 @@
 <div class="container">
-  <h4 class="my-5 text-center">野菜情報編集</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffb830">野菜情報編集</h4>
   <div class="row">
-   <div class="com-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-8 px-5 px-sm-0 mx-auto">
 
-    <div class="form-body p-4">
-     <% if @vegetable.errors.any? %>
-     <ul class="alert alert-danger" role="alert">
-       <h6 class="alert-heading">
-        <%= @vegetable.errors.count %>error prohibited this obj from being saved:
-       </h6>
-       <% @vegetable.errors.full_messages.each do |message| %>
-       <li><%= message %></li>
+      <div class="form-body p-4">
+       <% if @vegetable.errors.any? %>
+       <ul class="alert alert-danger" role="alert">
+         <h6 class="alert-heading">
+          <%= @vegetable.errors.count %>error prohibited this obj from being saved:
+         </h6>
+         <% @vegetable.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+         <% end %>
+       </ul>
        <% end %>
-     </ul>
-     <% end %>
-   </div>
+     </div>
 
-   <%= form_with model: @vegetable, url: admin_vegetable_path(@vegetable.id), method: :patch do |f| %>
-   <div class="form-group">
-     <table class="table table-borderless">
-       <tbody>
-          <tr>
-            <td class="col-4"><%= f.label :name, "野菜名" %></td>
-            <td class="col-8"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
-          </tr>
-          <tr>
-            <td class="col-4"><%= f.label :nutrient_tag, "栄養素" %></td>
-            <td class="col-8">
-              <%= f.collection_check_boxes(:nutrient_ids, Nutrient.all, :id, :name, { checked: @vegetable.nutrient_ids.map(&:to_param) }) do |nutrienttag| %>
-                <%= nutrienttag.label class: 'tag__item' do %>
-                <%= nutrienttag.check_box class: 'tag__checkbox' %>
-                <%= nutrienttag.text %>
-                <% end %>
-              <% end %>
-             </td>
-          </tr>
-          <tr>
-              <td class="col-4"><%= f.label :vegetable_image, "野菜画像" %></td>
-              <td class="col-8">
-                  <%= image_tag (@vegetable.vegetable_image.attached? ? @vegetable.vegetable_image : 'no-image.png'), id: "img_prev", class: "admin_vegetable_image", size: "340x250" %>
-                  <%= f.file_field :vegetable_image,  accept:'image/*' %>
-              </td>
-          </tr>
-           <tr>
-            <td class="col-4"><%= f.label :seasonal, "旬な時期" %></td>
-            <td class="col-8"><%= f.text_field :seasonal, autofocus: true, id:"inputSeasonal", class:"form-control" %></td>
-          </tr>
-          <tr>
-          <tr>
-            <td class="col-4"><%= f.label :production_area, "産地情報" %></td>
-            <td class="col-8"><%= f.text_area :production_area, autofocus: true, id:"inputProductionArea", class:"form-control", :size=>"40x6" %></td>
-          </tr>
-          <tr>
-            <td class="col-4"><%= f.label :keeping, "保存情報" %></td>
-            <td class="col-8"><%= f.text_area :keeping, autofocus: true, id:"inputKeeping", class:"form-control", :size=>"40x6" %></td>
-          </tr>
-          <tr>
-            <td class="col-4"><%= f.label :introduction, "野菜概要" %></td>
-            <td class="col-8"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
-          </tr>
-      </tbody>
-     </table>
-
-    <div class="text-center">
-    <%= f.submit '保存', class:"btn btn-success col-3" %>
-    <% end %>
+     <%= render "admin/vegetables/form", itme: @vegetable, url: admin_vegetables_path(@vegetable), submit: '保存' %>
     </div>
-
-   </div>
   </div>
 </div>
 

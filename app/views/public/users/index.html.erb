@@ -1,7 +1,6 @@
 <div class="container">
-  <h4 class="my-5 text-center">ｍｙレシピ一覧</h4>
-  <div class="row">
-    <div class="col">
+  <h4 class="my-3 text-center" style="background-color: #ffb830">ｍｙレシピ一覧</h4>
+    <div class="my-3">
       <div class="d-flex flex-wrap">
         <% @myrecipes.each do |myrecipe| %>
         <div class="mr-3 d-flex flex-column mb-4">
@@ -12,13 +11,14 @@
               <%= image_tag 'no-image', size: "340x250" %>
             <% end %>
           <% end %>
-          <p class="ml-1 text-dark"><strong><%= myrecipe.name %></strong></p>
-          <td>投稿日：<%= myrecipe.created_at.strftime('%Y/%m/%d') %></td>
+          <p class="ml-1 text-dark">
+            <strong><%= myrecipe.name %></strong><br>
+            投稿日：<%= myrecipe.created_at.strftime('%Y/%m/%d') %>
+          </p>
         </div>
         <% end %>
       </div>
-
+    </div>
   </div>
-</div>
 </div>
 

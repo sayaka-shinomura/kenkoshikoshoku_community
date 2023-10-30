@@ -1,12 +1,12 @@
 <div class="container">
-  <h4 class="my-3 text-center">レビュー編集</h4>
   <div class="row">
     <div class="col-6 px-5 px-sm-0 mx-auto">
+      <h4 class="my-3 text-center" style="background-color: #ffb830">レビュー編集</h4>
       <%= form_for [@recipe, @review], url: review_path(@review.id), method: :patch do |f| %>
-        <div class="form-group" id="star">
-          <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
-          <div id="post_raty-<%= @review.id %>"></div>
-        </div>
+      <div class="text-center my-3" id="star">
+        <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+        <div id="post_raty-<%= @review.id %>"></div>
+      </div>
         <script>
           $(document).on('turbolinks:load', function() {
             let elem = document.querySelector('#post_raty-<%= @review.id %>');
@@ -24,13 +24,12 @@
         </script>
 
 
-
     <div class="form-group">
       <%= f.text_area :comment, autofocus: true, id:"inputComment", class:"form-control", :size=>"20x4", placeholder: comment_text %>
     </div>
 
-    <div class="form-group">
-      <%= f.submit 'レビューを変更する', class: 'btn btn-info' %>
+    <div class="text-center">
+      <%= f.submit 'レビューを変更する', class: 'btn btn-primary' %>
     </div>
 <% end %>
 

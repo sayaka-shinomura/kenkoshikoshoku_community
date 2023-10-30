@@ -1,12 +1,37 @@
 <div class="container">
-  <div class="row my-2">
-    <%= render "public/homes/vegetable_rank", itme: @vegetable_ranks, url: root_path %>
 
-    <div class="col-5 px-5 px-sm-0 mx-auto">
+    <div class="col-6 mx-auto">
+      <h1 class="text-center my-3">About</h1>
+      <div class="text-center my-2">
+        <h4 class="my-3 text-center" style="background-color: #c66358">食べることは、生きること</h4>
+          健康維持・病気の予防のためには</br>
+          バランスの良い食事が欠かせません。</br>
+          意識的に野菜の摂取を心がけている方も</br>
+          多いのではないでしょうか？</br>
+          </br>
+          しかし、</br>
+          その野菜がどんな栄養素を含んでいて、</br>
+          どんな効能があるのか、ご存じですか？</br>
+          </br>
+          自分の体調に合った野菜を探したい！！</br>
+          野菜料理のレシピを知りたい！！</br>
+          </br>
+          そんな時は</br>
+          ♡是非、ご活用ください♡
+
+
+      </div>
+
+
+      <div style="text-align: center">
+        <%= image_tag 'about2', size: "540x360" %>
+      </div>
+
+      <div class="text-center my-5" style="background-color: #aeeff0">
+        <p>※レシピの投稿にはユーザー登録が必要です</p>
+      </div>
+
     </div>
 
-    <div class="col-4 px-5 px-sm-0 mx-auto">
-      <%= render "public/homes/want_rank", itme: @want_ranks, url: root_path %>
-    </div>
   </div>
 </div>

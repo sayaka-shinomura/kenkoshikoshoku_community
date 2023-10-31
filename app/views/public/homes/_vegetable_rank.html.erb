@@ -1,31 +1,44 @@
-<div class="col-3 px-5 px-sm-0 mx-auto" style="background-color: #e0ffff">
-  <h4 class="text-center" style="background-color: #aeeff0;">
-    <strong>投稿レシピ数<br>
-    ランキング</strong>
-  </h4>
-  <table class="text-center">
-    <% @vegetable_ranks.each.with_index(1) do |rank, i| %>
-    <% if i == 1 %>
-      <tr>
-        <td class="col-1"><h4><%= i %>位</h4></td>
-        <td><h4><%= rank.name %></h4></td>
-      </tr>
-    <% elsif i == 2 %>
-      <tr>
-        <td class="col-1"><h4><%= i %>位</h4></td>
-        <td class="col-2"><h4><%= rank.name %></h4></td>
-      </tr>
-    <% elsif i == 3 %>
-      <tr>
-        <td class="col-1"><h4><%= i %>位</h4></td>
-        <td class="col-2"><h4><%= rank.name %></h4></td>
-      </tr>
-    <% else %>
-    <tr>
-      <td><%= i %>位</td>
-      <td><%= rank.name %></td>
-    </tr>
-    <% end %>
-  <% end %>
-  </table>
+<div class="col-3 px-5 px-sm-0 mx-auto">
+  <div class="ranking">
+    <h4 class="text-center" style="background-color: #aeeff0;">
+      <strong>投稿レシピ数<br>
+      ランキング</strong>
+    </h4>
+    <table class="text-center">
+      <% @vegetable_ranks.each.with_index(1) do |rank, i| %>
+        <% if i == 1 %>
+          <tr>
+            <td class="col-1"><h4><%= i %>位</h4></td>
+            <td><h4><%= rank.name %></h4></td>
+          </tr>
+        <% elsif i == 2 %>
+          <tr>
+            <td class="col-1"><h4><%= i %>位</h4></td>
+            <td class="col-2"><h4><%= rank.name %></h4></td>
+          </tr>
+        <% elsif i == 3 %>
+          <tr>
+            <td class="col-1"><h4><%= i %>位</h4></td>
+            <td class="col-2"><h4><%= rank.name %></h4></td>
+          </tr>
+        <% else %>
+        <tr>
+          <td><%= i %>位</td>
+          <td><%= rank.name %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="mt-5">
+    <h4 class="text-center" style="background-color: #c66358;">お知らせ</h4>
+    <P>
+      ご利用ありがとうございます。</br>
+      当サイトは野菜をつかった料理のレシピを投稿・検索できるコミュニティサイトです。</br>
+      野菜・栄養素・効能情報につきましては、誤った情報の拡散防止のため、管理者が精査した上で掲載しております。</br>
+      情報提供につきましては、ご意見・ご要望の投稿からお願い致します。
+    </P>
+  </div>
+
 </div>

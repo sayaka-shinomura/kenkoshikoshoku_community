@@ -8,10 +8,7 @@
         <table class="flex">
           <tbody>
             <tr>
-              <td class="text-left">【アカウント名】<%= @user.account_name %></td>
-            </tr>
-            <tr>
-              <td class="text-left">【　性　　別　】<%= @user.gender ? '男性' : '女性' %></td>
+              <td>【アカウント名】<%= @user.account_name %></td>
             </tr>
           </tbody>
         </table>
@@ -33,54 +30,44 @@
       <%= link_to "ｍｙレシピ一覧", myrecipe_path, class:"btn btn-outline-info btn-block" %>
     </div>
 
-    <div class="col">
+    <div class="col-md-8">
       <h4 class="my-3 text-center" style="background-color: #aeeff0">作ってみたいリスト</h4>
-        <div class="d-flex flex-wrap">
-         <% if @want_list.present? %>
-           <% @want_list.each do |recipe| %>
-           <div class="mr-3 d-flex flex-column mb-4">
-             <%= link_to recipe_path(recipe.id) do %>
-               <% if recipe.recipe_image.attached? %>
-                 <%= image_tag recipe.recipe_image, size: "200x150" %>
-               <% else %>
-                 <%= image_tag 'no-image', size: "200x150" %>
-               <% end %>
-             <% end %>
-             <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></p>
-           <% end %>
-         <% end %>
-         </div>
-        </div>
-
-         <div class="text-right my-1">
-           <%= link_to "作ってみたいリスト一覧へ", recipe_want_to_make_lists_path(@user) %>
-
-        </div>
+      <div class="d-flex flex-wrap">
+        <% @want_list.each do |recipe| %>
+          <div class="mr-3 d-flex flex-column mb-4">
+            <%= link_to recipe_path(recipe.id) do %>
+              <% if recipe.recipe_image.attached? %>
+                <%= image_tag recipe.recipe_image, size: "200x150" %>
+              <% else %>
+                <%= image_tag 'no-image', size: "200x150" %>
+              <% end %>
+            <% end %>
+            <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></br></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="text-right my-1">
+        <%= link_to "作ってみたいリスト一覧へ", recipe_want_to_make_lists_path(@user) %>
+      </div>
 
       <h4 class="my-3 text-center" style="background-color: #aeeff0">作ってみたリスト</h4>
-      <div class="wrapper flex">
-         <% if @made_list.present? %>
-           <% @made_list.each do |recipe| %>
-           <div class="mr-3 d-flex flex-column mb-4">
-             <%= link_to recipe_path(recipe.id) do %>
-               <% if recipe.recipe_image.attached? %>
-                 <%= image_tag recipe.recipe_image, size: "200x150" %>
-               <% else %>
-                 <%= image_tag 'no-image', size: "200x150" %>
-               <% end %>
-             <% end %>
-             <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></p>
-           <% end %></div>
-         <% end %>
-
-         </div>
-         <div class="text-right my-1">
-           <%= link_to "作ってみたリスト一覧へ", recipe_made_lists_path(@user) %>
-         </div>
-
-     </section>
+      <div class="d-flex flex-wrap">
+        <% @made_list.each do |recipe| %>
+          <div class="mr-3 d-flex flex-column mb-4">
+            <%= link_to recipe_path(recipe.id) do %>
+              <% if recipe.recipe_image.attached? %>
+                <%= image_tag recipe.recipe_image, size: "200x150" %>
+              <% else %>
+                <%= image_tag 'no-image', size: "200x150" %>
+              <% end %>
+            <% end %>
+            <p class="ml-1 text-dark"><strong><%= recipe.name %></strong></br></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="text-right my-1">
+        <%= link_to "作ってみたリスト一覧へ", recipe_made_lists_path(@user) %>
+      </div>
+    </div>
   </div>
-
-
- </div>
 </div>

@@ -1,37 +1,36 @@
 <div class="container">
-    <h4 class="my-3 text-center">リクエスト投稿一覧</h4>
-
-    <div class="row">
-      <div class="col-md-8 offset-md-1">
-        <table class="table">
-          <thead>
-            <tr>
-              <th align="left">リクエストID</th>
-              <th align="left">投稿ユーザー</th>
-              <th align="left">リクエスト投稿日</th>
-              <th align="left">ステータス</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><% @requests.each do |request| %></tr>
-              <td><%= request.id %></td>
-              <td><%= request.user.account_name %></td>
-              <td><%= request.created_at.strftime('%Y/%m/%d') %></td>
-              <td>
-                <% if request.confirm? %>
-                  <span class="text-warning">確認中</span>
-                <% else %>
-                  <span class="text-muted">対応済み</span>
-                <% end %>
-              </td>
-              <td><%= link_to "詳細", admin_request_path(request), class:"text-primary" %></td>
-              <td><%= link_to "削除", admin_request_path(request), method: :delete, data: { confirm: "管理者権限で削除します。本当に削除しますか？" } %></td>
+  <h4 class="my-3 text-center" style="background-color: #ffff55">リクエスト投稿一覧【新着順】</h4>
+  <div class="row">
+    <div class="col-8 px-5 px-sm-0 mx-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>リクエストID</th>
+            <th>投稿ユーザー</th>
+            <th>リクエスト投稿日</th>
+            <th>ステータス</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><% @requests.each do |request| %></tr>
+            <td><%= request.id %></td>
+            <td><%= request.user.account_name %></td>
+            <td><%= request.created_at.strftime('%Y/%m/%d') %></td>
+            <td>
+              <% if request.confirm? %>
+                <span class="text-warning">確認中</span>
+              <% else %>
+                <span style= "color: #c66358;">対応済み</span>
               <% end %>
-          </tbody>
-        </table>
-        <%= paginate @requests %>
-        </div>
-      </div>
+            </td>
+            <td><%= link_to "詳細", admin_request_path(request), class:"text-primary" %></td>
+            <td><%= link_to "削除", admin_request_path(request), method: :delete, data: { confirm: "管理者権限で削除します。本当に削除しますか？" }, style: "color: red;" %></td>
+            <% end %>
+        </tbody>
+      </table>
+      <%= paginate @requests %>
+    </div>
+  </div>
 </div>

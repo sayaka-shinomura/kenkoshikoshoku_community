@@ -1,7 +1,7 @@
 <div class="container">
-  <h4 class="my-5 text-center">効能情報編集</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffb830">効能情報編集</h4>
   <div class="row">
-   <div class="com-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-8 px-5 px-sm-0 mx-auto">
 
     <div class="form-body p-4">
      <% if @nutrient.errors.any? %>
@@ -16,39 +16,7 @@
      <% end %>
    </div>
 
-   <%= form_with model: @nutrient, url: admin_nutrient_path(@nutrient.id), method: :patch do |f| %>
-   <div class="form-group">
-     <table class="table table-borderless">
-       <tbody>
-         <tr>
-           <td class="col-2"><%= f.label :name, "栄養素名" %></td>
-           <td class="col-5"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
-         </tr>
-         <tr>
-           <td class="col-2"><%= f.label :introduction, "栄養素概要" %></td>
-           <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
-         </tr>
-         <tr>
-           <td class="col-2"><%= f.label :effect_tag, "効能" %></td>
-           <td class="col-5">
-             <%= f.collection_check_boxes(:effect_ids, Effect.all, :id, :name, { checked: @nutrient.effect_ids.map(&:to_param) }) do |effecttag| %>
-                   <%= effecttag.label class: 'tag__item' do %>
-                     <%= effecttag.check_box class: 'tag__checkbox' %>
-                     <%= effecttag.text %>
-                   <% end %>
-                 <% end %>
-               </td>
-             </tr>
-
-      </tbody>
-     </table>
-
-    <div class="text-center">
-    <%= f.submit '保存', class:"btn btn-success col-3" %>
-    <% end %>
+   <%= render "admin/nutrients/form", itme: @nutrient, url: admin_nutrients_path(@nutrient), submit: '保存' %>
     </div>
-
-   </div>
   </div>
 </div>
-

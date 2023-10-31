@@ -1,32 +1,32 @@
 <div class="container">
-    <h4 class="my-3 text-center" style="background-color: #ffff55">野菜一覧</h4>
-    <div class="row">
-      <div class="col-8 px-5 px-sm-0 mx-auto">
-        <div class="text-right my-3">
-          <%= link_to "新規登録", new_admin_vegetable_path, class:"btn btn-outline-success" %>
-        </div>
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th>野菜ID</th>
-              <th>野菜名</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><% @vegetables.each do |vegetable| %></tr>
-              <td><%= vegetable.id %></td>
-              <td><%= vegetable.name %></td>
-              <td><%= link_to "詳細", admin_vegetable_path(vegetable) %></td>
-              <td><%= link_to "編集", edit_admin_vegetable_path(vegetable), style: "color: #c66358;" %></td>
-              <td><%= link_to "削除", admin_vegetable_path(vegetable), method: :delete, data: { confirm: "本当に削除しますか？" }, style: "color: red;" %></td>
-              <% end %>
-          </tbody>
-        </table>
-        <%= paginate @vegetables %>
-        </div>
+  <h4 class="my-3 text-center" style="background-color: #ffff55">野菜一覧</h4>
+  <div class="row">
+    <div class="col-8 px-5 px-sm-0 mx-auto">
+      <div class="text-right my-3">
+        <%= link_to "新規登録", new_admin_vegetable_path, class:"btn btn-outline-success" %>
       </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>野菜ID</th>
+            <th>野菜名</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><% @vegetables.each do |vegetable| %></tr>
+            <td><%= vegetable.id %></td>
+            <td><%= vegetable.name %></td>
+            <td><%= link_to "詳細", admin_vegetable_path(vegetable) %></td>
+            <td><%= link_to "編集", edit_admin_vegetable_path(vegetable), style: "color: #c66358;" %></td>
+            <td><%= link_to "削除", admin_vegetable_path(vegetable), method: :delete, data: { confirm: "本当に削除しますか？" }, style: "color: red;" %></td>
+            <% end %>
+        </tbody>
+      </table>
+      <%= paginate @vegetables %>
+    </div>
+  </div>
 </div>

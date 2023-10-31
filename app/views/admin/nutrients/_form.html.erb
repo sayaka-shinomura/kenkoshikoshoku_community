@@ -1,0 +1,30 @@
+<%= form_with model: @nutrient, url:admin_nutrients_path(@nutrient.id), method: :post do |f| %>
+  <div class="form-group">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th class="col-1">栄養素名</th>
+          <td class="col-5"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>栄養素概要</th>
+          <td><%= f.text_area :introduction, id:"inputIntroduction", class:"form-control", :size=>"30x15A" %></td>
+        </tr>
+        <tr>
+          <th>効能</th>
+          <td>
+            <%= f.collection_check_boxes(:effect_ids, Effect.all, :id, :name) do |effecttag| %>
+              <%= effecttag.label class: 'tag__item mr-3' do %>
+                <%= effecttag.check_box class: 'tag__checkbox' %>
+                <%= effecttag.text %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center my-3">
+      <%= f.submit submit, class:"btn btn-success w-25" %>
+    </div>
+  </div>
+<% end %>

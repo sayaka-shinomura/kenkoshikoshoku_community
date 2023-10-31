@@ -1,50 +1,20 @@
 <div class="container">
-  <h4 class="my-3 text-center">栄養素情報登録</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffb830">栄養素情報登録</h4>
   <div class="row">
-    <div class="col-6 px-5 px-sm-0 mx-auto">
+    <div class="col-8 px-5 px-sm-0 mx-auto">
     <!--#新規投稿エラーメッセージの表示-->
       <div class="form-body p-4">
         <% if @nutrient.errors.any? %>
         <%= @nutrient.errors.count %>error prohibited this obj from being saved:
         <ul>
           <% @nutrient.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+            <li><%= message %></li>
           <% end %>
-       </ul>
-       <% end %>
+        </ul>
+        <% end %>
       </div>
 
-       <%= form_with model: @nutrient, url:admin_nutrients_path(@nutrient.id), method: :post do |f| %>
-       <div class="form-group">
-         <table class="table table-borderless">
-           <tbody>
-             <tr>
-               <td class="col-2"><%= f.label :name, "栄養素名" %></td>
-               <td class="col-5"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
-             </tr>
-             <tr>
-               <td class="col-2"><%= f.label :introduction, "栄養素概要" %></td>
-               <td class="col-5"><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
-             </tr>
-             <tr>
-               <td class="col-2"><%= f.label :name, "効能" %></td>
-               <td class="col-5">
-                 <%= f.collection_check_boxes(:effect_ids, Effect.all, :id, :name) do |effecttag| %>
-                   <%= effecttag.label class: 'tag__item' do %>
-                     <%= effecttag.check_box class: 'tag__checkbox' %>
-                     <%= effecttag.text %>
-                   <% end %>
-                 <% end %>
-               </td>
-             </tr>
-             <tr>
-               <td class="col-2"></td>
-               <td class="col-5"><%= f.submit '新規登録', class:"btn btn-success" %></td>
-             </tr>
-           </tbody>
-          </table>
-       <% end %>
-       </div>
+      <%= render "admin/nutrients/form", itme: @nutrient, url: admin_nutrients_path(@nutrient), submit: '新規登録' %>
     </div>
   </div>
 </div>

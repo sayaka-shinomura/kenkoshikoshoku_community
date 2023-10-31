@@ -1,45 +1,46 @@
 <%= form_with model: @vegetable, url:admin_vegetables_path(@vegetable.id), method: :post do |f| %>
-      <div class="form-group">
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <th>野菜名称</th>
-              <td><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
-            </tr>
-            <tr>
-               <th>栄養素</th>
-               <td>
-                 <%= f.collection_check_boxes(:nutrient_ids, Nutrient.all, :id, :name) do |nutrienttag| %>
-                   <%= nutrienttag.label class: 'tag__item mr-2' do %>
-                     <%= nutrienttag.check_box class: 'tag__checkbox' %>
-                     <%= nutrienttag.text %>
-                   <% end %>
-                 <% end %>
-               </td>
-             </tr>
-            <tr>
-              <th>野菜画像</th>
-              <td><%= f.file_field :vegetable_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
-            </tr>
-            <tr>
-              <th>旬の時期</th>
-              <td><%= f.text_field :seasonal, autofocus: true, id:"inputSeasonal", class:"form-control" %></td>
-            </tr>
-            <tr>
-              <th>産地情報</th>
-              <td><%= f.text_area :production_area, autofocus: true, id:"inputProductionArea", class:"form-control", :size=>"40x6" %></td>
-            </tr>
-            <tr>
-              <th>保存方法</th>
-              <td><%= f.text_area :keeping, autofocus: true, id:"inputKeeping", class:"form-control", :size=>"40x6" %></td>
-            </tr>
-            <tr>
-              <th>おすすめ情報</th>
-              <td><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
-            </tr>
-          </tbody>
-        </table>
-       <div class="text-center my-3">
-         <%= f.submit submit, class:"btn btn-success w-25" %>
-       </div>
-       <% end %>
+  <div class="form-group">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>野菜名称</th>
+          <td><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>栄養素</th>
+          <td>
+            <%= f.collection_check_boxes(:nutrient_ids, Nutrient.all, :id, :name) do |nutrienttag| %>
+              <%= nutrienttag.label class: 'tag__item mr-2' do %>
+                <%= nutrienttag.check_box class: 'tag__checkbox' %>
+                <%= nutrienttag.text %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>野菜画像</th>
+          <td><%= f.file_field :vegetable_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
+        </tr>
+        <tr>
+          <th>旬の時期</th>
+          <td><%= f.text_field :seasonal, autofocus: true, id:"inputSeasonal", class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>産地情報</th>
+          <td><%= f.text_area :production_area, autofocus: true, id:"inputProductionArea", class:"form-control", :size=>"30x4" %></td>
+        </tr>
+        <tr>
+          <th>保存方法</th>
+          <td><%= f.text_area :keeping, autofocus: true, id:"inputKeeping", class:"form-control", :size=>"30x4" %></td>
+        </tr>
+        <tr>
+          <th>おすすめ情報</th>
+          <td><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"30x15" %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center my-3">
+      <%= f.submit submit, class:"btn btn-success w-25" %>
+    </div>
+  </div>
+  <% end %>

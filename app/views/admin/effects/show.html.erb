@@ -1,28 +1,27 @@
 <div class="container">
-  <h4 class="my-3 text-center">効能詳細</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffb830">効能詳細</h4>
   <div class="row">
-    <div class="col-6 px-5 px-sm-0 mx-auto">
+    <div class="col-7 px-5 px-sm-0 mx-auto">
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td class="col-2"><p>効能ID</p></td>
-            <td class="col-5"><%= @effect.id %></td>
+            <th class="col-1">効能ID</th>
+            <td class="col-6"><%= @effect.id %></td>
        　　</tr>
           <tr>
-            <td class="col-2"><p>効能名</p></td>
-            <td class="col-5"><%= @effect.name %></td>
+            <th>効能名</th>
+            <td><%= @effect.name %></td>
        　  </tr>
           <tr>
-            <td><p>効能概要</p></td>
+            <th>効能概要</th>
             <td><%=safe_join(@effect.introduction.split("\n"),tag(:br))%></td>
           </tr>
-       </tbody>
-     </table>
+        </tbody>
+      </table>
+
+      <div class="text-center">
+        <%= link_to "編集", edit_admin_effect_path(@effect), class:"btn btn-primary w-25" %>
+      </div>
     </div>
   </div>
-    <div class="text-center">
-      <%= link_to "編集", edit_admin_effect_path(@effect), class:"btn btn-primary col-3" %>
-    </div>
-
-
 </div>

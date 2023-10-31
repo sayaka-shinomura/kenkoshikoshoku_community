@@ -1,31 +1,30 @@
 <div class="container">
-    <h4 class="my-3 text-center">レビュー一覧</h4>
-
-    <div class="row">
-      <div class="col-md-8 offset-md-1">
-        <table class="table">
-          <thead>
-            <tr>
-              <th align="left">レビューID</th>
-              <th align="left">投稿ユーザー</th>
-              <th align="left">レビューしたレシピID</th>
-              <th align="left">レビュー更新日</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><% @reviews.each do |review| %></tr>
-              <td><%= review.id %></td>
-              <td><%= review.user.account_name %></td>
-              <td><%= review.recipe_id %></td>
-              <td><%= review.updated_at.strftime('%Y/%m/%d') %></td>
-              <td><%= link_to "詳細", admin_review_path(review) %></td>
-              <td><%= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: "管理者権限で削除します。本当に削除しますか？" } %></td>
-              <% end %>
-          </tbody>
-        </table>
-        <%= paginate @reviews %>
-        </div>
-      </div>
+  <h4 class="my-3 text-center" style="background-color: #ffff55">レビュー一覧【新着順】</h4>
+  <div class="row">
+    <div class="col-8 px-5 px-sm-0 mx-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>レビューID</th>
+            <th>投稿ユーザー</th>
+            <th>レビューしたレシピID</th>
+            <th>レビュー更新日</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><% @reviews.each do |review| %></tr>
+            <td><%= review.id %></td>
+            <td><%= review.user.account_name %></td>
+            <td><%= review.recipe_id %></td>
+            <td><%= review.updated_at.strftime('%Y/%m/%d') %></td>
+            <td><%= link_to "詳細", admin_review_path(review) %></td>
+            <td><%= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: "管理者権限で削除します。本当に削除しますか？" }, style: "color: red;" %></td>
+            <% end %>
+        </tbody>
+      </table>
+      <%= paginate @reviews %>
+    </div>
+  </div>
 </div>

@@ -1,27 +1,27 @@
 <div class="container">
-  <h4 class="my-3 text-center">レビュー詳細</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffb830">レビュー詳細</h4>
   <div class="row">
-    <div class="col-6 px-5 px-sm-0 mx-auto">
+    <div class="col-8 px-5 px-sm-0 mx-auto">
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td class="col-2"><p>レビューID</p></td>
+            <th class="col-2">レビューID</th>
             <td class="col-5"><%= @review.id %></td>
        　　</tr>
           <tr>
-            <td class="col-2"><p>レビューユーザー</p></td>
-            <td class="col-5"><%= @review.user.account_name %></td>
+            <th>レビューユーザー</th>
+            <td><%= @review.user.account_name %></td>
        　  </tr>
-       　 <tr>
-            <td class="col-2"><p>レビューレシピID</p></td>
-            <td class="col-5"><%= @review.recipe_id %></td>
+       　  <tr>
+            <th>レビューレシピID</th>
+            <td><%= @review.recipe_id %></td>
        　</tr>
        　 <tr>
-            <td class="col-2"><p>レビューレシピ名</p></td>
-            <td class="col-5"><%= @review.recipe.name %></td>
+            <th>レビューレシピ名</th>
+            <td><%= @review.recipe.name %></td>
        　</tr>
           <tr>
-            <td class="col-2"><p>評価</th>
+            <th>評価</th>
             <td>
               <div id="star_<%= @review.id %>"></div>
                 <script>
@@ -39,20 +39,19 @@
                   raty(elem, opt);
                   });
                 </script>
-              </td>
-            </tr>
+              </div>
+            </td>
+          </tr>
           <tr>
-            <td><p>コメント</p></td>
+            <th>コメント</th>
             <td><%=safe_join(@review.comment.split("\n"),tag(:br))%></td>
           </tr>
           <tr>
-            <td><p>レビュー更新日</p></td>
+            <th>レビュー更新日</th>
             <td><%= @review.updated_at.strftime('%Y/%m/%d') %></td>
           </tr>
-       </tbody>
-     </table>
+        </tbody>
+      </table>
     </div>
   </div>
-
-
 </div>

@@ -22,7 +22,16 @@
           </tr>
           <tr>
             <th>対応内容</th>
-            <td><%=safe_join(@request.reply.split("\n"),tag(:br))%></td>
+            <td>
+              <% if @request.reply.present? %>
+                <%=safe_join(@request.reply.split("\n"),tag(:br))%>
+              <% else %>
+                <p>
+                  管理者がご意見・ご要望内容を確認しております。<br>
+                  対応までもうしばらくお待ちください。
+                </p>
+　　　　　　　<% end %>
+            </td>
           </tr>
           <tr>
             <th>対応ステータス</th>

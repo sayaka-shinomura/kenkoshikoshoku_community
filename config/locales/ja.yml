@@ -180,3 +180,9 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+  enums:
+    user:
+      gender:
+        man: "男性"
+        woman: "女性"

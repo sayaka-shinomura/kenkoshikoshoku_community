@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="my-5 text-center">皆様からのご意見・ご要望</h4>
+  <h4 class="my-5 text-center" style="background-color: #ffb830">皆様からのご意見・ご要望</h4>
   <div class="text-center my-2">
     <%= form_with(url: search_requests_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "リクエストを検索", class: "search-input" %>

@@ -13,7 +13,7 @@ class Public::RequestsController < ApplicationController
   def create
     @request = current_user.requests.new(request_params)
     if @request.save
-      redirect_to requests_path(@request.id), flash: { notice: "ご意見・ご要望を投稿しました。" }
+      redirect_to request_path(@request.id), flash: { notice: "ご意見・ご要望を投稿しました。" }
     else
       render :new
     end

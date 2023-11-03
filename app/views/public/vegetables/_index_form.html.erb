@@ -18,10 +18,14 @@
 
 <div class="my-3">
   <div class="d-flex flex-wrap">
-    <% @vegetable.each do |vegetable| %>
+    <% @vegetable.uniq.each do |vegetable| %>
       <div class="mr-3 d-flex flex-column mb-4">
         <%= link_to vegetable_path(vegetable.id) do %>
-          <%= image_tag vegetable.vegetable_image, format: "jpeg", fallback: "no-image.png", size: "280x180" %>
+          <% if vegetable.vegetable_image.attached? %>
+            <%= image_tag vegetable.vegetable_image, size: "340x250" %>
+          <% else %>
+            <%= image_tag 'no-image', size: "340x250" %>
+          <% end %>
         <% end %>
         <p class="ml-1 text-dark">
           <strong><%= vegetable.name %></strong></br>

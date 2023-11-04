@@ -20,7 +20,7 @@
         <div class="container">
           <a class="vavbar-brand text-light" href="/">
             <%= link_to root_path do %>
-            <%= image_tag 'Logo9', size: "300x100" %>
+            <%= image_tag  'Logo9', width: '120%', height: '120%' %>
             <% end %>
           </a>
 
@@ -109,6 +109,7 @@
       <div class="d-flex justify-content-center my-3">
         <%= render "searches/form" %>
       </div>
+
       <%= yield %>
     </main>
 

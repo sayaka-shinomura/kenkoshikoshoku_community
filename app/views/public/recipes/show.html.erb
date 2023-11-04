@@ -5,9 +5,9 @@
     <div class="col-4 px-5 px-sm-0 mx-auto">
       <div class="text-center">
         <% if @recipe.recipe_image.attached? %>
-          <%= image_tag @recipe.recipe_image, size: "340x250" %>
+          <%= image_tag  @recipe.recipe_image, width: '100%', height: '100%' %>
         <% else %>
-          <%= image_tag 'no-image', size: "340x250" %>
+          <%= image_tag 'no-image', width: '100%', height: '100%' %>
         <% end %>
       </div>
       <table class="table">

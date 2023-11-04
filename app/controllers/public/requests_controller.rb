@@ -29,7 +29,7 @@ class Public::RequestsController < ApplicationController
       @request.destroy
       redirect_to mypage_path, flash: { notice: "ご意見・ご要望の取り消しを実行しました" }
     else
-      redirect_back fallback_location: root_path, flash: { alert: "他人のリクエストは削除できません" }
+      redirect_back fallback_location: root_path, flash: { notice: "他人のリクエストは削除できません" }
     end
   end
 

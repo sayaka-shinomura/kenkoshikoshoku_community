@@ -40,14 +40,14 @@ class Public::RecipesController < ApplicationController
     if @recipe.user == current_user
       render "edit"
     else
-      redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは編集できません" }
+      redirect_back fallback_location: root_path, flash: { notice: "他人のレシピは編集できません" }
     end
   end
 
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      redirect_to @recipe, flash: { notice: "「#{@recipe.name}」のレシピを更新しました。" }
+      redirect_to @recipe, flash: { notice: "「#{@recipe.name}」のレシピ情報を更新しました。" }
     else
       render :edit
     end
@@ -59,7 +59,8 @@ class Public::RecipesController < ApplicationController
       @recipe.destroy
       redirect_to mypage_path, flash: { notice: "「#{@recipe.name}」のレシピを削除しました。" }
     else
-      redirect_back fallback_location: root_path, flash: { alert: "他人のレシピは削除できません" }
+      redirect_back fallback_location: root_path, flash: { notice: "他人のレシピは削除できません.
+      " }
     end
   end
 

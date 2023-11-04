@@ -1,5 +1,7 @@
 class Public::ReviewsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+
   def index
     @reviews = Review.page(params[:page]).per(10).all.order(created_at: :desc)
 
@@ -18,12 +20,12 @@ class Public::ReviewsController < ApplicationController
     if @review.valid?
       if review_count < 1
         @review.save
-        redirect_to reviews_path, notice: "レビューを保存しました"
+        redirect_to reviews_path, notice: "レビューを投稿しました。"
       else
-        redirect_to reviews_path, notice: "レビューの投稿は一度までです"
+        redirect_to reviews_path, notice: "レビューの投稿は一度までです。レビュー内容を変更したい場合は、レビューの編集を行って下さい。"
       end
     else
-      flash.now[:alert] = "レビューの保存に失敗しました"
+      flash.now[:notice] = "レビューの保存に失敗しました"
       render :index
     end
   end
@@ -33,13 +35,14 @@ class Public::ReviewsController < ApplicationController
     if @review.user == current_user
       render "edit"
     else
-      redirect_back fallback_location: root_path, flash: { alert: "他人のレビューは編集できません" }
+      redirect_back fallback_location: root_path, flash: { notice: "他人のレビューは編集できません" }
     end
   end
 
   def update
     @review = Review.find(params[:recipe_id])
     @recipe = @review.recipe
+
     if @review.update(review_params)
       redirect_to reviews_path, flash: { notice: "レビューを更新しました。" }
     else
@@ -54,7 +57,7 @@ class Public::ReviewsController < ApplicationController
       @review.destroy
       redirect_to mypage_path, flash: { notice: "レビューを削除しました。" }
     else
-      redirect_back fallback_location: root_path, flash: { alert: "他人のレビューは編集できません" }
+      redirect_back fallback_location: root_path, flash: { notice: "他人のレビューは削除できません" }
     end
   end
 

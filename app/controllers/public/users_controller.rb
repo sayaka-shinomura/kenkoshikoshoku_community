@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     @user.update (user_params)
-    redirect_to mypage_path, notice: '会員情報の更新が完了しました。'
+    redirect_to mypage_path, notice: 'ユーザー情報を更新しました。'
   end
 
   def check
@@ -33,7 +33,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_active: false)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理を行いました。ご利用ありがとうございました。"
     redirect_to root_path
   end
 

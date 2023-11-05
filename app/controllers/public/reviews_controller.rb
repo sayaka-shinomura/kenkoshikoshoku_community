@@ -25,8 +25,8 @@ class Public::ReviewsController < ApplicationController
         redirect_to reviews_path, notice: "レビューの投稿は一度までです。レビュー内容を変更したい場合は、レビューの編集を行って下さい。"
       end
     else
-      flash.now[:notice] = "レビューの保存に失敗しました"
-      render :index
+      flash.now[:notice] = "【！】空欄で投稿はできません。評価の選択をお願いします。"
+      render template: "public/homes/about"
     end
   end
 
@@ -40,10 +40,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:recipe_id])
+    @review = Review.find(params[:id])
     @recipe = @review.recipe
-
-    if @review.update(review_params)
+    if @review.update!(review_params)
       redirect_to reviews_path, flash: { notice: "レビューを更新しました。" }
     else
       render :edit
@@ -70,7 +69,7 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:comment, :star).
-    merge(user_id: current_user.id, recipe_id: params[:recipe_id])
+    merge(user_id: current_user.id, recipe_id: @review.recipe_id)
   end
 
 

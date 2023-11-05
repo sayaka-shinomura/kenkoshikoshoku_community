@@ -15,7 +15,8 @@ class Public::RequestsController < ApplicationController
     if @request.save
       redirect_to request_path(@request.id), flash: { notice: "ご意見・ご要望を投稿しました。" }
     else
-      render :new
+      flash.now[:notice] = "【！】空欄で投稿はできません。入力をお願いします。"
+      render template: "public/homes/about"
     end
   end
 

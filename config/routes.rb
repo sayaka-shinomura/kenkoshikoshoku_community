@@ -50,7 +50,6 @@ scope module: :public do
     resources :nutrients, only: [:index, :show]
     resources :effects, only: [:index, :show]
     resources :reviews, only: [:index, :new, :create, :edit, :destroy, :update]
-    #patch 'reviews/:recipe_id' => 'reviews#update'
     get 'reviews/search' => 'reviews#search', as: 'search_reviews'
     resources :requests, only: [:index, :new, :create, :show, :destroy]
 

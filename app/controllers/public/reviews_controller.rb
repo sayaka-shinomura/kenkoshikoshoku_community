@@ -15,6 +15,7 @@ class Public::ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.new(review_params)
+    @review.recipe_id = params[:recipe_id]
     @recipe = @review.recipe
     review_count = Review.where(recipe_id: params[:recipe_id]).where(user_id: current_user.id).count
     if @review.valid?
@@ -42,7 +43,7 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @recipe = @review.recipe
-    if @review.update!(review_params)
+    if @review.update(review_params)
       redirect_to reviews_path, flash: { notice: "レビューを更新しました。" }
     else
       render :edit
@@ -69,7 +70,7 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:comment, :star).
-    merge(user_id: current_user.id, recipe_id: @review.recipe_id)
+    merge(user_id: current_user.id)
   end
 
 

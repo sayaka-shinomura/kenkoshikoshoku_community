@@ -1,6 +1,6 @@
 <div class="container">
   <div calss="row">
-    <div class="col-8 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-8 col-md-10 col-sm-12 px-5 px-sm-0 mx-auto">
       <h4 class="my-3 text-center" style="background-color: #ffff55">ユーザーログイン</h2>
 
       <% if flash[:danger] %>
@@ -11,16 +11,16 @@
       <table class="table">
         <tbody>
           <tr>
-            <td class="col-2"><%= f.label :email %></td>
-            <td class="col-6"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"50" %></td>
+            <td class="col-lg-2 col-md-4 col-sm-4"><%= f.label :email %></td>
+            <td class="col-lg-6 col-md-6 col-sm-8"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"50" %></td>
           </tr>
           <tr>
-            <td class="col-2"><%= f.label :password %></td>
-            <td class="col-6"><%= f.password_field :password, autocomplete: "current-password", :size=>"50" %></td>
+            <td><%= f.label :password %></td>
+            <td><%= f.password_field :password, autocomplete: "current-password", :size=>"50" %></td>
           </tr>
           <tr>
-         <td class="col-2"></td>
-         <td class="col-6"><%= f.submit "ログイン", class: "btn btn-primary w-50" %></td>
+         <td></td>
+         <td><%= f.submit "ログイン", class: "btn btn-primary w-50" %></td>
          </tr>
         </tbody>
       </table>

@@ -1,6 +1,6 @@
 <div class="container">
   <div calss="row">
-    <div class="col-9 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-9 col-md-9 col-sm-12 px-5 px-sm-0 mx-auto">
       <h4 class="my-3 text-center" style="background-color: #ffff55">ユーザー新規登録</h4>
 
       <%= form_with model: @user, url: registration_path(resource_name), local: true do |f| %>
@@ -8,46 +8,46 @@
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td class="col-3"><%= f.label :account_name %></td>
-            <td class="col-6"><%= f.text_field :account_name, autofocus: true, autocomplete: "account_name", :size=>"50" %></td>
+            <td class="col-lg-3 col-md-3 col-sm-4">アカウント名</td>
+            <td class="col-lg-6 col-md-6 col-sm-8"><%= f.text_field :account_name, autofocus: true, autocomplete: "account_name", :size=>"50" %></td>
           </tr>
           <tr>
-            <td class="col-3"><%= f.label :email %></td>
-            <td class="col-6"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"50" %></td>
+            <td>メールアドレス</td>
+            <td><%= f.email_field :email, autocomplete: "email", :size=>"50" %></td>
           </tr>
           <tr>
-            <td class="col-3"><%= f.label :telephone_number %></td>
-            <td class="col-6"><%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", :size=>"50" %></td>
+            <td>電話番号</td>
+            <td><%= f.text_field :telephone_number, autocomplete: "telephone_number", :size=>"50" %></td>
           </tr>
           <tr>
-            <td class="col-3"><%= f.label :birth_date %></td>
-            <td class="col-6"><%= f.text_field :birth_date, autofocus: true, autocomplete: "birth_date", :size=>"50" %></td>
+            <td>生年月日</td>
+            <td><%= f.text_field :birth_date, autocomplete: "birth_date", :size=>"50" %></td>
           </tr>
           <tr>
-            <td class="col-3"><%= f.label :gender %></td>
-            <td class="col-6">
+            <td>性別</td>
+            <td>
               <%= f.radio_button :gender, "0", :checked => true %>
-              <%= f.label :gender, User.genders_i18n[:man], class: "mr-5" %>
+              男性
               <%= f.radio_button :gender, "1" %>
-              <%= f.label :gender, User.genders_i18n[:woman] %>
+              女性
             </td>
           </tr>
           <tr>
-            <td class="col-3">
-              <%= f.label :password %>
+            <td>
+              パスワード(６文字以上)
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> 文字以上)</em>
       　　　　　　<% end %>
             </td>
-            <td class="col-6"><%= f.password_field :password, autocomplete: "new-password", :size=>"50" %></td>
+            <td><%= f.password_field :password, autocomplete: "new-password", :size=>"50" %></td>
           </tr>
           <tr>
-            <td class="col-3"><%= f.label :password_confirmation %></td>
-            <td class="col-6"><%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"50" %></td>
+            <td>パスワード(確認用)</td>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"50" %></td>
           </tr>
     　　　　<tr>
-            <td class="col-3"></td>
-            <td class="col-6"><%= f.submit "新規登録", class: "btn btn-success w-50" %></td>
+            <td></td>
+            <td><%= f.submit "新規登録", class: "btn btn-success w-50" %></td>
           </tr>
         </tbody>
       </table>

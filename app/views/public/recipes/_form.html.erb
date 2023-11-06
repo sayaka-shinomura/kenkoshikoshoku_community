@@ -3,8 +3,8 @@
         <table class="table table-borderless">
           <tbody>
             <tr>
-              <th class="col-2">レシピ名</th>
-              <td class="col-7"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
+              <th class="col-lg-2 col-md-3 col-sm-2">レシピ名</th>
+              <td class="col-lg-7 col-mg-7 col-sm-12"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control", placeholder: "20字未満で入力してください" %></td>
             </tr>
             <tr>
                <th>メイン野菜</th>
@@ -23,7 +23,7 @@
             </tr>
             <tr>
               <th>おすすめポイント</th>
-              <td><%= f.text_field :summary, autofocus: true, id:"inputSummary", class:"form-control" %></td>
+              <td><%= f.text_field :summary, id:"inputSummary", class:"form-control", placeholder: "20字未満で入力してください" %></td>
             </tr>
             <tr>
               <th>調理時間</th>
@@ -31,7 +31,7 @@
             </tr>
             <tr>
               <th>レシピ紹介</th>
-              <td><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control", :size=>"40x6" %></td>
+              <td><%= f.text_area :introduction, id:"inputIntroduction", class:"form-control", :size=>"40x6", placeholder: "200字未満で入力してください" %></td>
             </tr>
             <tr>
               <th>材料</th>

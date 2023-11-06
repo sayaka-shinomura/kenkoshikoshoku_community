@@ -1,17 +1,17 @@
 <div class="container">
   <%= image_tag  'top4', width: '100%', height: '50%' %>
   <div class="row">
-    <div class="col-3 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-3 col-md-3 col-sm-12 px-5 px-sm-0 mx-auto">
       <h4 class="text-center" style="background-color: #c66358;">お知らせ</h4>
-      <P style="background-color: #f3ccd5">
+      <p style="background-color: #f3ccd5">
         ご利用ありがとうございます。</br>
         当サイトは野菜をつかった料理のレシピを投稿・検索できるコミュニティサイトです。</br>
         野菜・栄養素・効能情報につきましては、誤った情報の拡散防止のため、管理者が精査した上で掲載しております。</br>
        情報提供につきましては、ご意見・ご要望の投稿からお願い致します。
-      </P>
+      </p>
     </div>
 
-    <div class="col-5 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-5 col-md-5 col-sm-12 px-5 px-sm-0 mx-auto">
       <h4 class="text-center" style="background-color: #ffb830">皆様からのご意見・ご要望</h4>
       <table class="mx-auto">
         <tbody>
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="col-4 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-4 col-md-4 col-sm-12 px-5 px-sm-0 mx-auto">
       <%= render "public/requests/form", itme: @request, url: root_path %>
     </div>
   </div>

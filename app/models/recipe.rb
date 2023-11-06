@@ -28,8 +28,9 @@ class Recipe < ApplicationRecord
   enum difficulty: { ★: 1, ★★: 2, ★★★: 3, ★★★★: 4, ★★★★★: 5}
 
 
-  validates :name, presence: true, length: { maximum: 50}
-  validates :introduction, presence: true, length: { maximum: 140}
+  validates :name, presence: true, length: { maximum: 20}
+  validates :summary, length: { maximum: 20}
+  validates :introduction, presence: true, length: { maximum: 200}
 
   validate :require_any_ingredients
   validate :require_any_cookerys
@@ -50,17 +51,6 @@ class Recipe < ApplicationRecord
 
   def find_made_list(user)
     made_lists.find_by(user_id: user.id)
-  end
-
-
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @recipe = Recipe.where("name LIKE?","#{word}")
-    elsif search == "partial_match"
-      @recipe = Recipe.where("name LIKE?","%#{word}%")
-    else
-      @recipe = Recipe.all
-    end
   end
 
 

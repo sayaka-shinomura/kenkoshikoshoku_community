@@ -22,6 +22,7 @@ class Public::RecipesController < ApplicationController
     if @recipe.save
       redirect_to recipe_path(@recipe.id), flash: { notice: "「#{@recipe.name}」のレシピを投稿しました。" }
     else
+      flash.now[:notice] = "【！】必要事項が入力されていません。または文字数制限をお確かめください。"
       render :new
     end
   end

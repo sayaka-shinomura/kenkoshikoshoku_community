@@ -12,7 +12,8 @@
   <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
     <%= form.text_field :keyword, placeholder: "レシピを検索する", class: "search-input" %>
     <%= form.submit "キーワード検索", class: "search-btn" %>
-    <p>◆投稿ユーザー名または材料でレシピを検索することができます◆</p>
-  <% end %>
+    <br>
+    ◆投稿ユーザー名または材料でレシピを検索することができます◆
+    <% end %>
 </div>
 <% end %>

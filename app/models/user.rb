@@ -8,7 +8,7 @@ class User < ApplicationRecord
   enum gender: { man: "0", woman: "1" }
 
 
-  has_many :recipes, dependent: :destroy
+  has_many :recipes
 
   has_many :myrecipes, dependent: :destroy
 

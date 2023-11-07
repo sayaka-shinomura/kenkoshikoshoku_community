@@ -1,9 +1,8 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-6 col-md-8 col-sm-12 px-5 px-sm-0 mx-auto">
     <h4 class="my-3 text-center" style="background-color: #ffff55"><%= @user.account_name %>さんのアカウント管理</h4>
 
-    <table class="table table-borderless">
+    <table class="table">
       <tbody>
         <tr>
           <td>アカウント名</td>
@@ -29,9 +28,9 @@
           <td>会員ステータス</td>
           <td>
             <% if @user.is_active? %>
-              <span class="text-active">有効</span>
+              <span>有効</span>
             <% else %>
-              <span class="text-invalid">退会済み</span>
+              <span>退会済み</span>
             <% end %>
           </td>
         </tr>

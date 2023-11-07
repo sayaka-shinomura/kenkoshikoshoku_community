@@ -19,9 +19,9 @@
               <td><%= user.account_name %></td>
               <td>
                 <% if user.is_active? %>
-                  <span class="text-success">有効</span>
+                  <span>有効</span>
                 <% else %>
-                  <span class="text-muted">退会済み</span>
+                  <span>退会済み</span>
                 <% end %>
               </td>
               <td><%= link_to "詳細", admin_user_path(user), class:"text-primary" %></td>

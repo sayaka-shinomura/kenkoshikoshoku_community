@@ -1,12 +1,12 @@
 <div class="container">
   <h4 class="my-3 text-center" style="background-color: #ffb830">栄養素情報詳細</h4>
   <div class="row">
-    <div class="col-8 px-5 px-sm-0 mx-auto">
-      <table class="table table-borderless">
+    <div class="col-lg-8 col-md-10 colsm-12 px-5 px-sm-0 mx-auto">
+      <table class="table">
         <tbody>
           <tr>
-            <th class="col-1">栄養素ID</th>
-            <td class="col-6"><%= @nutrient.id %></td>
+            <th>栄養素ID</th>
+            <td><%= @nutrient.id %></td>
        　　</tr>
           <tr>
             <th>栄養素名</th>
@@ -28,7 +28,7 @@
       </table>
 
       <div class="text-center">
-        <%= link_to "編集", edit_admin_nutrient_path(@nutrient), class:"btn btn-primary w-25" %>
+        <%= link_to "　　編集　　", edit_admin_nutrient_path(@nutrient), class:"btn btn-outline-primary" %>
       </div>
     </div>
   </div>

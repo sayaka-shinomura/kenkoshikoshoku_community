@@ -1,7 +1,7 @@
 <div class="container">
   <h4 class="my-3 text-center" style="background-color: #ffb830">野菜情報編集</h4>
   <div class="row">
-    <div class="col-8 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-8 col-md-8 colsm-12 px-5 px-sm-0 mx-auto">
 
       <div class="form-body p-4">
        <% if @vegetable.errors.any? %>
@@ -16,7 +16,7 @@
        <% end %>
      </div>
 
-     <%= render "admin/vegetables/form", itme: @vegetable, url: admin_vegetable_path(@vegetable), submit: '保存' %>
+     <%= render "admin/vegetables/form", itme: @vegetable, url: admin_vegetable_path(@vegetable), submit: '　　保存　　' %>
     </div>
   </div>
 </div>

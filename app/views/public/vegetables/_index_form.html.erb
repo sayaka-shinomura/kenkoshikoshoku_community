@@ -16,24 +16,29 @@
   </div>
 </div>
 
-<div class="my-3">
-  <div class="d-flex flex-wrap">
-    <% @vegetable.uniq.each do |vegetable| %>
-      <div class="mr-3 d-flex flex-column mb-4">
-        <%= link_to vegetable_path(vegetable.id) do %>
-          <% if vegetable.vegetable_image.attached? %>
-            <%= image_tag vegetable.vegetable_image, size: "340x250" %>
-          <% else %>
-            <%= image_tag 'no-image', size: "340x250" %>
+
+  <div class="my-3">
+    <div class="d-flex flex-wrap">
+      <% @vegetable.uniq.each do |vegetable| %>
+        <div class="card mb-3 mr-3" style="max-width: 22rem;">
+          <%= link_to vegetable_path(vegetable.id) do %>
+            <% if vegetable.vegetable_image.attached? %>
+              <%= image_tag vegetable.vegetable_image, size: "340x250" %>
+            <% else %>
+              <%= image_tag 'no-image', size: "340x250" %>
+            <% end %>
           <% end %>
-        <% end %>
-        <p class="ml-1 text-dark flex-wrap w-75" >
-          <strong><%= vegetable.name %></strong></br>
-          栄養素：<% vegetable.nutrient_tags.each do |nutrient_tag| %>
-            <%= nutrient_tag.nutrient.name %>
-          <% end %>
-        </p>
-      </div>
-    <% end %>
+          <div class="card-body text-dark">
+            <p class="text-dark" >
+              <strong><%= vegetable.name %></strong></br>
+              【栄養素】<% vegetable.nutrient_tags.each do |nutrient_tag| %>
+                <%= nutrient_tag.nutrient.name %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+

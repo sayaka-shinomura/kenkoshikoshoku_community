@@ -114,7 +114,7 @@
         <table class="table table-borderless">
           <% if @recipe.reviews.present? %>
           <tbody>
-            <% @recipe.reviews.each do |review| %>
+            <% @recipe.reviews.all.order(created_at: :desc).each do |review| %>
               <tr>
                 <th class="col-2">投稿ユーザー</td>
                 <td class="col-5"><%= review.user.account_name %></td>

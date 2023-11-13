@@ -23,9 +23,9 @@
         <div class="card mb-3 mr-3" style="max-width: 22rem;">
           <%= link_to vegetable_path(vegetable.id) do %>
             <% if vegetable.vegetable_image.attached? %>
-              <%= image_tag vegetable.vegetable_image, size: "340x250" %>
+              <%= image_tag vegetable.vegetable_image, width: '100%', height: '100%' %>
             <% else %>
-              <%= image_tag 'no-image', size: "340x250" %>
+              <%= image_tag 'no-image', width: '100%', height: '100%' %>
             <% end %>
           <% end %>
           <div class="card-body text-dark">

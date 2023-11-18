@@ -25,6 +25,9 @@ module KenkoshikoshokuCommunity
     # デフォルトのlocaleを日本語(:ja)にする
     config.i18n.default_locale = :ja
 
+    #画像ファイルをプリコンパイルする設定
+    config.assets.precompile += %w( top4.jpg )
+
 
   end
 

@@ -50,7 +50,7 @@ scope module: :public do
     resources :nutrients, only: [:index, :show]
     resources :effects, only: [:index, :show]
     resources :reviews, only: [:index, :new, :create, :edit, :destroy, :update]
-    get 'reviews/search' => 'reviews#search', as: 'search_reviews'
+sudo yum -y install openssl-devel readline-devel    get 'reviews/search' => 'reviews#search', as: 'search_reviews'
     resources :requests, only: [:index, :new, :create, :show, :destroy]
 
 end

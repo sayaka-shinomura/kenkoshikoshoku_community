@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!(
+Admin.find_or_create_by!(
   email: "admin@test.com",
   password: "000000"
 )
 
-Tag.create([
+Tag.find_or_create_by!([
   { name: 'メイン' },
   { name: 'スープ' },
   { name: 'サラダ' },
@@ -20,3 +20,4 @@ Tag.create([
   { name: 'おつまみ' },
   { name: 'デザート' }
 ])
+

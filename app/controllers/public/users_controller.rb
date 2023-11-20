@@ -5,10 +5,10 @@ class Public::UsersController < ApplicationController
     @recipes = @user.recipes
 
     want_to_make_lists = WantToMakeList.where(user_id: current_user.id).pluck(:recipe_id)
-    @want_list = Recipe.find(want_to_make_lists).first(3).all.order(created_at: :desc)
+    @want_list = Recipe.find(want_to_make_lists).first(3).order(created_at: :desc)
 
     made_lists = MadeList.where(user_id: current_user.id).pluck(:recipe_id)
-    @made_list = Recipe.find(made_lists).first(3).all.order(created_at: :desc)
+    @made_list = Recipe.find(made_lists).first(3).order(created_at: :desc)
   end
 
   def index

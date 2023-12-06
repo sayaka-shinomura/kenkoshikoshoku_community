@@ -1,6 +1,7 @@
 <div class="container">
   <%= image_tag asset_path("top4.jpg"), width: '100%', height: '50%' %>
   <div class="row">
+    <!--# 管理者から利用者へのお知らせ-->
     <div class="col-lg-3 col-md-3 col-sm-12 px-5 px-sm-0 mx-auto">
       <h4 class="text-center" style="background-color: #c66358;">お知らせ</h4>
       <p style="background-color: #f3ccd5">
@@ -13,6 +14,7 @@
       </p>
     </div>
 
+    <!--# 投稿されたリクエストの抜粋-->
     <div class="col-lg-5 col-md-5 col-sm-12 px-5 px-sm-0 mx-auto">
       <h4 class="text-center" style="background-color: #ffb830">皆様からのご意見・ご要望</h4>
       <table class="mx-auto">
@@ -21,8 +23,12 @@
             <tr>
               <td><%= request.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
-            <tr><td><%= request.content %></td></tr>
-            <tr><td class="text-right"><%= link_to "詳細", request_path(request) %></td></tr>
+            <tr>
+              <td><%= request.content %></td>
+            </tr>
+            <tr>
+              <td class="text-right"><%= link_to "詳細", request_path(request) %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
@@ -31,12 +37,14 @@
       </div>
     </div>
 
+    <!--# リクエストフォーム-->
     <div class="col-lg-4 col-md-4 col-sm-12 px-5 px-sm-0 mx-auto">
       <%= render "public/requests/form", itme: @request, url: root_path %>
     </div>
   </div>
 
 
+  <!--# 各種ランキングの表示-->
   <div class="row mt-5">
     <%= render "public/homes/vegetable_rank", itme: @vegetable_ranks, url: root_path %>
     <%= render "public/homes/want_rank", itme: @want_ranks, url: root_path %>

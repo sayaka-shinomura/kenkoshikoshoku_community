@@ -1,62 +1,65 @@
 <div class="col-lg-6 col-md-6 col-sm-12 px-5 px-sm-0 mx-auto">
+
+  <!--# 作ってみたいレシピのランキング-->
   <h5 class="text-center" style="background-color: #aeeff0">
     作ってみたいリスト<br>
     ランキング
   </h5>
   <table class="text-left">
-  <% @want_ranks.each.with_index(1) do |rank, i| %>
-    <% if i == 1 %>
+    <% @want_ranks.each.with_index(1) do |rank, i| %>
+      <% if i == 1 %>
+        <tr>
+          <td><%= i %>位：</td>
+          <td><%= rank.name %></td>
+        </tr>
+      <% elsif i == 2 %>
       <tr>
         <td><%= i %>位：</td>
         <td><%= rank.name %></td>
       </tr>
-    <% elsif i == 2 %>
-    <tr>
-      <td><%= i %>位：</td>
-      <td><%= rank.name %></td>
-    </tr>
-    <% elsif i == 3 %>
-    <tr>
-      <td><%= i %>位：</td>
-      <td><%= rank.name %></td>
-    </tr>
-    <% else %>
-    <tr>
-      <td><%= i %>位：</td>
-      <td><%= rank.name %></td>
-    </tr>
+      <% elsif i == 3 %>
+      <tr>
+        <td><%= i %>位：</td>
+        <td><%= rank.name %></td>
+      </tr>
+      <% else %>
+      <tr>
+        <td><%= i %>位：</td>
+        <td><%= rank.name %></td>
+      </tr>
+      <% end %>
     <% end %>
-  <% end %>
   </table>
 
+  <!--# 作ってみたレシピのランキング-->
   <h5 class="text-center my-2" style="background-color: #aeeff0">
     作ってみたリスト<br>
     ランキング
   </h5>
   <table>
-  <% @made_ranks.each.with_index(1) do |rank, i| %>
-    <% if i == 1 %>
+    <% @made_ranks.each.with_index(1) do |rank, i| %>
+      <% if i == 1 %>
+         <tr>
+          <td><%= i %>位：</td>
+          <td><%= rank.name %></td>
+        </tr>
+      <% elsif i == 2 %>
       <tr>
         <td><%= i %>位：</td>
         <td><%= rank.name %></td>
       </tr>
-    <% elsif i == 2 %>
-    <tr>
-      <td><%= i %>位：</td>
-      <td><%= rank.name %></td>
-    </tr>
-    <% elsif i == 3 %>
-    <tr>
-      <td><%= i %>位：</td>
-      <td><%= rank.name %></td>
-    </tr>
-    <% else %>
-    <tr>
-      <td><%= i %>位：</td>
-      <td><%= rank.name %></td>
-    </tr>
+      <% elsif i == 3 %>
+      <tr>
+        <td><%= i %>位：</td>
+        <td><%= rank.name %></td>
+      </tr>
+      <% else %>
+      <tr>
+        <td><%= i %>位：</td>
+        <td><%= rank.name %></td>
+      </tr>
+      <% end %>
     <% end %>
-  <% end %>
   </table>
 </div>
 

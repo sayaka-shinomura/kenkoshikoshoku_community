@@ -1,4 +1,6 @@
 <div class="row">
+
+  <!--# 野菜からレシピを検索-->
   <div class="text-center mx-auto">
     <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "レシピを検索する", class: "search-input" %>
@@ -7,6 +9,7 @@
     <% end %>
   </div>
 
+  <!--# 栄養素からレシピを検索-->
   <div class="text-center mx-auto">
     <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "レシピを検索する", class: "search-input" %>
@@ -15,6 +18,7 @@
     <% end %>
   </div>
 
+  <!--# 効能からレシピを検索-->
   <div class="text-center mx-auto">
     <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "レシピを検索する", class: "search-input" %>
@@ -22,14 +26,17 @@
       <p>◆ご希望の効能を入力してください◆</p>
     <% end %>
   </div>
+
 </div>
 
+<!--# カテゴリー絞り込み検索-->
 <div class="my-2">
   <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
     <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]), {prompt: 'カテゴリーから絞り込む', onchange: 'submit(this.form);' } %>
   <% end %>
 </div>
 
+<!--# レシピ一覧-->
 <div class="my-3">
   <div class="d-flex flex-wrap">
     <% @recipes.uniq.each do |recipe| %>

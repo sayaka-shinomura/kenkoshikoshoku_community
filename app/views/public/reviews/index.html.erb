@@ -1,11 +1,11 @@
 <div class="container">
-    <h4 class="my-3 text-center" style="background-color: #ffb830">レビュー一覧</h4>
-    <h6 class="my-2 text-center"><%= @reviews.count %>件のレビューが投稿されています</h6>
-    <%= render "public/reviews/show_form", itme: @reviews, url: reviews_path(@reviews) %>
+  <h4 class="my-3 text-center" style="background-color: #ffb830">レビュー一覧</h4>
+  <h6 class="my-2 text-center"><%= @reviews.count %>件のレビューが投稿されています</h6>
+  <%= render "public/reviews/show_form", itme: @reviews, url: reviews_path(@reviews) %>
 
-    <div class="d-flex justify-content-center text-center">
-      <%= paginate @reviews %>
-    </div>
+  <div class="d-flex justify-content-center text-center">
+    <%= paginate @reviews %>
+  </div>
 </div>
 
 

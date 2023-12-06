@@ -1,13 +1,13 @@
 <%= form_with model: Request.new, url:requests_path(@request.id), method: :post do |f| %>
-    <h4 class="text-center" style="background-color: #c66358">ご意見・ご要望</h4>
-    <table class="table table-borderless">
-      <tbody>
-        <td class ="text-center">
-          <%= f.text_area :content, id:"inputContent", class:"form-control", :size=>"10x12", placeholder: content_text %>
-          <%= f.submit 'リクエストを投稿する', class:"btn btn-success my-2" %>
-        </td>
-      </tbody>
-    </table>
+  <h4 class="text-center" style="background-color: #c66358">ご意見・ご要望</h4>
+  <table class="table table-borderless">
+    <tbody>
+      <td class ="text-center">
+        <%= f.text_area :content, id:"inputContent", class:"form-control", :size=>"10x12", placeholder: content_text %>
+        <%= f.submit 'リクエストを投稿する', class:"btn btn-success my-2" %>
+      </td>
+    </tbody>
+  </table>
 <% end %>
 
 

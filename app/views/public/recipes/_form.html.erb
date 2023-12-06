@@ -1,92 +1,109 @@
 <%= form_with(model: @recipe, local: true) do |f| %>
-      <div class="form-group">
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <th class="col-lg-2 col-md-3 col-sm-2">レシピ名</th>
-              <td class="col-lg-7 col-mg-7 col-sm-12"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control", placeholder: "20字未満で入力してください" %></td>
-            </tr>
-            <tr>
-               <th>メイン野菜</th>
-               <td>
-                 <%= f.collection_check_boxes(:vegetable_ids, Vegetable.all, :id, :name) do |vegetable| %>
-                  <%= vegetable.label class: 'tag__item mr-3' do %>
-                    <%= vegetable.check_box class: 'tag__checkbox' %>
-                    <%= vegetable.text %>
-                  <% end %>
-                <% end %>
-               </td>
-             </tr>
-            <tr>
-              <th>完成品画像</th>
-              <td><%= f.file_field :recipe_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
-            </tr>
-            <tr>
-              <th>おすすめポイント</th>
-              <td><%= f.text_field :summary, id:"inputSummary", class:"form-control", placeholder: "20字未満で入力してください" %></td>
-            </tr>
-            <tr>
-              <th>調理時間</th>
-              <td>およそ<%= f.text_field :time, placeholder: "数字を入力" %>分</td>
-            </tr>
-            <tr>
-              <th>レシピ紹介</th>
-              <td><%= f.text_area :introduction, id:"inputIntroduction", class:"form-control", :size=>"40x6", placeholder: "200字未満で入力してください" %></td>
-            </tr>
-            <tr>
-              <th>材料</th>
-              <td>
-                <div id="ingredient-fields-template" style="display: none;">
-                  <%= f.fields_for :ingredients, Ingredient.new, child_index: "new_ingredient" do |ingredient_field| %>
-                    <%= render 'ingredient_fields', f: ingredient_field %>
-                  <% end %>
-                </div>
-                <%= f.fields_for :ingredients do |ingredient_field| %>
-                  <%= render 'ingredient_fields', f: ingredient_field %>
-                <% end %>
-                <div id="ingredients"></div>
-                <div>
-                  <button type="button" id="add-ingredient" class="btn btn-info">材料を追加</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th>作り方</th>
-              <td>
-                <div id="cookery-fields-template" style="display: none;">
-                   <%= f.fields_for :cookerys, Cookery.new, child_index: "new_cookery" do |cookery_field| %>
-                     <%= render 'cookery_fields', f: cookery_field %>
-                   <% end %>
-                </div>
-                <%= f.fields_for :cookerys do |cookery_field| %>
-                  <%= render 'cookery_fields', f: cookery_field %>
-                <% end %>
-                <div id="cookerys"></div>
-                <div>
-                  <button type="button" id="add-cookery" class="btn btn-info">手順を追加</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th>難易度</th>
-              <td><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "難易度を選択" } %>　簡単：★　　難しい：★★★★★</td>
-            </tr>
-            <tr>
-               <th>カテゴリー</th>
-               <td>
-                 <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-                  <%= tag.label class: 'tag__item mr-3' do %>
-                    <%= tag.check_box class: 'tag__checkbox' %>
-                    <%= tag.text %>
-                  <% end %>
-                <% end %>
-               </td>
-             </tr>
-          </tbody>
-       </table>
-       <div class="text-center"><%= f.submit submit, class:"btn btn-success" %></div>
-     <% end %>
-     </div>
+  <div class="form-group">
+    <table class="table table-borderless">
+      <tbody>
+        <!--# レシピ名入力-->
+        <tr>
+          <th class="col-lg-2 col-md-3 col-sm-2">レシピ名</th>
+          <td class="col-lg-7 col-md-7 col-sm-12"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control", placeholder: "20字未満で入力してください" %></td>
+        </tr>
+
+        <!--# メイン野菜の選択-->
+        <tr>
+          <th>メイン野菜</th>
+          <td>
+            <%= f.collection_check_boxes(:vegetable_ids, Vegetable.all, :id, :name) do |vegetable| %>
+              <%= vegetable.label class: 'tag__item mr-3' do %>
+                <%= vegetable.check_box class: 'tag__checkbox' %>
+                <%= vegetable.text %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+
+        <!--# 写真の添付-->
+        <tr>
+          <th>完成品画像</th>
+          <td><%= f.file_field :recipe_image, placeholder: "Image", accept: "image/*", class: "w-100" %></td>
+        </tr>
+
+        <!--# レシピの詳細情報-->
+        <tr>
+          <th>おすすめポイント</th>
+          <td><%= f.text_field :summary, id:"inputSummary", class:"form-control", placeholder: "20字未満で入力してください" %></td>
+        </tr>
+        <tr>
+          <th>調理時間</th>
+          <td>およそ<%= f.text_field :time, placeholder: "数字を入力" %>分</td>
+        </tr>
+        <tr>
+          <th>レシピ紹介</th>
+          <td><%= f.text_area :introduction, id:"inputIntroduction", class:"form-control", :size=>"40x6", placeholder: "200字未満で入力してください" %></td>
+        </tr>
+
+        <!--# 材料フォーム-->
+        <tr>
+          <th>材料</th>
+          <td>
+            <div id="ingredient-fields-template" style="display: none;">
+              <%= f.fields_for :ingredients, Ingredient.new, child_index: "new_ingredient" do |ingredient_field| %>
+                <%= render 'ingredient_fields', f: ingredient_field %>
+              <% end %>
+            </div>
+            <%= f.fields_for :ingredients do |ingredient_field| %>
+              <%= render 'ingredient_fields', f: ingredient_field %>
+            <% end %>
+            <div id="ingredients"></div>
+            <div>
+              <button type="button" id="add-ingredient" class="btn btn-info">材料を追加</button>
+            </div>
+          </td>
+        </tr>
+
+        <!--# 作り方のフォーム-->
+        <tr>
+          <th>作り方</th>
+          <td>
+            <div id="cookery-fields-template" style="display: none;">
+              <%= f.fields_for :cookerys, Cookery.new, child_index: "new_cookery" do |cookery_field| %>
+                <%= render 'cookery_fields', f: cookery_field %>
+              <% end %>
+            </div>
+            <%= f.fields_for :cookerys do |cookery_field| %>
+              <%= render 'cookery_fields', f: cookery_field %>
+            <% end %>
+            <div id="cookerys"></div>
+            <div>
+              <button type="button" id="add-cookery" class="btn btn-info">手順を追加</button>
+            </div>
+          </td>
+        </tr>
+
+        <!--# レシピ詳細情報-->
+        <tr>
+          <th>難易度</th>
+          <td><%= f.select :difficulty, Recipe.difficulties.keys.map { |k| [t("enum.recipe.difficulty.#{k}"), k] }, { include_blank: "難易度を選択" } %>　簡単：★　　難しい：★★★★★</td>
+        </tr>
+        <tr>
+          <th>カテゴリー</th>
+          <td>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <%= tag.label class: 'tag__item mr-3' do %>
+                <%= tag.check_box class: 'tag__checkbox' %>
+                <%= tag.text %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center">
+      <%= f.submit submit, class:"btn btn-success" %>
+    </div>
+
+  </div>
+<% end %>
 
 
 <script>

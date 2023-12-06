@@ -6,20 +6,22 @@ devise_scope :user do
     get 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
 end
 
-# ユーザー用
+# ユーザーログイン用
 devise_for :users, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-
-# 管理者用
+# 管理者ログイン用
 devise_for :admin, controllers: {
   sessions: "admin/sessions"
 }
 
+# 検索用
 get "search" => "searches#search"
 
+
+# ユーザー利用時
 scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about', as: 'about'
@@ -56,6 +58,7 @@ scope module: :public do
 end
 
 
+# 管理者使用時
 namespace :admin do
     get 'top' => 'homes#top', as: 'top'
 

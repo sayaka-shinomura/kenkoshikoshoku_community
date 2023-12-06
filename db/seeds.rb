@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# 管理者ログイン情報
 Admin.find_or_create_by!(
   email: "admin@test.com",
   password: "000000"
 )
 
+# カテゴリー
 Tag.find_or_create_by!([
   { name: 'メイン' },
   { name: 'スープ' },

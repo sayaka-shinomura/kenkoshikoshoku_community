@@ -16,6 +16,7 @@
 
 
   <body>
+    <!--# ヘッダー共通部分-->
     <header class="<%= (admin_signed_in? ? "admin_header" : "" ) %>">
       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #f3ccd5">
         <div class="container">
@@ -24,89 +25,88 @@
             <%= image_tag  asset_path("Logo9.jpg"), width: '120%', height: '120%' %>
             <% end %>
           </a>
-
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
 
-          <!--# 管理者ログイン後のヘッダー-->
-          <% if admin_signed_in? %>
-            <li class="nav-item">
-              <%= link_to '会員', admin_users_path, class: 'nav-link text-dark fa-solid fa-user' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '野菜', admin_vegetables_path, class: 'nav-link text-dark fa-solid fa-carrot' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '栄養素', admin_nutrients_path, class: 'nav-link text-dark fa-solid fa-star-of-life' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '効能', admin_effects_path, class: 'nav-link text-dark fa-solid fa-heart' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'レビュー', admin_reviews_path, class: 'nav-link text-dark fa-solid fa-pencil' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'リクエスト', admin_requests_path, class: 'nav-link text-dark fa-solid fa-envelope' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark fa-solid fa-right-from-bracket' %>
-            </li>
+              <!--# 管理者ログイン後のヘッダー-->
+              <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to '会員', admin_users_path, class: 'nav-link text-dark fa-solid fa-user' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '野菜', admin_vegetables_path, class: 'nav-link text-dark fa-solid fa-carrot' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '栄養素', admin_nutrients_path, class: 'nav-link text-dark fa-solid fa-star-of-life' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '効能', admin_effects_path, class: 'nav-link text-dark fa-solid fa-heart' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'レビュー', admin_reviews_path, class: 'nav-link text-dark fa-solid fa-pencil' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'リクエスト', admin_requests_path, class: 'nav-link text-dark fa-solid fa-envelope' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark fa-solid fa-right-from-bracket' %>
+                </li>
 
-          <!--# ユーザーログイン後のヘッダー-->
-          <% elsif user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to 'Top', root_path, class: 'nav-link text-dark fa-solid fa-book-open' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'マイページ', mypage_path, class: 'nav-link text-dark fa-solid fa-user' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'レシピ', recipes_path, class: 'nav-link text-dark fa-solid fa-utensils' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '野菜', vegetables_path, class: 'nav-link text-dark fa-solid fa-carrot' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '栄養素', nutrients_path, class: 'nav-link text-dark fa-solid fa-star-of-life' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '効能', effects_path, class: 'nav-link text-dark fa-solid fa-heart' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark fa-solid fa-right-from-bracket' %>
-            </li>
+              <!--# ユーザーログイン後のヘッダー-->
+              <% elsif user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'Top', root_path, class: 'nav-link text-dark fa-solid fa-book-open' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'マイページ', mypage_path, class: 'nav-link text-dark fa-solid fa-user' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'レシピ', recipes_path, class: 'nav-link text-dark fa-solid fa-utensils' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '野菜', vegetables_path, class: 'nav-link text-dark fa-solid fa-carrot' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '栄養素', nutrients_path, class: 'nav-link text-dark fa-solid fa-star-of-life' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '効能', effects_path, class: 'nav-link text-dark fa-solid fa-heart' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark fa-solid fa-right-from-bracket' %>
+                </li>
 
-          <!--# ログイン前のヘッダー-->
-          <% else %>
-            <li class="nav-item">
-              <%= link_to 'About', about_path, data: { "turbolinks" => false }, class: 'nav-link text-dark fa-solid fa-star' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark fa-solid fa-user-plus' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark fa-solid fa-right-to-bracket' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ゲストログイン', user_guest_sign_in_path, class: 'nav-link text-dark fa-solid fa-face-smile' %>
-            </li>
-          <% end %>
-          </ul>
+              <!--# ログイン前のヘッダー-->
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to 'About', about_path, data: { "turbolinks" => false }, class: 'nav-link text-dark fa-solid fa-star' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark fa-solid fa-user-plus' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark fa-solid fa-right-to-bracket' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ゲストログイン', user_guest_sign_in_path, class: 'nav-link text-dark fa-solid fa-face-smile' %>
+                </li>
+              <% end %>
+            </ul>
           </div>
-
         </div>
       </nav>
     </header>
 
-
-
     <main>
+      <!--# フラッシュメッセージ-->
       <div class="my-2" style="background-color: #f3ccd5">
-      <%= flash[:notice] %>
+        <%= flash[:notice] %>
       </div>
+
+      <!--# キーワード検索-->
       <div class="d-flex justify-content-center my-1">
         <%= render "searches/form" %>
       </div>
@@ -116,8 +116,7 @@
 
     <footer class="container mt-5">
       <div class="row">
-        <div class="mx-auto">
-        </div>
+        <div class="mx-auto"></div>
       </div>
     </footer>
 

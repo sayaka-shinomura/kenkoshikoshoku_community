@@ -1,8 +1,10 @@
 <div class="container">
   <h4 class="my-3 text-center" style="background-color: #ffb830"><%= @vegetables.uniq.join("＆") %>を使ったレシピ</h4>
   <h6 class="my-1 text-right">レシピID.<%= @recipe.id %></h6>
+
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12 px-5 px-sm-0 mx-auto">
+      <!--# レシピ画像-->
       <div class="text-center">
         <% if @recipe.recipe_image.attached? %>
           <%= image_tag  @recipe.recipe_image, width: '100%', height: '100%' %>
@@ -10,6 +12,8 @@
           <%= image_tag 'no-image', width: '100%', height: '80%' %>
         <% end %>
       </div>
+
+      <!--# レシピ情報-->
       <table class="table">
         <tbody>
           <tr>
@@ -39,18 +43,23 @@
         </tbody>
       </table>
 
+      <!--# レシピ編集・削除ボタン-->
       <div class="text-center my-3">
         <%= link_to "レシピを編集する", edit_recipe_path(@recipe), class:"btn btn-outline-secondary" %>
       </div>
       <div class="text-center my-3">
         <%= link_to "レシピを削除する", recipe_path(@recipe), method: :delete, class:"btn btn-outline-danger", data: { confirm: "本当に削除しますか？" } %>
       </div>
+
+      <!--# ブックマーク機能-->
       <div class="text-center my-3">
         <%= render "want_to_make_list", recipe: @recipe %>
       </div>
       <div class="text-center my-3">
         <%= render "made_list", recipe: @recipe %>
       </div>
+
+      <!--# レビュー投稿-->
       <h6 class="text-center mt-5">◆レビュー投稿はこちらから◆</h6>
       <div class="text-center my-3">
         <%= render "public/reviews/form", itme: @review, url: reviews_path(@review), submit: 'レビューを投稿する' %>
@@ -62,6 +71,7 @@
 
 
     <div class="col-lg-7 col-md-7 col-sm-12 px-5 px-sm-0 mx-auto">
+      <!--# レシピ詳細-->
       <table class="table">
         <tbody>
           <tr>
@@ -109,6 +119,7 @@
        </tbody>
       </table>
 
+      <!--# レビュー一覧-->
       <div class="my-5">
         <h5 class="text-center" style="background-color: #c66358">レビュー（全<%= @recipe.reviews.count %>件）</h5>
         <table class="table table-borderless">

@@ -1,16 +1,16 @@
 <div class="container">
- <div class="row">
-  <div class="com-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h3 class="text-center my-5"><strong>本当に退会しますか？</strong></h3>
-    <p class="text-center">
-      退会すると、レシピの投稿はできません。<br>
-      また、マイページの閲覧ができなくなります。
-    </p>
+  <div class="row">
+    <div class="com-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3 class="text-center my-5"><strong>本当に退会しますか？</strong></h3>
+      <p class="text-center">
+        退会すると、レシピの投稿はできません。<br>
+        また、マイページの閲覧ができなくなります。
+      </p>
 
-    <div class="text-center my-3">
-    <%= link_to "戻る", edit_information_path, :class => "btn btn-primary w-25 mr-5" %>
-    <%= link_to "退会する", withdraw_user_path, method: :patch, :class => "btn btn-danger w-25", data: { confirm: "本当に退会しますか？" } %>
+      <div class="text-center my-3">
+        <%= link_to "戻る", edit_information_path, :class => "btn btn-primary w-25 mr-5" %>
+        <%= link_to "退会する", withdraw_user_path, method: :patch, :class => "btn btn-danger w-25", data: { confirm: "本当に退会しますか？" } %>
+      </div>
     </div>
   </div>
- </div>
 </div>

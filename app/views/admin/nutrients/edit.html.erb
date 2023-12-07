@@ -3,20 +3,20 @@
   <div class="row">
     <div class="col-lg-8 col-md-10 colsm-12 px-5 px-sm-0 mx-auto">
 
-    <div class="form-body p-4">
-     <% if @nutrient.errors.any? %>
-     <ul class="alert alert-danger" role="alert">
-       <h6 class="alert-heading">
-        <%= @nutrient.errors.count %>error prohibited this obj from being saved:
-       </h6>
-       <% @nutrient.errors.full_messages.each do |message| %>
-       <li><%= message %></li>
+      <div class="form-body p-4">
+       <% if @nutrient.errors.any? %>
+       <ul class="alert alert-danger" role="alert">
+         <h6 class="alert-heading">
+          <%= @nutrient.errors.count %>エラーにより、保存できませんでした。
+         </h6>
+         <% @nutrient.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+         <% end %>
+       </ul>
        <% end %>
-     </ul>
-     <% end %>
-   </div>
+     </div>
 
-   <%= render "admin/nutrients/form", itme: @nutrient, url: admin_nutrient_path(@nutrient), submit: '　　保存　　' %>
+     <%= render "admin/nutrients/form", itme: @nutrient, url: admin_nutrient_path(@nutrient), submit: '　　保存　　' %>
     </div>
   </div>
 </div>

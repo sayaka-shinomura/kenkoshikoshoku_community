@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="col-8 px-5 px-sm-0 mx-auto">
-    <h3 class="my-3 text-center" style="background-color: #ffff55"><%= @user.account_name %>さんのアカウント編集</h3>
+  <div class="col-lg-8 col-md-10 colsm-12 px-5 px-sm-0 mx-auto">
+  <h3 class="my-3 text-center" style="background-color: #ffff55"><%= @user.account_name %>さんのアカウント編集</h3>
 
-    <%= form_with model:@user, url: admin_user_path(@user) do |f| %>
-    <table class="table table-borderless">
+  <%= form_with model:@user, url: admin_user_path(@user) do |f| %>
+    <table class="table">
       <tbody>
         <tr>
           <td>アカウント名</td>
@@ -36,10 +36,10 @@
     </table>
 
     <div class="text-center">
-      <%= f.submit '保存', class:"btn btn-success w-25" %>
-      <% end %>
+      <%= f.submit '　　保存　　', class:"btn btn-success" %>
     </div>
-    <p class="text-center my-3">※管理者は会員ステータスのみ編集可</p>
-    </div>
+  <% end %>
+
+  <p class="text-center my-3">※管理者は会員ステータスのみ編集可</p>
   </div>
 </div>

@@ -1,7 +1,8 @@
 <div class="container">
   <h4 class="my-3 text-center" style="background-color: #ffb830">野菜情報詳細</h4>
   <div class="row">
-    <div class="col-lg-4 col-md-4 colsm-12 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-4 col-md-4 col-sm-12 px-5 px-sm-0 mx-auto">
+      <!--# 野菜画像-->
       <div class="text-center">
         <% if @vegetable.vegetable_image.attached? %>
           <%= image_tag @vegetable.vegetable_image, width: '100%', height: '100%' %>
@@ -14,8 +15,8 @@
       </div>
     </div>
 
-
-    <div class="col-lg-6 col-md-6 colsm-12 px-5 px-sm-0 mx-auto">
+    <!--# 野菜詳細情報-->
+    <div class="col-lg-6 col-md-6 col-sm-12 px-5 px-sm-0 mx-auto">
       <table class="table">
         <tbody>
           <tr>

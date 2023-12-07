@@ -1,35 +1,35 @@
 <div class="container">
-    <h4 class="my-3 text-center" style="background-color: #ffff55">ユーザー一覧</h4>
+  <h4 class="my-3 text-center" style="background-color: #ffff55">ユーザー一覧</h4>
 
-    <div class="row">
-      <div class="col-lg-8 col-md-10 colsm-12 px-5 px-sm-0 mx-auto">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>ユーザーID</th>
-              <th>ユーザー名</th>
-              <th>ステータス</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><% @users.each do |user| %></tr>
-              <td><%= user.id %></td>
-              <td><%= user.account_name %></td>
-              <td>
-                <% if user.is_active? %>
-                  <span style="color: #ffb830">有効</span>
-                <% else %>
-                  <span style="color: gray">退会済み</span>
-                <% end %>
-              </td>
-              <td><%= link_to "詳細", admin_user_path(user), class:"text-primary" %></td>
-              <td><%= link_to "編集", edit_admin_user_path(user), style: "color: #e70989;" %></td>
+  <div class="row">
+    <div class="col-lg-8 col-md-10 colsm-12 px-5 px-sm-0 mx-auto">
+      <table class="table">
+        <thead>
+          <tr>
+          　<th>ユーザーID</th>
+            <th>ユーザー名</th>
+            <th>ステータス</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><% @users.each do |user| %></tr>
+            <td><%= user.id %></td>
+            <td><%= user.account_name %></td>
+            <td>
+              <% if user.is_active? %>
+                <span style="color: #ffb830">有効</span>
+              <% else %>
+                <span style="color: gray">退会済み</span>
               <% end %>
-          </tbody>
-        </table>
-        <%= paginate @users %>
-        </div>
-      </div>
+            </td>
+            <td><%= link_to "詳細", admin_user_path(user), class:"text-primary" %></td>
+            <td><%= link_to "編集", edit_admin_user_path(user), style: "color: #e70989;" %></td>
+            <% end %>
+        </tbody>
+      </table>
+      <%= paginate @users %>
+    </div>
+  </div>
 </div>

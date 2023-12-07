@@ -12,8 +12,9 @@ class Admin::VegetablesController < ApplicationController
   def create
     @vegetable = Vegetable.new(vegetable_params)
     if @vegetable.save
-      redirect_to admin_vegetable_path(@vegetable.id)
+      redirect_to admin_vegetable_path(@vegetable.id), flash: { notice: "「#{@vegetable.name}」を登録しました。" }
     else
+      flash.now[:notice] = "【！】必要事項が入力されていません。"
       render :new
     end
   end
@@ -40,8 +41,9 @@ class Admin::VegetablesController < ApplicationController
   def update
     @vegetable = Vegetable.find(params[:id])
     if @vegetable.update(vegetable_params)
-      redirect_to admin_vegetable_path(@vegetable.id)
+      redirect_to admin_vegetable_path(@vegetable.id), flash: { notice: "「#{@vegetable.name}」を更新しました。" }
     else
+      flash.now[:notice] = "【！】必要事項が入力されていません。"
       render :edit
     end
   end

@@ -12,8 +12,9 @@ class Admin::NutrientsController < ApplicationController
   def create
     @nutrient = Nutrient.new(nutrient_params)
     if @nutrient.save
-      redirect_to admin_nutrient_path(@nutrient.id)
+      redirect_to admin_nutrient_path(@nutrient.id), flash: { notice: "「#{@nutrient.name}」を登録しました。" }
     else
+      flash.now[:notice] = "【！】必要事項が入力されていません。"
       render :new
     end
   end
@@ -29,8 +30,9 @@ class Admin::NutrientsController < ApplicationController
   def update
      @nutrient = Nutrient.find(params[:id])
     if @nutrient.update(nutrient_params)
-      redirect_to admin_nutrient_path(@nutrient.id)
+      redirect_to admin_nutrient_path(@nutrient.id), flash: { notice: "「#{@nutrient.name}」を更新しました。" }
     else
+      flash.now[:notice] = "【！】必要事項が入力されていません。"
       render :edit
     end
   end

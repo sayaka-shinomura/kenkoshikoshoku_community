@@ -7,7 +7,7 @@
        <% if @vegetable.errors.any? %>
        <ul class="alert alert-danger" role="alert">
          <h6 class="alert-heading">
-          <%= @vegetable.errors.count %>error prohibited this obj from being saved:
+          <%= @vegetable.errors.count %>エラーにより、保存できませんでした。
          </h6>
          <% @vegetable.errors.full_messages.each do |message| %>
          <li><%= message %></li>

@@ -11,9 +11,9 @@ class Admin::EffectsController < ApplicationController
   def create
     @effect = Effect.new(effect_params)
     if @effect.save
-      redirect_to admin_effect_path(@effect.id)
+      redirect_to admin_effect_path(@effect.id), flash: { notice: "「#{@effect.name}」を登録しました。" }
     else
-      @effects = Effect.all
+      flash.now[:notice] = "【！】必要事項が入力されていません。"
       render :new
     end
   end
@@ -30,8 +30,9 @@ class Admin::EffectsController < ApplicationController
   def update
      @effect = Effect.find(params[:id])
     if @effect.update(effect_params)
-      redirect_to admin_effect_path(@effect.id)
+      redirect_to admin_effect_path(@effect.id), flash: { notice: "「#{@effect.name}」を更新しました。" }
     else
+      flash.now[:notice] = "【！】必要事項が入力されていません。"
       render :edit
     end
   end

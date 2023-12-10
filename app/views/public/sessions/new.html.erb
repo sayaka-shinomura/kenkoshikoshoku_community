@@ -1,6 +1,6 @@
 <div class="container">
   <div calss="row">
-    <div class="col-lg-8 col-md-10 col-sm-12 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-6 col-md-10 col-sm-12 mx-auto">
       <h4 class="my-3 text-center" style="background-color: #ffff55">ユーザーログイン</h2>
 
       <% if flash[:danger] %>
@@ -8,25 +8,24 @@
       <% end %>
 
       <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
-      <table class="table">
+      <table class="table table-borderless">
         <tbody>
           <tr>
-            <td class="col-lg-2 col-md-4 col-sm-4"><%= f.label :email %></td>
-            <td class="col-lg-6 col-md-6 col-sm-8"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"50" %></td>
+            <td><%= f.label :email %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></td>
           </tr>
           <tr>
             <td><%= f.label :password %></td>
-            <td><%= f.password_field :password, autocomplete: "current-password", :size=>"50" %></td>
+            <td><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %></td>
           </tr>
-          <tr>
-         <td></td>
-         <td><%= f.submit "ログイン", class: "btn btn-primary w-50" %></td>
-         </tr>
         </tbody>
       </table>
+      <div class="text-center">
+        <%= f.submit "　ログイン　", class: "btn btn-primary" %>
+      </div>
       <% end %>
 
-      <p class="text-center">登録がお済みでない方は　<%= link_to "こちら", new_user_registration_path, class: "underline" %>　から新規登録を行なってください</p>
+      <p class="text-center mt-3">登録がお済みでない方は　<%= link_to "こちら", new_user_registration_path, class: "underline" %>　から新規登録を行なってください</p>
     </div>
   </div>
 </div>

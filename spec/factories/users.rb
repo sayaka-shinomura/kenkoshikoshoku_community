@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :user do
-    account_name { Faker::Lorem.characters(number: 10) }
+    account_name { 'sara' }
     email { Faker::Internet.email }
-    telephone_number { Faker::Lorem.characters(number: 11) }
-    birth_date { Faker::Lorem.characters(number: 8) }
-    password { 'password' }
-    password_confirmation { 'password' }
-    
+    telephone_number { '12345678901' }
+    birth_date { '19990101' }
+    gender { '1' }
+    encrypted_password { 'password' }
+
   end
 end

@@ -20,7 +20,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   # def create
   #   super
-  # end
+  #end
 
   # GET /resource/edit
   # def edit

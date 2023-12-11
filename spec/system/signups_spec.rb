@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe "ユーザー新規登録", type: :system do
-  let(:user) { build(:user) }
+  let!(:user) { build(:user) }
 
   describe '正しく登録' do
     context 'フォームの入力値が正常' do
@@ -15,10 +15,12 @@ RSpec.describe "ユーザー新規登録", type: :system do
         fill_in 'user_telephone_number', with: user.telephone_number
         fill_in 'user_birth_date', with: user.birth_date
         fill_in 'user_password', with: user.password
-        fill_in 'user_password_confirmation', with: user.password_confirmation
-
-        expect { click_button '新規登録' }.to change(User.all, :count).by(1)
+        fill_in 'user_password_confirmation', with: user.password
+        click_button '新規登録'
+        expect(current_path).to eq '/users/mypage'
       end
+
+
     end
   end
 

@@ -19,10 +19,27 @@ RSpec.describe "ユーザー新規登録", type: :system do
         click_button '新規登録'
         expect(current_path).to eq '/users/mypage'
       end
-
-
     end
   end
+
+  describe '登録できなかった場合' do
+    context 'フォームの入力値が異常のため登録不可' do
+      it 'メールアドレスが入っていないため再度登録ページへ' do
+        visit new_user_registration_path
+        expect(page).to have_content('新規登録')
+        fill_in 'user_account_name', with: user.account_name
+        fill_in 'user_email', with: nil
+        fill_in 'user_telephone_number', with: user.telephone_number
+        fill_in 'user_birth_date', with: user.birth_date
+        fill_in 'user_password', with: user.password
+        fill_in 'user_password_confirmation', with: user.password
+        click_button '新規登録'
+        expect(current_path).to eq '/users'
+        expect(page).to have_content('メールアドレスを入力してください')
+      end
+    end
+  end
+
 
 
 end

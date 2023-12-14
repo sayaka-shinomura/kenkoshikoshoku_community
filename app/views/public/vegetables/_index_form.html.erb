@@ -26,7 +26,7 @@
         <div class="card mb-3 mr-3" style="max-width: 22rem;">
           <%= link_to vegetable_path(vegetable.id) do %>
             <% if vegetable.vegetable_image.attached? %>
-              <%= image_tag vegetable.vegetable_image, width: '100%', height: '100%' %>
+              <%= image_tag vegetable.vegetable_image, class: "index-img"  %>
             <% else %>
               <%= image_tag 'no-image', width: '100%', height: '100%' %>
             <% end %>
@@ -34,7 +34,7 @@
           <div class="card-body text-dark">
             <p class="text-dark" >
               <strong><%= vegetable.name %></strong></br>
-              【栄養素】<% vegetable.nutrient_tags.each do |nutrient_tag| %>
+              栄養素：<% vegetable.nutrient_tags.each do |nutrient_tag| %>
                 <%= nutrient_tag.nutrient.name %>
               <% end %>
             </p>
@@ -44,4 +44,3 @@
     </div>
   </div>
 </div>
-

@@ -6,7 +6,7 @@
         <div class="mr-3 d-flex flex-column mb-4">
           <%= link_to recipe_path(myrecipe) do %>
             <% if myrecipe.recipe_image.attached? %>
-              <%= image_tag myrecipe.recipe_image, size: "340x250" %>
+              <%= image_tag myrecipe.recipe_image, class: "index-img" %>
             <% else %>
               <%= image_tag 'no-image', size: "340x250" %>
             <% end %>

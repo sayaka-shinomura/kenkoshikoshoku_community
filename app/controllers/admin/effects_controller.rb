@@ -1,4 +1,5 @@
 class Admin::EffectsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @effects = Effect.page(params[:page]).per(10)

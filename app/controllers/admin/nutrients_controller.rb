@@ -1,4 +1,5 @@
 class Admin::NutrientsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @nutrients = Nutrient.page(params[:page]).per(10)

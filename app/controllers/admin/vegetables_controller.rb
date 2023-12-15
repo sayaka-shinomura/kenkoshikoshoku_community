@@ -1,4 +1,5 @@
 class Admin::VegetablesController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @vegetables = Vegetable.page(params[:page]).per(10)

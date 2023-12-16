@@ -6,7 +6,7 @@
       <!--#新規投稿エラーメッセージの表示-->
       <div class="form-body p-4">
         <% if @nutrient.errors.any? %>
-        <%= @nutrient.errors.count %>エラーにより、保存できませんでした。
+        <%= @nutrient.errors.count %>項目のエラーにより、保存できませんでした。
         <ul>
           <% @nutrient.errors.full_messages.each do |message| %>
             <li><%= message %></li>

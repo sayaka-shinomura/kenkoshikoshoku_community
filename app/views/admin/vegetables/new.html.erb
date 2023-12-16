@@ -2,10 +2,11 @@
   <h4 class="my-3 text-center" style="background-color: #ffb830">野菜情報登録</h4>
   <div class="row">
     <div class="col-lg-8 col-md-8 colsm-12 px-5 px-sm-0 mx-auto">
+
     <!--#新規投稿エラーメッセージの表示-->
       <div class="form-body p-4">
         <% if @vegetable.errors.any? %>
-        <%= @vegetable.errors.count %>error prohibited this obj from being saved:
+        <%= @vegetable.errors.count %>項目のエラーにより、保存できませんでした。
         <ul>
           <% @vegetable.errors.full_messages.each do |message| %>
           <li><%= message %></li>

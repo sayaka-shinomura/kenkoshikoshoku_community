@@ -24,6 +24,7 @@ module KenkoshikoshokuCommunity
 
     # デフォルトのlocaleを日本語(:ja)にする
     config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     #画像ファイルをプリコンパイルする設定
     config.assets.precompile += %w( top4.jpg )

@@ -5,7 +5,7 @@
     <!--#新規投稿エラーメッセージの表示-->
       <div class="form-body p-4">
         <% if @effect.errors.any? %>
-        <%= @effect.errors.count %>エラーにより、保存できませんでした。
+        <%= @effect.errors.count %>項目のエラーにより、保存できませんでした。
         <ul>
           <% @effect.errors.full_messages.each do |message| %>
           <li><%= message %></li>

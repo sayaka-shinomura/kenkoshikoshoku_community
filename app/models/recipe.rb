@@ -36,11 +36,11 @@ class Recipe < ApplicationRecord
   validate :require_any_cookerys
 
   def require_any_ingredients
-    errors.add(:base, "材料は1つ以上登録してください。") if self.ingredients.blank?
+    errors.add(:base, "材料は1つ以上登録してください") if self.ingredients.blank?
   end
 
   def require_any_cookerys
-    errors.add(:base, "作り方は1つ以上登録してください。") if self.cookerys.blank?
+    errors.add(:base, "作り方は1つ以上登録してください") if self.cookerys.blank?
   end
 
   # 現在サインインしているユーザーがお気に入り登録しているかどうか判断するためのメソッド

@@ -9,6 +9,9 @@ ja:
 
   activerecord:
     attributes:
+      recipe:
+        name: レシピ名
+        introduction: レシピ紹介
       vegetable:
         name: 野菜名
         seasonal: 旬の時期

@@ -45,10 +45,14 @@
 
       <!--# レシピ編集・削除ボタン-->
       <div class="text-center my-3">
-        <%= link_to "レシピを編集する", edit_recipe_path(@recipe), class:"btn btn-outline-secondary" %>
+        <% if logger? && current_user.id == @recipe.user_id %>
+          <%= link_to "レシピを編集する", edit_recipe_path(@recipe), class:"btn btn-outline-secondary" %>
+        <% end %>
       </div>
       <div class="text-center my-3">
-        <%= link_to "レシピを削除する", recipe_path(@recipe), method: :delete, class:"btn btn-outline-danger", data: { confirm: "本当に削除しますか？" } %>
+        <% if logger? && current_user.id == @recipe.user_id %>
+          <%= link_to "レシピを削除する", recipe_path(@recipe), method: :delete, class:"btn btn-outline-danger", data: { confirm: "本当に削除しますか？" } %>
+        <% end %>
       </div>
 
       <!--# ブックマーク機能-->

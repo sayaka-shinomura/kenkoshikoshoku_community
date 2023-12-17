@@ -7,37 +7,20 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
 
-    models:
-      user: ユーザー
+  activerecord:
     attributes:
-        user:
-          account_name: アカウント名
-          telephone_number: 電話番号
-          birth_date: 生年月日
-          gender: 性別
-          is_active: 退会ステータス
-
-    models:
-      vegetable: 野菜
-    attributes:
-        vegetable:
-          name: 野菜名
-          seasonal: 旬の時期
-          production_area: 産地
-          keeping: 保存方法
-          introduction: おすすめ情報
-    models:
-      nutrient: 栄養素
-    attributes:
-        nutrient:
-          name: 栄養素名
-          introduction: 栄養素概要
-    models:
-      effect: 効能
-    attributes:
-        effect:
-          name: 効能名
-          introduction: 効能概要
+      vegetable:
+        name: 野菜名
+        seasonal: 旬の時期
+        production_area: 産地情報
+        keeping: 保存方法
+        introduction: おすすめ情報
+      nutrient:
+        name: 栄養素名
+        introduction: 栄養素概要
+      effect:
+        name: 効能名
+        introduction: 効能概要
 
 
   date:

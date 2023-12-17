@@ -162,8 +162,10 @@
               <tr>
                 <td></td>
                 <td>
+                  <% if logger? && current_user.id == review.user_id %>
                     <%= link_to "レビューを編集する", edit_review_path(review) %>／
                     <%= link_to "削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
+                  <% end %>
                 </td>
               </tr>
               <tr style="border: solid 2px #ffb830"></tr>

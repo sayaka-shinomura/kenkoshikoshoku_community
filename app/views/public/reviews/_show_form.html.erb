@@ -58,8 +58,10 @@
             <td></td>
             <td>
               <div class="review_link">
-                <%= link_to "レビューを編集する", edit_review_path(review) %>／
-                <%= link_to "削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
+                <% if logger? && current_user.id == review.user_id %>
+                  <%= link_to "レビューを編集する", edit_review_path(review) %>／
+                  <%= link_to "削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
+                <% end %>
               </div>
             </td>
           </tr>

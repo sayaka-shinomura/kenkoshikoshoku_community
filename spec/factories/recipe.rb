@@ -4,7 +4,7 @@ FactoryBot.define do
     summary { 'テスト要約' }
     introduction { 'テスト紹介' }
     time { '15' }
-    difficulty { '1' }
+    difficulty { 1 }
 
     trait :with_ingredients do
       after(:build) do |recipe|

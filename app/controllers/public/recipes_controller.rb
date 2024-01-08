@@ -20,7 +20,7 @@ class Public::RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
-      redirect_to recipe_path(@recipe.id), flash: { notice: "「#{@recipe.name}」のレシピを投稿しました。" }
+      redirect_to recipe_path(@recipe.id)
     else
       flash.now[:notice] = "【！】必要事項が入力されていません。または文字数制限をお確かめください。"
       render :new

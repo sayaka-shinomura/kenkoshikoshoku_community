@@ -21,6 +21,8 @@
 
 ## 設計書
 * AWS構成図
+![AWS構成図_kenkoshikoshoku_community drawio](https://github.com/sayaka-shinomura/kenkoshikoshoku_community/assets/138592145/a4c9823d-2f6d-4e51-8583-87f3e80f719f)
+
 
 * ER図
 ![ER_kenkoshikoshoku_community drawio](https://github.com/sayaka-shinomura/kenkoshikoshoku_community/assets/138592145/dc06e327-877a-48a6-9bb2-c51a4c1923c0)

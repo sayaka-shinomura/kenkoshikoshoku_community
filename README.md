@@ -20,8 +20,7 @@
 * 自分が作った野菜料理のレシピを投稿する時
 
 ## 設計書
-* AWS構成図 https://drive.google.com/file/d/1WnDAKagxNW58gi3QlDoqlRkrFKyOm00b/view?usp=drive_link
-* ER図 https://drive.google.com/file/d/1ldzWf11iMLBHwyyc5XIDIUL3jlW9YOId/view?usp=drive_link
+
 
 ## 開発環境
 * OS：Linux(CentOS)

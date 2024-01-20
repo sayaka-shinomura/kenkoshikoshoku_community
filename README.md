@@ -21,6 +21,8 @@
 
 ## 設計書
 * ER図
+![ER_kenkoshikoshoku_community drawio](https://github.com/sayaka-shinomura/kenkoshikoshoku_community/assets/138592145/dc06e327-877a-48a6-9bb2-c51a4c1923c0)
+
 
 ## 開発環境
 * OS：Linux(CentOS)

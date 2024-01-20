@@ -20,7 +20,8 @@
 * 自分が作った野菜料理のレシピを投稿する時
 
 ## 設計書
-後ほど作成予定
+* AWS構成図 https://drive.google.com/file/d/1WnDAKagxNW58gi3QlDoqlRkrFKyOm00b/view?usp=drive_link
+* ER図 https://drive.google.com/file/d/1ldzWf11iMLBHwyyc5XIDIUL3jlW9YOId/view?usp=drive_link
 
 ## 開発環境
 * OS：Linux(CentOS)
@@ -30,7 +31,9 @@
 * IDE：Clould9
 
 ## 使用素材
-後ほど作成予定
+* フリー写真素材として以下を使用
+  * 花ざかりの森 (https://forest17.com)
+  * フリー素材.com (https://free-materials.com)
 
 ## 実装機能リスト
 https://docs.google.com/spreadsheets/d/1m24RfwMSCMr7agRmACsbpuUIzSGBJfBOVWGrdjerEyE/edit?usp=drive_link

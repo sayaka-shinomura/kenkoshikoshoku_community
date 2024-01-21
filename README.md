@@ -1,9 +1,9 @@
 # 健康志向食コミュニティ
 
 ## サイト概要
+![トップページ](https://github.com/sayaka-shinomura/kenkoshikoshoku_community/assets/138592145/30ee2165-c369-4efd-b963-4c515de5fc31)
 ### サイトテーマ
 摂取したい栄養素を含む野菜をつかった料理のレシピを検索したり、自分が作った野菜料理のレシピを投稿できるコミュニティサイト
-![トップページ](https://github.com/sayaka-shinomura/kenkoshikoshoku_community/assets/138592145/30ee2165-c369-4efd-b963-4c515de5fc31)
 
 
 ### テーマを選んだ理由
@@ -34,6 +34,7 @@
 * 言語：HTML,CSS,JavaScript,Ruby,SQL
 * フレームワーク：Ruby on Rails
 * JSライブラリ：jQuery
+* テスト基盤：RSpec,FactoryBot
 * IDE：Clould9
 
 ## 使用素材

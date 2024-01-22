@@ -58,5 +58,31 @@ RSpec.describe Recipe, type: :model do
 
     end
 
+    context "文字数制限" do
+      it "レシピのタイトルは20文字以内であること" do
+        recipe = build(:recipe, name: "a" * 21)
+        recipe.save
+        recipe.valid?
+
+        expect(recipe.errors[:name]).to include("は20文字以内で入力してください")
+      end
+
+      it "レシピの要約は20文字以内であること" do
+        recipe = build(:recipe, summary: "a" * 21)
+        recipe.save
+        recipe.valid?
+
+        expect(recipe.errors[:summary]).to include("は20文字以内で入力してください")
+      end
+
+      it "レシピの紹介は200文字以内であること" do
+        recipe = build(:recipe, introduction: "a" * 201)
+        recipe.save
+        recipe.valid?
+
+        expect(recipe.errors[:introduction]).to include("は200文字以内で入力してください")
+      end
+    end
+
   end
 end

@@ -16,7 +16,7 @@
 * 自分の体調に適した食材選びに困っている人
 
 ### 主な利用シーン
-* 自分の体調に適した野菜や栄養素の知りたい時
+* 自分の体調に適した野菜や栄養素を知りたい時
 * 作りたい野菜料理のレシピを検索する時
 * 自分が作った野菜料理のレシピを投稿する時
 
@@ -41,6 +41,9 @@
 * フリー写真素材として以下を使用
   * 花ざかりの森 (https://forest17.com)
   * フリー素材.com (https://free-materials.com)
+
+* 統計データとして以下を使用
+  * 農林水産省 (https://www.maff.go.jp/index.html)
 
 ## 実装機能リスト
 https://docs.google.com/spreadsheets/d/1m24RfwMSCMr7agRmACsbpuUIzSGBJfBOVWGrdjerEyE/edit?usp=drive_link

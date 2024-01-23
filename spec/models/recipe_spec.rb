@@ -6,6 +6,14 @@ RSpec.describe Recipe, type: :model do
   let(:user) { create(:user) }
   let(:recipe) { build(:recipe, user_id: user.id) }
 
+  it "材料・分量が紐づいていること" do
+     is_expected.to have_many(:ingredients)
+  end
+
+  it "作り方が紐づいていること" do
+    is_expected.to have_many(:cookerys)
+  end
+
 
   describe "正常登録" do
     it "正しくレシピ投稿できる" do

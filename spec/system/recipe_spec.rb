@@ -6,29 +6,45 @@ RSpec.describe "レシピ機能", type: :system do
   let(:recipe) { build(:recipe) }
   let(:posted_recipe) { create(:recipe, :with_ingredients, :with_cookerys, user_id: user.id) }
 
+  before do
+    sign_in user #=> サインイン状態になる
+  end
 
-  describe 'レシピ新規登録機能' do
+  describe 'レシピ投稿画面のテスト' do
+    before do
+      visit new_recipe_path
+    end
+    context '表示の確認' do
+      it 'レシピ投稿画面にレシピ投稿' do
+        expect(page).to have_content 'レシピ投稿'
+      end
+      it 'new_recipe_pathが"/recipes/new"であるか' do
+        expect(current_path).to eq('/recipes/new')
+      end
+    end
     context 'フォームの入力値が正常' do
       it '正常に登録される' do
         visit new_recipe_path
         expect(page).to have_content("レシピ投稿")
         fill_in 'recipe[name]', with: recipe.name
-        click_link "材料を追加"
-        find(".ingredient__content").set("内容1")
+        fill_in 'recipe[summary]', with: recipe.summary
+        fill_in 'recipe[introduction]', with: recipe.introduction
+        click_button "材料を追加"
+        find(".ingredients__content").set("内容1")
         find(".ingredient__quantity").set("分量1")
-        click_link "手順を追加"
+        click_button "手順を追加"
         find(".cookery__input").set("作り方1")
 
-        expect { click_button '送信する' }.to change { Recipe.count }.by(1)
+        expect { click_button 'レシピを投稿する' }.to change { Recipe.count }.by(1)
         expect(page).to have_content("「テストタイトル」のレシピを投稿しました。")
         expect(page).to have_content("内容1")
         expect(page).to have_content("分量1")
         expect(page).to have_content("作り方")
       end
     end
-
-
   end
+
+
 
 
 end

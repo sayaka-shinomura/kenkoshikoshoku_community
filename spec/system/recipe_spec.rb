@@ -98,5 +98,34 @@ RSpec.describe "レシピ機能", type: :system do
     end
   end
 
+  describe '編集機能' do
+    context '変更反映可能' do
+      it '項目追加をした場合、正常な値入力ができていれば反映可能', js: true do
+        visit edit_recipe_path(posted_recipe)
+        expect(page).to have_field 'recipe[name]', with: recipe.name
+        expect(page).to have_field 'recipe[introduction]', with: recipe.introduction
+        fill_in 'recipe[name]', with: 'テストタイトル2'
+        fill_in 'recipe[introduction]', with: 'テスト紹介2'
+        click_button "材料を追加"
+        #2つ目の要素に登録
+        page.all('input[name="recipe[ingredients_attributes][0][content]"]')[1].set("内容2")
+        page.all('input[name="recipe[ingredients_attributes][0][quantity]"]')[1].set("分量2")
+        click_button "手順を追加"
+        #2つ目の要素に登録
+        page.all('textarea[name="recipe[cookerys_attributes][0][process]"]')[1].set("手順2")
+        click_button 'レシピを投稿する'
+        expect(current_path).to eq recipe_path(posted_recipe)
+        expect(page).to have_content(posted_recipe.name)
+        expect(page).to have_content(posted_recipe.description)
+        expect(page).to have_content("内容1")
+        expect(page).to have_content("内容2")
+        expect(page).to have_content("分量1")
+        expect(page).to have_content("分量2")
+        expect(page).to have_content("手順1")
+        expect(page).to have_content("手順2")
+      end
+    end
+  end
+
 
 end

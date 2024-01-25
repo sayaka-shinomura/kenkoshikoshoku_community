@@ -14,6 +14,7 @@ RSpec.describe "レシピ機能", type: :system do
     before do
       visit new_recipe_path
     end
+
     context '表示の確認' do
       it 'レシピ投稿画面にレシピ投稿' do
         expect(page).to have_content 'レシピ投稿'
@@ -22,6 +23,7 @@ RSpec.describe "レシピ機能", type: :system do
         expect(current_path).to eq('/recipes/new')
       end
     end
+
     context 'フォームの入力値が正常' do
       it '正常に登録される' do
         visit new_recipe_path
@@ -44,9 +46,44 @@ RSpec.describe "レシピ機能", type: :system do
         expect(page).to have_content("手順1")
       end
     end
+
+    context 'フォームの入力値が異常' do
+      it 'レシピのタイトル・説明が入力されていないため登録不可' do
+        visit new_recipe_path
+        fill_in 'recipe[name]', with: nil
+        fill_in 'recipe[summary]', with: recipe.summary
+        fill_in 'recipe[introduction]', with: nil
+        fill_in 'recipe[introduction]', with: recipe.introduction
+        fill_in 'recipe[time]', with: recipe.time
+        select '★', from: 'recipe[difficulty]'
+        click_button "材料を追加"
+        find('input[name="recipe[ingredients_attributes][0][content]"]').set("内容1")
+        find('input[name="recipe[ingredients_attributes][0][quantity]"]').set("分量1")
+        click_button "手順を追加"
+        find('textarea[name="recipe[cookerys_attributes][0][process]"]').set("手順1")
+
+        click_button 'レシピを投稿する'
+        expect(page).to have_content("【！】必要事項が入力されていません。または文字数制限をお確かめください。")
+      end
+
+      it 'レシピのタイトルは20文字・説明は200文字を超える場合は登録不可' do
+        visit new_recipe_path
+        fill_in 'recipe[name]', with:  "a" * 21
+        fill_in 'recipe[summary]', with: recipe.summary
+        fill_in 'recipe[introduction]', with:  "a" * 201
+        fill_in 'recipe[time]', with: recipe.time
+        select '★', from: 'recipe[difficulty]'
+        click_button "材料を追加"
+        find('input[name="recipe[ingredients_attributes][0][content]"]').set("内容1")
+        find('input[name="recipe[ingredients_attributes][0][quantity]"]').set("分量1")
+        click_button "手順を追加"
+        find('textarea[name="recipe[cookerys_attributes][0][process]"]').set("手順1")
+
+        click_button 'レシピを投稿する'
+        expect(page).to have_content("【！】必要事項が入力されていません。または文字数制限をお確かめください。")
+      end
+    end
   end
-
-
 
 
 end

@@ -63,7 +63,8 @@ RSpec.describe "レシピ機能", type: :system do
         find('textarea[name="recipe[cookerys_attributes][0][process]"]').set("手順1")
 
         click_button 'レシピを投稿する'
-        expect(page).to have_content("【！】必要事項が入力されていません。または文字数制限をお確かめください。")
+        expect(page).to have_content("レシピ名を入力してください")
+        expect(page).to have_content("【！】必要事項が入力されていません。")
       end
 
       it 'レシピのタイトルは20文字・説明は200文字を超える場合は登録不可' do
@@ -81,6 +82,18 @@ RSpec.describe "レシピ機能", type: :system do
 
         click_button 'レシピを投稿する'
         expect(page).to have_content("【！】必要事項が入力されていません。または文字数制限をお確かめください。")
+      end
+
+      it '材料と作り方はそれぞれ1つ以上入っていないと登録不可' do
+        visit new_recipe_path
+        fill_in 'recipe[name]', with: recipe.name
+        fill_in 'recipe[summary]', with: recipe.summary
+        fill_in 'recipe[introduction]', with: recipe.introduction
+        fill_in 'recipe[time]', with: recipe.time
+        select '★', from: 'recipe[difficulty]'
+        click_button 'レシピを投稿する'
+        expect(page).to have_content("材料は1つ以上登録してください")
+        expect(page).to have_content("作り方は1つ以上登録してください")
       end
     end
   end

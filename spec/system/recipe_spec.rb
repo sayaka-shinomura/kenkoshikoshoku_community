@@ -35,13 +35,13 @@ RSpec.describe "レシピ機能", type: :system do
         find('input[name="recipe[ingredients_attributes][0][content]"]').set("内容1")
         find('input[name="recipe[ingredients_attributes][0][quantity]"]').set("分量1")
         click_button "手順を追加"
-        find('input[name="recipe[cookerys_attributes][0][process]"]').set("手順1")
+        find('textarea[name="recipe[cookerys_attributes][0][process]"]').set("手順1")
 
-        expect { click_button 'レシピを投稿する' }
+        expect { click_button 'レシピを投稿する' }.to change { Recipe.count }.by(1)
         expect(page).to have_content("「テストタイトル」のレシピを投稿しました。")
         expect(page).to have_content("内容1")
         expect(page).to have_content("分量1")
-        expect(page).to have_content("作り方")
+        expect(page).to have_content("手順1")
       end
     end
   end

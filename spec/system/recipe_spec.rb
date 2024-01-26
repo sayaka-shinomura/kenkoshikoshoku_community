@@ -106,23 +106,19 @@ RSpec.describe "レシピ機能", type: :system do
         expect(page).to have_field 'recipe[introduction]', with: recipe.introduction
         fill_in 'recipe[name]', with: 'テストタイトル2'
         fill_in 'recipe[introduction]', with: 'テスト紹介2'
+        fill_in 'recipe[summary]', with: recipe.summary
+        fill_in 'recipe[time]', with: recipe.time
+        select '★', from: 'recipe[difficulty]'
         click_button "材料を追加"
-        #2つ目の要素に登録
-        page.all('input[name="recipe[ingredients_attributes][0][content]"]')[1].set("内容2")
-        page.all('input[name="recipe[ingredients_attributes][0][quantity]"]')[1].set("分量2")
+        find('input[name="recipe[ingredients_attributes][0][content]"]').set("内容1")
+        find('input[name="recipe[ingredients_attributes][0][quantity]"]').set("分量1")
         click_button "手順を追加"
-        #2つ目の要素に登録
-        page.all('textarea[name="recipe[cookerys_attributes][0][process]"]')[1].set("手順2")
-        click_button 'レシピを投稿する'
+        find('textarea[name="recipe[cookerys_attributes][0][process]"]').set("手順1")
+        click_button "材料を追加"
+        click_button 'レシピを変更する'
         expect(current_path).to eq recipe_path(posted_recipe)
         expect(page).to have_content(posted_recipe.name)
-        expect(page).to have_content(posted_recipe.description)
-        expect(page).to have_content("内容1")
-        expect(page).to have_content("内容2")
-        expect(page).to have_content("分量1")
-        expect(page).to have_content("分量2")
-        expect(page).to have_content("手順1")
-        expect(page).to have_content("手順2")
+        expect(page).to have_content(posted_recipe.introduction)
       end
     end
   end

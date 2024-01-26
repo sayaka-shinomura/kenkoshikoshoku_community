@@ -100,7 +100,7 @@ RSpec.describe "レシピ機能", type: :system do
 
   describe '編集機能' do
     context '変更反映可能' do
-      it '項目追加をした場合、正常な値入力ができていれば反映可能', js: true do
+      it '正常な値入力ができていれば反映可能', js: true do
         visit edit_recipe_path(posted_recipe)
         expect(page).to have_field 'recipe[name]', with: recipe.name
         expect(page).to have_field 'recipe[introduction]', with: recipe.introduction
@@ -114,11 +114,28 @@ RSpec.describe "レシピ機能", type: :system do
         find('input[name="recipe[ingredients_attributes][0][quantity]"]').set("分量1")
         click_button "手順を追加"
         find('textarea[name="recipe[cookerys_attributes][0][process]"]').set("手順1")
-        click_button "材料を追加"
         click_button 'レシピを変更する'
         expect(current_path).to eq recipe_path(posted_recipe)
         expect(page).to have_content(posted_recipe.name)
         expect(page).to have_content(posted_recipe.introduction)
+      end
+    end
+
+    context 'フォームの入力値が異常' do
+      it 'レシピのタイトル・説明を未入力にしたら変更反映不可' do
+        visit edit_recipe_path(posted_recipe)
+        fill_in 'recipe[name]', with: nil
+        fill_in 'recipe[introduction]', with: nil
+        fill_in 'recipe[summary]', with: recipe.summary
+        fill_in 'recipe[time]', with: recipe.time
+        select '★', from: 'recipe[difficulty]'
+        click_button "材料を追加"
+        find('input[name="recipe[ingredients_attributes][0][content]"]').set("内容1")
+        find('input[name="recipe[ingredients_attributes][0][quantity]"]').set("分量1")
+        click_button "手順を追加"
+        find('textarea[name="recipe[cookerys_attributes][0][process]"]').set("手順1")
+        click_button 'レシピを変更する'
+        expect(page).to have_content("【！】必要事項が入力されていません。")
       end
     end
   end

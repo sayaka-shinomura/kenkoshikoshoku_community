@@ -50,6 +50,7 @@ class Public::RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       redirect_to @recipe, flash: { notice: "「#{@recipe.name}」のレシピ情報を更新しました。" }
     else
+      flash.now[:notice] = "【！】必要事項が入力されていません。または文字数制限をお確かめください。"
       render :edit
     end
   end

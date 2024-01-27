@@ -14,9 +14,10 @@ RSpec.describe "ユーザー新規登録", type: :system do
         fill_in 'user_email', with: user.email
         fill_in 'user_telephone_number', with: user.telephone_number
         fill_in 'user_birth_date', with: user.birth_date
+        choose '男性'
         fill_in 'user_password', with: user.password
         fill_in 'user_password_confirmation', with: user.password
-        click_button '新規登録'
+        expect { click_button '新規登録' }.to change { User.count }.by(1)
         expect(current_path).to eq '/users/mypage'
       end
     end
@@ -31,9 +32,10 @@ RSpec.describe "ユーザー新規登録", type: :system do
         fill_in 'user_email', with: nil
         fill_in 'user_telephone_number', with: user.telephone_number
         fill_in 'user_birth_date', with: user.birth_date
+        choose '男性'
         fill_in 'user_password', with: user.password
         fill_in 'user_password_confirmation', with: user.password
-        click_button '新規登録'
+        expect { click_button '新規登録' }.to change { User.count }.by(0)
         expect(current_path).to eq '/users'
         expect(page).to have_content('メールアドレスを入力してください')
       end

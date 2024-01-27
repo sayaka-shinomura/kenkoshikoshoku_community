@@ -149,5 +149,16 @@ RSpec.describe "レシピ機能", type: :system do
     end
   end
 
+  describe '削除機能' do
+    it 'レシピ詳細ページから削除ボタンを押せばレシピの削除が可能', js: true do
+      visit recipe_path(posted_recipe)
+      expect(page).to have_content("を使ったレシピ")
+      expect(Recipe.count).to eq 1
+
+      click_link 'レシピを削除する'
+      expect(page).to have_content("「#{posted_recipe.name}」のレシピを削除しました。")
+      expect(Recipe.count).to eq 0
+    end
+  end
 
 end

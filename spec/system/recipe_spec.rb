@@ -162,13 +162,15 @@ RSpec.describe "レシピ機能", type: :system do
   end
 
   describe '検索機能' , js: true do
-    context "ユーザー名での検索可能" do
+    context "キーワード検索での検索可能" do
       it "部分一致で可能" do
         posted_recipe
         visit recipes_path
-        page.all('input[name="keyword"]')[0].set("sora")
-        page.all('input[name="commit"]')[0].click
+        expect(page).to have_content('レシピを探そう')
+        fill_in 'keyword', match: :first, with: 'sora'
+        click_on "キーワード検索"
         expect(page).to have_content('レシピ検索結果')
+        expect(page).to have_content('投稿ユーザー')
       end
     end
   end

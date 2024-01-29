@@ -162,8 +162,8 @@ RSpec.describe "レシピ機能", type: :system do
   end
 
   describe '検索機能' , js: true do
-    context "キーワード検索での検索可能" do
-      it "部分一致で可能" do
+    context "検索可能" do
+      it "キーワード検索での部分一致で可能" do
         posted_recipe
         visit recipes_path
         expect(page).to have_content('レシピを探そう')

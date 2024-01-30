@@ -44,3 +44,24 @@
   		height: 150px;
   		object-fit: cover;
 }
+
+.recipeform{
+  .flex-row {
+    display: flex;
+  }
+
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 1;
+    background: #f3ccd5;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 2;
+  }
+
+}

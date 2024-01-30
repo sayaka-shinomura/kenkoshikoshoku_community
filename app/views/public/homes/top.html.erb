@@ -17,23 +17,15 @@
     <!--# 投稿されたリクエストの抜粋-->
     <div class="col-lg-5 col-md-5 col-sm-12 px-5 px-sm-0 mx-auto">
       <h4 class="text-center" style="background-color: #ffb830">皆様からのご意見・ご要望</h4>
-      <table class="mx-auto">
-        <tbody>
-          <% @requests.each do |request| %>
-            <tr>
-              <td><%= request.created_at.strftime('%Y/%m/%d') %></td>
-            </tr>
-            <tr>
-              <td><%= request.content %></td>
-            </tr>
-            <tr>
-              <td class="text-right"><%= link_to "詳細", request_path(request) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <div class="text-center my-3">
-        <%= link_to "全てのご意見・ご要望を見る", requests_path, class:"btn btn-info" %>
+      <div class="top-requests">
+        <% @requests.each do |request| %>
+          <div class="mt-2"><%= request.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="item"><%= request.content %></div>
+          <div class="text-right"><%= link_to "詳細", request_path(request) %></div>
+        <% end %>
+        <div class="text-center my-3">
+          <%= link_to "全てのご意見・ご要望を見る", requests_path, class:"btn btn-info" %>
+        </div>
       </div>
     </div>
 

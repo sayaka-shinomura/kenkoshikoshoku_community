@@ -2,3 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
+.user-edit-form{
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 2;
+    font-weight: bold;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 3;
+  }
+}

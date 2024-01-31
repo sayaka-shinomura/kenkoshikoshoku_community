@@ -14,34 +14,32 @@
       </div>
 
       <!--# レシピ情報-->
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>投稿ユーザー</th>
-            <td><%= @recipe.user.account_name %></td>
-          </tr>
-          <tr>
-            <th>投稿日</th>
-            <td><%= @recipe.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-          <tr>
-            <th>難易度</th>
-            <td><%= @recipe.difficulty %></td>
-          </tr>
-          <tr>
-            <th>カテゴリー</th>
-            <td>
-              <% @recipe.tags.each do |tag| %>
-                ・<%= tag.name %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>レビュー評価</th>
-            <td><%= @recipe.reviews.average(:star) %></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="recipe-sideform">
+        <div class="flex-row">
+          <div class="flex-item">投稿ユーザー</div>
+          <div class="flex-item"><%= @recipe.user.account_name %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">投稿日</div>
+          <div class="flex-item"><%= @recipe.created_at.strftime('%Y/%m/%d') %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">難易度</div>
+          <div class="flex-item"><%= @recipe.difficulty %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">カテゴリー</div>
+          <div class="flex-item">
+            <% @recipe.tags.each do |tag| %>
+              ・<%= tag.name %>
+            <% end %>
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">レビュー評価</div>
+          <div class="flex-item"><%= @recipe.reviews.average(:star) %></div>
+        </div>
+      </div>
 
       <!--# レシピ編集・削除ボタン-->
       <div class="text-center my-3">
@@ -76,67 +74,56 @@
 
     <div class="col-lg-7 col-md-7 col-sm-12 px-5 px-sm-0 mx-auto">
       <!--# レシピ詳細-->
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="col-2">レシピ名</th>
-            <td class="col-5"><%= @recipe.name %></td>
-       　  </tr>
-          <tr>
-            <th>調理時間の目安</th>
-            <td><%= @recipe.time %>　分</td>
-          </tr>
-          <tr>
-            <th>おすすめ情報</th>
-            <td><%=safe_join(@recipe.introduction.split("\n"),tag(:br))%></td>
-          </tr>
-          <tr>
-            <th>材料</th>
-            <td>
-              <table class="table table-borderless">
-                <tbody>
-                  <% @recipe.ingredients.each do |ingredient| %>
-                  <tr>
-                    <td class="col-3"><%= ingredient.content %></td>
-                    <td class="col-2"><%= ingredient.quantity %></td>
-                  </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <th>作り方</th>
-            <td>
-              <table class="table table-borderless">
-                <tbody>
-                  <% @recipe.cookerys.each_with_index do |cookery, i| %>
-                  <tr>
-                    <td><%= i+1 %></td>
-                    <td><%= cookery.process %></td>
-                  </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-       </tbody>
-      </table>
+      <div class="recipe-showform">
+        <div class="flex-row">
+          <div class="flex-item">レシピ名</div>
+          <div class="flex-item"><%= @recipe.name %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">調理時間の目安</div>
+          <div class="flex-item"><%= @recipe.time %>　分</div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">おすすめ情報</div>
+          <div class="flex-item"><%=safe_join(@recipe.introduction.split("\n"),tag(:br))%></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">材料</div>
+          <div class="flex-item">
+            <% @recipe.ingredients.each do |ingredient| %>
+            <div class="flex-row">
+              <div class="ingredient-item"><%= ingredient.content %></div>
+              <div class="ingredient-item"><%= ingredient.quantity %></div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">作り方</div>
+          <div class="flex-item">
+            <% @recipe.cookerys.each_with_index do |cookery, i| %>
+            <div class="flex-row">
+              <div class="cookery-item"><%= i+1 %></div>
+              <div class="cookery-item"><%= cookery.process %></div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
       <!--# レビュー一覧-->
       <div class="my-5">
         <h5 class="text-center" style="background-color: #c66358">レビュー（全<%= @recipe.reviews.count %>件）</h5>
-        <table class="table table-borderless">
+        <div class="recipe-reviewform">
           <% if @recipe.reviews.present? %>
-          <tbody>
             <% @recipe.reviews.all.order(created_at: :desc).each do |review| %>
-              <tr>
-                <th class="col-2">投稿ユーザー</td>
-                <td class="col-5"><%= review.user.account_name %></td>
-              </tr>
-              <tr>
-                <th>評価</th>
-                <td>
+              <div class="flex-row">
+                <div class="flex-item">投稿ユーザー</div>
+                <div class="flex-item"><%= review.user.account_name %></div>
+              </div>
+              <div class="flex-row">
+                <div class="flex-item">評価</div>
+                <div class="flex-item">
                   <div id="star_<%= review.id %>"></div>
                   <script>
                     $(document).on('turbolinks:load', function() {
@@ -153,27 +140,29 @@
                     raty(elem, opt);
                     });
                   </script>
-                </td>
-              </tr>
-              <tr>
-                <th>コメント</th>
-                <td><%=safe_join(review.comment.split("\n"),tag(:br))%></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>
+                </div>
+              </div>
+              <div class="flex-row">
+                <div class="flex-item">コメント</div>
+                <div class="flex-item"><%=safe_join(review.comment.split("\n"),tag(:br))%></div>
+              </div>
+              <div class="flex-row">
+                <div class="flex-item"></div>
+                <div class="flex-item">
                   <% if logger? && current_user.id == review.user_id %>
                     <%= link_to "レビューを編集する", edit_review_path(review) %>／
                     <%= link_to "削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
                   <% end %>
-                </td>
-              </tr>
-              <tr style="border: solid 2px #ffb830"></tr>
+                </div>
+              </div>
+              <div class="border-item"></div>
             <% end %>
-          </tbody>
-        </table>
-        <% end %>
+          <% end %>
+        </div>
       </div>
+
+
+
     </div>
   </div>
 </div>

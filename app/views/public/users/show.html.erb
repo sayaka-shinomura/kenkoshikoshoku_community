@@ -5,13 +5,7 @@
     <div class="col-md-3">
       <!--#ユーザー詳細-->
       <h4 class="my-3 text-center" style="background-color: #c66358">ユーザー情報</h4>
-        <table class="flex">
-          <tbody>
-            <tr>
-              <td>【アカウント名】<%= @user.account_name %></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="flex">【アカウント名】<%= @user.account_name %></div>
 
       <!--#編集画面へのボタン-->
       <% if @user == current_user %>

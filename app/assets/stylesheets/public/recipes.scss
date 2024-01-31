@@ -2,3 +2,100 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.recipeform{
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 1;
+    background: #f3ccd5;
+    font-weight: bold;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 2;
+  }
+
+}
+
+.recipe-sideform{
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 1;
+    font-weight: bold;
+    background: #f3ccd5;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 1;
+    border-bottom: 1px solid gray;
+    display: inline-block;
+  }
+
+}
+
+.recipe-showform{
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 1;
+    font-weight: bold;
+    background: #ffff55;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 3;
+    border-bottom: 1px solid gray;
+    display: inline-block;
+  }
+
+  .ingredient-item:nth-child(1) {
+    flex: 1;
+  }
+
+  .ingredient-item:nth-child(2) {
+    flex: 1;
+  }
+
+  .cookery-item:nth-child(1) {
+    flex: 1;
+    margin: 5px;
+    text-align: center;
+    background: #aeeff0;
+  }
+
+  .cookery-item:nth-child(2) {
+    flex: 6;
+  }
+
+}
+
+.recipe-reviewform{
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 1;
+    font-weight: bold;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 3;
+  }
+
+  .border-item {
+    border-bottom: 1px solid gray;
+  }
+
+}

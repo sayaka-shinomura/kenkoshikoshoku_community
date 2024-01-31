@@ -1,40 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="px-5 px-sm-0 mx-auto">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
       <h4 class="my-3 text-center" style="background-color: #ffff55"><%= @user.account_name %>さんのアカウント管理</h4>
       <%= form_with model:@user, url: update_information_path do |f| %>
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <td><%= f.label :account_name, "アカウント名", class: "account_name" %></td>
-            <td><%= f.text_field :account_name, :placeholder =>"#{@user.account_name}", :size=>"50%" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :email, "メールアドレス" %></td>
-            <td><%= f.email_field :email, autocomplete: "email", :placeholder =>"#{@user.email}", :size=>"50" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :telephone_number, "電話番号(ハイフンなし10or11桁)" %></td>
-            <td><%= f.text_field :telephone_number, :placeholder =>"#{@user.telephone_number}", :size=>"50" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :birth_date, "生年月日(ハイフンなし8桁)" %></td>
-            <td><%= f.text_field :birth_date, :placeholder =>"#{@user.birth_date}", :size=>"50" %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :gender, "性別" %></td>
-            <td>
-              <%= f.radio_button :gender, User.genders.key("0"), checked: true %>
-              <%= f.label :gender, User.genders_i18n[:man], value: 0, class: "mr-5" %>
-              <%= f.radio_button :gender, User.genders.key("1") %>
-              <%= f.label :gender, User.genders_i18n[:woman], value: 1 %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="user-edit-form">
+        <div class="flex-row">
+          <div class="flex-item">アカウント名</div>
+          <div class="flex-item"><%= f.text_field :account_name, :placeholder =>"#{@user.account_name}", class:"form-control" %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">メールアドレス</div>
+          <div class="flex-item"><%= f.email_field :email, autocomplete: "email", :placeholder =>"#{@user.email}", class:"form-control" %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">電話番号(ハイフンなし10or11桁)</div>
+          <div class="flex-item"><%= f.text_field :telephone_number, :placeholder =>"#{@user.telephone_number}", class:"form-control" %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">生年月日(ハイフンなし8桁)</div>
+          <div class="flex-item"><%= f.text_field :birth_date, :placeholder =>"#{@user.birth_date}", class:"form-control" %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">性別</div>
+          <div class="flex-item">
+            <%= f.radio_button :gender, User.genders.key("0"), checked: true %>
+            <%= f.label :gender, User.genders_i18n[:man], value: 0, class: "mr-5" %>
+            <%= f.radio_button :gender, User.genders.key("1") %>
+            <%= f.label :gender, User.genders_i18n[:woman], value: 1 %>
+          </div>
+        </div>
+      </div>
       <div class="text-center my-3">
-        <%= f.submit "変更を保存する", class: "btn btn-primary mr-5 w-25" %>
-        <%= link_to "退会する", check_user_path, class: "btn btn-danger w-25" %>
+        <%= f.submit "変更を保存する", class: "btn btn-primary mr-3" %>
+        <%= link_to "退会する", check_user_path, class: "btn btn-danger" %>
       </div>
       <% end %>
     </div>

@@ -1,33 +1,29 @@
 <div class="row">
-  <div class="offset-md-1">
-    <table class="table table-borderless">
-      <% if @requests.present? %>
-        <tbody>
-          <% @requests.each do |request| %>
-          <tr>
-            <td class="col-2">投稿ユーザー</td>
-            <td class="col-7"><%= request.user.account_name %></td>
-          </tr>
-          <tr>
-            <td class="col-2">ご意見・ご要望内容</th>
-            <td class="col-7"><%=safe_join(request.content.split("\n"),tag(:br))%></td>
-          </tr>
-          <tr>
-            <td class="col-2">投稿日</th>
-            <td class="col-7"><%= request.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class="request_link">
-                <%= link_to "詳細を見る", request_path(request) %>
-              </div>
-            </td>
-          </tr>
-          <tr style="border: solid 2px #e70989"></tr>
-          <% end %>
-        </tbody>
+  <div class="request-index">
+    <% if @requests.present? %>
+      <% @requests.each do |request| %>
+        <div class="flex-row">
+          <div class="flex-item">投稿ユーザー</div>
+          <div class="flex-item"><%= request.user.account_name %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">ご意見・ご要望内容</div>
+          <div class="flex-item"><%=safe_join(request.content.split("\n"),tag(:br))%></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">投稿日</div>
+          <div class="flex-item"><%= request.created_at.strftime('%Y/%m/%d') %></div>
+        </div>
+        <div class="flex-row">
+          <div class="no-item"></div>
+          <div class="no-item">
+            <%= link_to "詳細を見る", request_path(request) %>
+          </div>
+        </div>
+        <div class="border-item"></div>
       <% end %>
-    </table>
+    <% end %>
   </div>
 </div>
+
+

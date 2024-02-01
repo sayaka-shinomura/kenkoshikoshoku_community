@@ -12,4 +12,39 @@
   color: #000000;
   background-color: #c66358;
   border-color: #000000;
+  margin: 10px;
+}
+
+.request-index{
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 1;
+    font-weight: bold;
+    background: #f3ccd5;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 3;
+  }
+
+  .no-item:nth-child(1) {
+    flex: 1;
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .no-item:nth-child(2) {
+    flex: 3;
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .border-item {
+    border-bottom: 1px solid gray;
+  }
+
 }

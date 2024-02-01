@@ -48,3 +48,21 @@
   }
 
 }
+
+.request-show{
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 1;
+    font-weight: bold;
+    background: #f3ccd5;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 3;
+  }
+
+}

@@ -1,40 +1,38 @@
 <div class="container">
   <h4 class="my-3 text-center" style="background-color: #ffb830">リクエスト投稿詳細</h4>
   <div class="row">
-    <div class="col-6 px-5 px-sm-0 mx-auto">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <td class="col-2">リクエスト投稿日</th>
-            <td class="col-5"><%= @request.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-          <tr>
-            <td class="col-2">投稿ユーザー</td>
-            <td class="col-5"><%= @request.user.account_name %></td>
-       　　</tr>
-          <tr>
-            <td><p>ご意見・ご要望</p></td>
-            <td><%=safe_join(@request.content.split("\n"),tag(:br))%></td>
-          </tr>
-          <tr>
-            <td class="col-2">対応ステータス</td>
-            <td class="col-5"><%= @request.confirm ? '管理者に通知しました' : '管理者が対応致しました' %></td>
-          </tr>
-          <tr>
-            <td class="col-2">対応内容</td>
-            <td class="col-5">
-              <% if @request.reply.present? %>
-                <%=safe_join(@request.reply.split("\n"),tag(:br))%>
-              <% else %>
-                <p>
-                  管理者がご意見・ご要望内容を確認しております。<br>
-                  対応までもうしばらくお待ちください。
-                </p>
-　　　　　　　<% end %>
-　　　　　　</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-lg-6 px-5 px-sm-0 mx-auto">
+      <div class="request-show">
+        <div class="flex-row">
+          <div class="flex-item">リクエスト投稿日</div>
+          <div class="flex-item"><%= @request.created_at.strftime('%Y/%m/%d') %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">投稿ユーザー</div>
+          <div class="flex-item"><%= @request.user.account_name %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">ご意見・ご要望</div>
+          <div class="flex-item"><%=safe_join(@request.content.split("\n"),tag(:br))%></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">対応ステータス</div>
+          <div class="flex-item"><%= @request.confirm ? '管理者に通知しました' : '管理者が対応致しました' %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">対応内容</div>
+          <div class="flex-item">
+            <% if @request.reply.present? %>
+              <%=safe_join(@request.reply.split("\n"),tag(:br))%>
+            <% else %>
+              <p>
+                管理者がご意見・ご要望内容を確認しております。<br>
+                対応までもうしばらくお待ちください。
+              </p>
+　　　　　　<% end %>
+          </div>
+        </div>
+      </div>
       <div class="text-center my-3">
         <%= link_to "リクエスト一覧へ戻る", requests_path(@request), class:"btn btn-primary" %>
       </div>

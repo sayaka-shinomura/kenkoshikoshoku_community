@@ -14,38 +14,36 @@
 
     <!--# 野菜詳細情報-->
     <div class="col-lg-6 col-md-6 col-12 px-5 px-sm-0 mx-auto">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td class="col-2">野菜名</td>
-            <td class="col-5"><%= @vegetable.name %></td>
-       　  </tr>
-       　  <tr>
-            <td>栄養素</td>
-            <td><%= @nutrients.uniq.join("・") %></td>
-          </tr>
-           <tr>
-            <td>効能</td>
-            <td><%= @effects.uniq.join("・") %></td>
-          </tr>
-          <tr>
-            <td>旬の時期</td>
-            <td><%= @vegetable.seasonal %></td>
-          </tr>
-          <tr>
-            <td>産地情報</td>
-            <td><%=safe_join(@vegetable.production_area.split("\n"),tag(:br))%></td>
-          </tr>
-          <tr>
-            <td>保存方法</td>
-            <td><%=safe_join(@vegetable.keeping.split("\n"),tag(:br))%></td>
-          </tr>
-          <tr>
-            <td>おすすめ情報</td>
-            <td><%=safe_join(@vegetable.introduction.split("\n"),tag(:br))%></td>
-          </tr>
-       </tbody>
-     </table>
+      <div class="vegetable-show">
+        <div class="flex-row">
+          <div class="flex-item">野菜名</div>
+          <div class="flex-item"><%= @vegetable.name %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">栄養素</div>
+          <div class="flex-item"><%= @nutrients.uniq.join("・") %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">効能</div>
+          <div class="flex-item"><%= @effects.uniq.join("・") %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">旬の時期</div>
+          <div class="flex-item"><%= @vegetable.seasonal %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">産地情報</div>
+          <div class="flex-item"><%=safe_join(@vegetable.production_area.split("\n"),tag(:br))%></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">保存方法</div>
+          <div class="flex-item"><%=safe_join(@vegetable.keeping.split("\n"),tag(:br))%></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">おすすめ情報</div>
+          <div class="flex-item"><%=safe_join(@vegetable.introduction.split("\n"),tag(:br))%></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -36,25 +36,16 @@
   </div>
 
   <% elsif @range == "Nutrient" %>
-  <table class="table table-hover table-inverse">
-    <tbody>
-      <% @nutrients.each do |nutrient| %>
-        <tr>
-          <td><%= link_to nutrient.name, nutrient_path(nutrient), class:"btn btn-outline-warning btn-lg" %></td>
-          <td><%= nutrient.introduction %></td>
-        </tr>
+  <div class="mr-3 d-flex flex-column mb-4">
+    <% @nutrients.each do |nutrient| %>
+      <%= link_to nutrient.name, nutrient_path(nutrient), class:"btn btn-outline-warning btn-lg" %>
+        <%= nutrient.introduction %>
       <% end %>
-    </tbody>
 
-  <% else %>
-    <tbody>
+    <% else %>
       <% @effects.each do |effect| %>
-        <tr>
-          <td><%= link_to effect.name, effect_path(effect), class:"btn btn-outline-info btn-lg" %></td>
-          <td><%= effect.introduction %></td>
-        </tr>
-      <% end %>
-    </tbody>
+        <%= link_to effect.name, effect_path(effect), class:"btn btn-outline-info btn-lg" %>
+        <%= effect.introduction %>
+    <% end %>
   <% end %>
-  </table>
-</div>
+  </div>

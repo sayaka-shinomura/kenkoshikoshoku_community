@@ -6,26 +6,29 @@
         <%= link_to "　新規登録　", new_admin_effect_path, class:"btn btn-outline-success" %>
       </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>効能ID</th>
-            <th>効能名</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><% @effects.each do |effect| %></tr>
-            <td><%= effect.id %></td>
-            <td><%= effect.name %></td>
-            <td><%= link_to "詳細", admin_effect_path(effect) %></td>
-            <td><%= link_to "編集", edit_admin_effect_path(effect), style: "color: #e70989;" %></td>
-            <td><%= link_to "削除", admin_effect_path(effect), method: :delete, data: { confirm: "本当に削除しますか？" }, style: "color: red;" %></td>
-            <% end %>
-        </tbody>
-      </table>
+      <div class="effect-index">
+        <div class="flex-row">
+          <div class="title-item">
+            <p class="title">効能ID</p>
+          </div>
+          <div class="title-item">
+            <p class="title">効能名</p>
+          </div>
+          <div class="title-item"></div>
+          <div class="title-item"></div>
+          <div class="title-item"></div>
+        </div>
+        <% @effects.each do |effect| %>
+          <div class="flex-row">
+            <div class="flex-item"><%= effect.id %></div>
+            <div class="flex-item"><%= effect.name %></div>
+            <div class="flex-item"><%= link_to "詳細", admin_effect_path(effect) %></div>
+            <div class="flex-item"><%= link_to "編集", edit_admin_effect_path(effect), style: "color: #e70989;" %></div>
+            <div class="flex-item"><%= link_to "削除", admin_effect_path(effect), method: :delete, data: { confirm: "本当に削除しますか？" }, style: "color: red;" %></div>
+          </div>
+          <div class="border-item"></div>
+        <% end %>
+      </div>
       <%= paginate @effects %>
     </div>
   </div>

@@ -1,17 +1,13 @@
 <%= form_with model: @effect, url: url do |f| %>
-  <div class="form-group">
-    <table class="table table-borderless">
-      <tbody>
-        <tr>
-          <th>効能名</th>
-          <td><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></td>
-        </tr>
-        <tr>
-          <th>効能概要</td>
-          <td><%= f.text_area :introduction, id:"inputIntroduction", class:"form-control", :size=>"30x15" %></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="effectform">
+    <div class="flex-row">
+      <div class="flex-item">効能名</div>
+      <div class="flex-item"><%= f.text_field :name, autofocus: true, id:"inputTitle", class:"form-control" %></div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-item">効能概要</div>
+      <div class="flex-item"><%= f.text_area :introduction, id:"inputIntroduction", class:"form-control", :size=>"30x15" %></div>
+    </div>
     <div class="text-center my-3">
       <%= f.submit submit, class:"btn btn-success" %>
     </div>

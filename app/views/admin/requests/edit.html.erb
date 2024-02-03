@@ -3,37 +3,35 @@
   <div class="row">
     <div class="col-lg-8 col-md-10 col-sm-12 px-5 px-sm-0 mx-auto">
       <%= form_with model: @request, url: admin_request_path(@request.id), method: :patch do |f| %>
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <th class="col-2">リクエストID</th>
-              <td class="col-5"><%= @request.id %></td>
-            </tr>
-            <tr>
-              <th>投稿ユーザー</th>
-              <td><%= @request.user.account_name %></td>
-            </tr>
-            <tr>
-              <th>受付日</th>
-              <td><%= @request.created_at.strftime('%Y/%m/%d') %></td>
-            </tr>
-            <tr>
-              <th>ご意見・ご要望</th>
-              <td><%=safe_join(@request.content.split("\n"),tag(:br))%></td>
-            </tr>
-            <tr>
-              <th>対応内容</th>
-              <td><%= f.text_area :reply, autofocus: true, id:"inputRply", class:"form-control", :size=>"30x10" %></td>
-            </tr>
-            <tr>
-              <th>対応ステータス</th>
-              <td>
-                <%= f.radio_button :confirm, true %><%= f.label :confirm, "確認中", value: true, class: "mr-3" %>
-                <%= f.radio_button :confirm, false %><%= f.label :confirm, "対応済み", value: false %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="request-form">
+          <div class="flex-row">
+            <div class="flex-item">リクエストID</div>
+            <div class="flex-item"><%= @request.id %></div>
+          </div>
+          <div class="flex-row">
+            <div class="flex-item">投稿ユーザー</div>
+            <div class="flex-item"><%= @request.user.account_name %></div>
+          </div>
+          <div class="flex-row">
+            <div class="flex-item">受付日</div>
+            <div class="flex-item"><%= @request.created_at.strftime('%Y/%m/%d') %></div>
+          </div>
+          <div class="flex-row">
+            <div class="flex-item">ご意見・ご要望</div>
+            <div class="flex-item"><%=safe_join(@request.content.split("\n"),tag(:br))%></div>
+          </div>
+          <div class="flex-row">
+            <div class="flex-item">対応内容</div>
+            <div class="flex-item"><%= f.text_area :reply, autofocus: true, id:"inputRply", class:"form-control", :size=>"30x10" %></div>
+          </div>
+          <div class="flex-row">
+            <div class="flex-item">対応ステータス</div>
+            <div class="flex-item">
+              <%= f.radio_button :confirm, true %><%= f.label :confirm, "確認中", value: true, class: "mr-3" %>
+              <%= f.radio_button :confirm, false %><%= f.label :confirm, "対応済み", value: false %>
+            </div>
+          </div>
+        </div>
         <div class="text-center my-3">
           <%= f.submit 'リクエスト対応を行う', class:"btn btn-outline-warning" %>
         </div>

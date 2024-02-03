@@ -2,34 +2,33 @@
   <h4 class="my-3 text-center" style="background-color: #ffff55">リクエスト投稿一覧【新着順】</h4>
   <div class="row">
     <div class="col-lg-8 col-md-10 col-sm-12 px-5 px-sm-0 mx-auto">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>リクエストID</th>
-            <th>投稿ユーザー</th>
-            <th>投稿日</th>
-            <th>ステータス</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><% @requests.each do |request| %></tr>
-            <td><%= request.id %></td>
-            <td><%= request.user.account_name %></td>
-            <td><%= request.created_at.strftime('%Y/%m/%d') %></td>
-            <td>
-              <% if request.confirm? %>
-                <span style="color: #ffb830;">確認中</span>
-              <% else %>
-                <span style= "color: #e70989;">対応済み</span>
-              <% end %>
-            </td>
-            <td><%= link_to "詳細", admin_request_path(request), class:"text-primary" %></td>
-            <td><%= link_to "削除", admin_request_path(request), method: :delete, data: { confirm: "管理者権限で削除します。本当に削除しますか？" }, style: "color: red;" %></td>
+      <div class="request-index">
+        <div class="flex-row">
+          <div class="title-item">リクエストID</div>
+          <div class="title-item">投稿ユーザー</div>
+          <div class="title-item">投稿日</div>
+          <div class="title-item">ステータス</div>
+          <div class="title-item"></div>
+          <div class="title-item"></div>
+        </div>
+        <% @requests.each do |request| %>
+        <div class="flex-row">
+          <div class="flex-item"><%= request.id %></div>
+          <div class="flex-item"><%= request.user.account_name %></div>
+          <div class="flex-item"><%= request.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="flex-item">
+            <% if request.confirm? %>
+              <span style="color: #ffb830;">確認中</span>
+            <% else %>
+              <span style= "color: #e70989;">対応済み</span>
             <% end %>
-        </tbody>
-      </table>
+          </div>
+          <div class="flex-item"><%= link_to "詳細", admin_request_path(request), class:"text-primary" %></div>
+          <div class="flex-item"><%= link_to "削除", admin_request_path(request), method: :delete, data: { confirm: "管理者権限で削除します。本当に削除しますか？" }, style: "color: red;" %></div>
+        </div>
+        <div class="border-item"></div>
+        <% end %>
+      </div>
       <%= paginate @requests %>
     </div>
   </div>

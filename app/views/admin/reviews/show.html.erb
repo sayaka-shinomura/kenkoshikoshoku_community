@@ -2,56 +2,53 @@
   <h4 class="my-3 text-center" style="background-color: #ffb830">レビュー詳細</h4>
   <div class="row">
     <div class="col-lg-8 col-md-10 colsm-12 px-5 px-sm-0 mx-auto">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th class="col-2">レビューID</th>
-            <td class="col-5"><%= @review.id %></td>
-       　　</tr>
-          <tr>
-            <th>レビューユーザー</th>
-            <td><%= @review.user.account_name %></td>
-       　  </tr>
-       　  <tr>
-            <th>レビューレシピID</th>
-            <td><%= @review.recipe_id %></td>
-       　</tr>
-       　 <tr>
-            <th>レビューレシピ名</th>
-            <td><%= @review.recipe.name %></td>
-       　</tr>
-          <tr>
-            <th>評価</th>
-            <td>
-              <div id="star_<%= @review.id %>"></div>
-                <script>
-                  $(document).on('turbolinks:load', function() {
-                  let elem = document.querySelector('#star_<%= @review.id %>');
-                  if (elem == null) return;
+      <div class="review-form">
+        <div class="flex-row">
+          <div class="flex-item">レビューID</div>
+          <div class="flex-item"><%= @review.id %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">レビューユーザー</div>
+          <div class="flex-item"><%= @review.user.account_name %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">レビューレシピID</div>
+          <div class="flex-item"><%= @review.recipe.id %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">レビューレシピ名</div>
+          <div class="flex-item"><%= @review.recipe.name %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">評価</div>
+          <div class="flex-item">
+            <div id="star_<%= @review.id %>"></div>
+              <script>
+                $(document).on('turbolinks:load', function() {
+                let elem = document.querySelector('#star_<%= @review.id %>');
+                if (elem == null) return;
 
-                  elem.innerHTML = "";
-                  let opt = {
-                    starOn: "<%= asset_path('star-on.png') %>",
-                    starOff: "<%= asset_path('star-off.png') %>",
-                    score: "<%= @review.star %>",
-                    readOnly: true,
-                  };
-                  raty(elem, opt);
-                  });
-                </script>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>コメント</th>
-            <td><%=safe_join(@review.comment.split("\n"),tag(:br))%></td>
-          </tr>
-          <tr>
-            <th>レビュー更新日</th>
-            <td><%= @review.updated_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-        </tbody>
-      </table>
+                elem.innerHTML = "";
+                let opt = {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  score: "<%= @review.star %>",
+                  readOnly: true,
+                };
+                raty(elem, opt);
+                });
+              </script>
+            </div>
+          </div>
+          <div class="flex-row">
+          <div class="flex-item">コメント</div>
+          <div class="flex-item"><%=safe_join(@review.comment.split("\n"),tag(:br))%></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">レビュー更新日</div>
+          <div class="flex-item"><%= @review.updated_at.strftime('%Y/%m/%d') %></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

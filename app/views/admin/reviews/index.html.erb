@@ -2,28 +2,27 @@
   <h4 class="mt-3 text-center" style="background-color: #ffff55">レビュー一覧【新着順】</h4>
   <div class="row">
     <div class="col-lg-8 col-md-10 col-sm-12 px-5 px-sm-0 mx-auto">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>レビューID</th>
-            <th>投稿ユーザー</th>
-            <th>レビューレシピID</th>
-            <th>更新日</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><% @reviews.each do |review| %></tr>
-            <td><%= review.id %></td>
-            <td><%= review.user.account_name %></td>
-            <td><%= review.recipe_id %></td>
-            <td><%= review.updated_at.strftime('%Y/%m/%d') %></td>
-            <td><%= link_to "詳細", admin_review_path(review) %></td>
-            <td><%= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: "管理者権限で削除します。本当に削除しますか？" }, style: "color: red;" %></td>
-            <% end %>
-        </tbody>
-      </table>
+      <div class="review-index">
+        <div class="flex-row">
+          <div class="title-item">レビューID</div>
+          <div class="title-item">投稿ユーザー</div>
+          <div class="title-item">レシピID</div>
+          <div class="title-item">更新日</div>
+          <div class="title-item"></div>
+          <div class="title-item"></div>
+        </div>
+        <% @reviews.each do |review| %>
+        <div class="flex-row">
+          <div class="flex-item"><%= review.id %></div>
+          <div class="flex-item"><%= review.user.account_name %></div>
+          <div class="flex-item"><%= review.recipe_id %></div>
+          <div class="flex-item"><%= review.updated_at.strftime('%Y/%m/%d') %></div>
+          <div class="flex-item"><%= link_to "詳細", admin_review_path(review) %></div>
+          <div class="flex-item"><%= link_to "削除", admin_review_path(review), method: :delete, data: { confirm: "管理者権限で削除します。本当に削除しますか？" }, style: "color: red;" %></div>
+        </div>
+        <div class="border-item"></div>
+        <% end %>
+      </div>
       <%= paginate @reviews %>
     </div>
   </div>

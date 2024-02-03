@@ -2,25 +2,22 @@
   <h4 class="my-3 text-center" style="background-color: #ffb830">効能情報詳細</h4>
   <div class="row">
     <div class="col-lg-8 col-md-10 colsm-12 px-5 px-sm-0 mx-auto">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th class="col-1">効能ID</th>
-            <td class="col-6"><%= @effect.id %></td>
-       　　</tr>
-          <tr>
-            <th>効能名</th>
-            <td><%= @effect.name %></td>
-       　  </tr>
-          <tr>
-            <th>効能概要</th>
-            <td><%=safe_join(@effect.introduction.split("\n"),tag(:br))%></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="text-center">
-        <%= link_to "　　編集　　", edit_admin_effect_path(@effect), class:"btn btn-outline-primary" %>
+      <div class="effect-show">
+        <div class="flex-row">
+          <div class="flex-item">効能ID</div>
+          <div class="flex-item"><%= @effect.id %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">効能名</div>
+          <div class="flex-item"><%= @effect.name %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">効能概要</div>
+          <div class="flex-item"><%=safe_join(@effect.introduction.split("\n"),tag(:br))%></div>
+        </div>
+      </div>
+      <div class="text-center my-3">
+        <%= link_to "　　編  集　　", edit_admin_effect_path(@effect), class:"btn btn-outline-primary" %>
       </div>
     </div>
   </div>

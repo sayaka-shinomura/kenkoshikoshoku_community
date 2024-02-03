@@ -8,26 +8,29 @@
       </div>
 
       <!--# 栄養素一覧-->
-      <table class="table">
-        <thead>
-          <tr>
-            <th>栄養素ID</th>
-            <th>栄養素名</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><% @nutrients.each do |nutrient| %></tr>
-            <td><%= nutrient.id %></td>
-            <td><%= nutrient.name %></td>
-            <td><%= link_to "詳細", admin_nutrient_path(nutrient) %></td>
-            <td><%= link_to "編集", edit_admin_nutrient_path(nutrient), style: "color: #e70989;" %></td>
-            <td><%= link_to "削除", admin_nutrient_path(nutrient), method: :delete, data: { confirm: "本当に削除しますか？" }, style: "color: red;" %></td>
-            <% end %>
-        </tbody>
-      </table>
+      <div class="nutrient-index">
+        <div class="flex-row">
+          <div class="title-item">
+            <p class="title">栄養素ID</p>
+          </div>
+          <div class="title-item">
+            <p class="title">栄養素名</p>
+          </div>
+          <div class="title-item"></div>
+          <div class="title-item"></div>
+          <div class="title-item"></div>
+        </div>
+        <% @nutrients.each do |nutrient| %>
+          <div class="flex-row">
+            <div class="flex-item"><%= nutrient.id %></div>
+            <div class="flex-item"><%= nutrient.name %></div>
+            <div class="flex-item"><%= link_to "詳細", admin_nutrient_path(nutrient) %></div>
+            <div class="flex-item"><%= link_to "編集", edit_admin_nutrient_path(nutrient), style: "color: #e70989;" %></div>
+            <div class="flex-item"><%= link_to "削除", admin_nutrient_path(nutrient), method: :delete, data: { confirm: "本当に削除しますか？" }, style: "color: red;" %></div>
+          </div>
+          <div class="border-item"></div>
+        <% end %>
+      </div>
       <%= paginate @nutrients %>
     </div>
   </div>

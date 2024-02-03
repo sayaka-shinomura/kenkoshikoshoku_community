@@ -6,26 +6,29 @@
         <%= link_to "　新規登録　", new_admin_vegetable_path, class:"btn btn-outline-success" %>
       </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>野菜ID</th>
-            <th>野菜名</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><% @vegetables.each do |vegetable| %></tr>
-            <td><%= vegetable.id %></td>
-            <td><%= vegetable.name %></td>
-            <td><%= link_to "詳細", admin_vegetable_path(vegetable) %></td>
-            <td><%= link_to "編集", edit_admin_vegetable_path(vegetable), style: "color: #e70989;" %></td>
-            <td><%= link_to "削除", admin_vegetable_path(vegetable), method: :delete, data: { confirm: "本当に削除しますか？" }, style: "color: red;" %></td>
-            <% end %>
-        </tbody>
-      </table>
+      <div class="vegetable-index">
+        <div class="flex-row">
+          <div class="title-item">
+            <p class="title">野菜ID</p>
+          </div>
+          <div class="title-item">
+            <p class="title">野菜名</p>
+          </div>
+          <div class="title-item"></div>
+          <div class="title-item"></div>
+          <div class="title-item"></div>
+        </div>
+        <% @vegetables.each do |vegetable| %>
+          <div class="flex-row">
+            <div class="flex-item"><%= vegetable.id %></div>
+            <div class="flex-item"><%= vegetable.name %></div>
+            <div class="flex-item"><%= link_to "詳細", admin_vegetable_path(vegetable) %></div>
+            <div class="flex-item"><%= link_to "編集", edit_admin_vegetable_path(vegetable), style: "color: #e70989;" %></div>
+            <div class="flex-item"><%= link_to "削除", admin_vegetable_path(vegetable), method: :delete, data: { confirm: "本当に削除しますか？" }, style: "color: red;" %></div>
+          </div>
+          <div class="border-item"></div>
+        <% end %>
+      </div>
       <%= paginate @vegetables %>
     </div>
   </div>

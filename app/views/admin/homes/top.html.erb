@@ -1,23 +1,21 @@
 <div class="container">
   <h4 class="my-3 text-center" style="background-color: #ffb830">管理項目</h4>
-  <div class="col-7 px-5 px-sm-0 mx-auto text-center">
-    <div class="my-4">
-      <%= link_to "会員", admin_users_path, class:"btn btn-info w-25", data: {"turbolinks" => false} %>
-    </div>
-    <div class="my-4">
-      <%= link_to "野菜", admin_vegetables_path, class:"btn btn-info w-25" %>
-    </div>
-    <div class="my-4">
-      <%= link_to "栄養素", admin_nutrients_path, class:"btn btn-info w-25" %>
-    </div>
-    <div class="my-4">
-      <%= link_to "効能", admin_effects_path, class:"btn btn-info w-25" %>
-    </div>
-    <div class="my-4">
-      <%= link_to "レビュー", admin_reviews_path, class:"btn btn-info w-25" %>
-    </div>
-    <div class="my-4">
-      <%= link_to "リクエスト", admin_requests_path, class:"btn btn-info w-25" %>
-    </div>
+  <div class="item">
+    <%= link_to "会員", admin_users_path, class:"btn btn-info", data: {"turbolinks" => false} %>
+  </div>
+  <div class="item">
+    <%= link_to "野菜", admin_vegetables_path, class:"btn btn-info" %>
+  </div>
+  <div class="item">
+    <%= link_to "栄養素", admin_nutrients_path, class:"btn btn-info" %>
+  </div>
+  <div class="item">
+    <%= link_to "効能", admin_effects_path, class:"btn btn-info" %>
+  </div>
+  <div class="item">
+    <%= link_to "レビュー", admin_reviews_path, class:"btn btn-info" %>
+  </div>
+  <div class="item">
+    <%= link_to "リクエスト", admin_requests_path, class:"btn btn-info" %>
   </div>
 </div>

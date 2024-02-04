@@ -1,45 +1,40 @@
 <div class="container">
-  <div class="col-lg-8 col-md-10 colsm-12 px-5 px-sm-0 mx-auto">
+  <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
   <h3 class="my-3 text-center" style="background-color: #ffff55"><%= @user.account_name %>さんのアカウント編集</h3>
 
   <%= form_with model:@user, url: admin_user_path(@user) do |f| %>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>アカウント名</td>
-          <td><%= @user.account_name %></td>
-        </tr>
-        <tr>
-          <td>メールアドレス</td>
-          <td><%= @user.email %></td>
-        </tr>
-        <tr>
-          <td>電話番号</td>
-          <td><%= @user.telephone_number %></td>
-        </tr>
-        <tr>
-          <td>生年月日</td>
-          <td><%= @user.birth_date %></td>
-        </tr>
-        <tr>
-          <td>性別</td>
-          <td><%= @user.gender ? '男性' : '女性' %></td>
-        </tr>
-        <tr>
-          <td>会員ステータス</td>
-          <td>
-            <%= f.radio_button :is_active, true %><%= f.label :is_active, "有効", value: true, class: "mr-5" %>
-            <%= f.radio_button :is_active, false %><%= f.label :is_active, "退会済み", value: false %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="text-center">
-      <%= f.submit '　　保存　　', class:"btn btn-success" %>
+  <div class="user-form">
+    <div class="flex-row">
+      <div class="flex-item">アカウント名</div>
+      <div class="flex-item"><%= @user.account_name %></div>
     </div>
-  <% end %>
-
-  <p class="text-center my-3">※管理者は会員ステータスのみ編集可</p>
+    <div class="flex-row">
+      <div class="flex-item">メールアドレス</div>
+      <div class="flex-item"><%= @user.email %></div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-item">電話番号</div>
+      <div class="flex-item"><%= @user.telephone_number %></div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-item">生年月日</div>
+      <div class="flex-item"><%= @user.birth_date %></div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-item">性別</div>
+      <div class="flex-item"><%= @user.gender ? '男性' : '女性' %></div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-item">会員ステータス</div>
+      <div class="flex-item">
+        <%= f.radio_button :is_active, true %><%= f.label :is_active, "有効", value: true, class: "mr-5" %>
+            <%= f.radio_button :is_active, false %><%= f.label :is_active, "退会済み", value: false %>
+      </div>
+    </div>
   </div>
+  <div class="text-center my-3">
+    <%= f.submit '　　保存　　', class:"btn btn-success" %>
+  </div>
+  <% end %>
+  <p class="text-center my-3">※管理者は会員ステータスのみ編集可</p>
 </div>

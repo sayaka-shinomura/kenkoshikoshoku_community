@@ -1,7 +1,7 @@
 <div class="container">
   <h4 class="my-3 text-center" style="background-color: #ffb830">リクエスト対応処理</h4>
   <div class="row">
-    <div class="col-lg-8 col-md-10 col-sm-12 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
       <%= form_with model: @request, url: admin_request_path(@request.id), method: :patch do |f| %>
         <div class="request-form">
           <div class="flex-row">

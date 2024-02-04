@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.btn-info {
-  width: 10em;
-  height:3em;
-  text-align: center;
-}
-
 .item {
  margin: 10px;
  text-align: center;
+
+ .btn-info {
+  width: 10em;
+  height:3em;
+  text-align: center;
+ }
 }

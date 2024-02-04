@@ -1,7 +1,23 @@
 // Place all the styles related to the admin/vegetables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.vegetableform{
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
 
+  .flex-item:nth-child(1) {
+    flex: 1;
+    background: #ffff55;
+    font-weight: bold;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 2;
+  }
+
+}
 
 .vegetable-index{
   .flex-item {
@@ -38,6 +54,24 @@
 
    .border-item {
     border-bottom: 1px solid gray;
+  }
+
+}
+
+.admin-vagetable {
+  .flex-item {
+    padding: 4px;
+    margin: 5px;
+  }
+
+  .flex-item:nth-child(1) {
+    flex: 1;
+    font-weight: bold;
+    background: #ffff55;
+  }
+
+  .flex-item:nth-child(2) {
+    flex: 4;
   }
 
 }

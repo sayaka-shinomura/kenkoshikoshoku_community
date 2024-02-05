@@ -8,60 +8,58 @@
 </div>
 
 <!--# レビュー一覧-->
-<div class="row">
-  <div class="review-index">
-    <% if @reviews.present? %>
-      <% @reviews.each do |review| %>
-        <div class="flex-row">
-          <div class="flex-item">レビューレシピ</div>
-          <div class="flex-item">
-            <%= link_to recipe_path(review.recipe.id) do %>
-              <%= review.recipe.name %>
-            <% end %>
-          </div>
+<div class="review-index">
+  <% if @reviews.present? %>
+    <% @reviews.each do |review| %>
+      <div class="flex-row">
+        <div class="flex-item">レビューレシピ</div>
+        <div class="flex-item">
+          <%= link_to recipe_path(review.recipe.id) do %>
+            <%= review.recipe.name %>
+          <% end %>
         </div>
-        <div class="flex-row">
-          <div class="flex-item">投稿ユーザー</div>
-          <div class="flex-item"><%= review.user.account_name %></div>
-        </div>
-        <div class="flex-row">
-          <div class="flex-item">評価</div>
-          <div class="flex-item">
-            <div id="star_<%= review.id %>"></div>
-            <script>
-              $(document).on('turbolinks:load', function() {
-                let elem = document.querySelector('#star_<%= review.id %>');
-                if (elem == null) return;
+      </div>
+      <div class="flex-row">
+        <div class="flex-item">投稿ユーザー</div>
+        <div class="flex-item"><%= review.user.account_name %></div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-item">評価</div>
+        <div class="flex-item">
+          <div id="star_<%= review.id %>"></div>
+          <script>
+            $(document).on('turbolinks:load', function() {
+              let elem = document.querySelector('#star_<%= review.id %>');
+              if (elem == null) return;
 
-                elem.innerHTML = "";
-                let opt = {
-                  starOn: "<%= asset_path('star-on.png') %>",
-                  starOff: "<%= asset_path('star-off.png') %>",
-                  score: "<%= review.star %>",
-                  readOnly: true,
-                };
-                raty(elem, opt);
-                });
-            </script>
-          </div>
+              elem.innerHTML = "";
+              let opt = {
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                score: "<%= review.star %>",
+                readOnly: true,
+              };
+              raty(elem, opt);
+              });
+          </script>
         </div>
-        <div class="flex-row">
-          <div class="flex-item">コメント</div>
-          <div class="flex-item"><%=safe_join(review.comment.split("\n"),tag(:br))%></div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-item">コメント</div>
+        <div class="flex-item"><%=safe_join(review.comment.split("\n"),tag(:br))%></div>
+      </div>
+      <div class="flex-row">
+        <div class="no-item"></div>
+        <div class="no-item">
+          <% if logger? && current_user.id == review.user_id %>
+            <%= link_to "レビューを編集する", edit_review_path(review) %>／
+            <%= link_to "削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
+          <% end %>
         </div>
-        <div class="flex-row">
-          <div class="no-item"></div>
-          <div class="no-item">
-            <% if logger? && current_user.id == review.user_id %>
-              <%= link_to "レビューを編集する", edit_review_path(review) %>／
-              <%= link_to "削除する", review_path(review), method: :delete,  data: { confirm: "本当に削除しますか？" } %>
-            <% end %>
-          </div>
-        </div>
-        <div class="border-item"></div>
-      <% end %>
+      </div>
+      <div class="border-item"></div>
     <% end %>
-  </div>
+  <% end %>
 </div>
 
 

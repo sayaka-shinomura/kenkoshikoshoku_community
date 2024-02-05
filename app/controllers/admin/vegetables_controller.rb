@@ -23,15 +23,15 @@ class Admin::VegetablesController < ApplicationController
   def show
     @vegetable = Vegetable.find(params[:id])
 
-    #配列の最初に空を作成
+    # 配列の最初に空を作成
     @nutrients = []
     @effects = []
     @vegetable.nutrients.each do |nutrient|
       @nutrients << nutrient.name
-       nutrient.effects.each do |effect|
-         #配列に効能名を入れる
-         @effects << effect.name
-       end
+      nutrient.effects.each do |effect|
+        # 配列に効能名を入れる
+        @effects << effect.name
+      end
     end
   end
 
@@ -58,17 +58,14 @@ class Admin::VegetablesController < ApplicationController
 
 
   private
-
-
-  def vegetable_params
-    params.require(:vegetable).permit(
-      :vegetable_image,
-      :name,
-      :seasonal,
-      :production_area,
-      :keeping,
-      :introduction,
-      nutrient_ids: [])
-  end
-
+    def vegetable_params
+      params.require(:vegetable).permit(
+        :vegetable_image,
+        :name,
+        :seasonal,
+        :production_area,
+        :keeping,
+        :introduction,
+        nutrient_ids: [])
+    end
 end

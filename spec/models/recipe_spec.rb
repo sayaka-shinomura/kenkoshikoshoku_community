@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Recipe, type: :model do
   let(:user) { create(:user) }
   let(:recipe) { build(:recipe, user_id: user.id) }
 
   it "材料・分量が紐づいていること" do
-     is_expected.to have_many(:ingredients)
+    is_expected.to have_many(:ingredients)
   end
 
   it "作り方が紐づいていること" do
@@ -21,10 +21,10 @@ RSpec.describe Recipe, type: :model do
       cookery = Cookery.new(process: "手順1")
       recipe.save
 
-      expect(recipe.name).to eq('テストタイトル')
-      expect(recipe.introduction).to eq('テスト紹介')
-      expect{recipe.ingredients << ingredient}.to change{recipe.ingredients.to_a}.from([]).to([ingredient])
-      expect{recipe.cookerys << cookery}.to change{recipe.cookerys.to_a}.from([]).to([cookery])
+      expect(recipe.name).to eq("テストタイトル")
+      expect(recipe.introduction).to eq("テスト紹介")
+      expect { recipe.ingredients << ingredient }.to change { recipe.ingredients.to_a }.from([]).to([ingredient])
+      expect { recipe.cookerys << cookery }.to change { recipe.cookerys.to_a }.from([]).to([cookery])
 
       expect(recipe).to be_valid
     end
@@ -63,7 +63,6 @@ RSpec.describe Recipe, type: :model do
         recipe.valid?
         expect(recipe.errors.full_messages.first).to eq("Cookerys processを入力してください")
       end
-
     end
 
     context "文字数制限" do
@@ -91,6 +90,5 @@ RSpec.describe Recipe, type: :model do
         expect(recipe.errors[:introduction]).to include("は200文字以内で入力してください")
       end
     end
-
   end
 end

@@ -1,5 +1,4 @@
 class Admin::UsersController < ApplicationController
-
   before_action :authenticate_admin!
   before_action :ensure_user, only: [:show, :edit, :update]
 
@@ -19,20 +18,17 @@ class Admin::UsersController < ApplicationController
 
 
   private
+    def user_params
+      params.require(:user).permit(
+        :account_name,
+        :email,
+        :telephone_number,
+        :birth_date,
+        :gender,
+        :is_active)
+    end
 
-
-  def user_params
-    params.require(:user).permit(
-      :account_name,
-      :email,
-      :telephone_number,
-      :birth_date,
-      :gender,
-      :is_active)
-  end
-
-  def ensure_user
-    @user = User.find(params[:id])
-  end
-
+    def ensure_user
+      @user = User.find(params[:id])
+    end
 end

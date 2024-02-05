@@ -1,10 +1,8 @@
 class Public::ReviewsController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @reviews = Review.page(params[:page]).per(10).all.order(created_at: :desc)
-
   end
 
   def new
@@ -67,12 +65,8 @@ class Public::ReviewsController < ApplicationController
 
 
   private
-
-  def review_params
-    params.require(:review).permit(:comment, :star).
-    merge(user_id: current_user.id)
-  end
-
-
-
+    def review_params
+      params.require(:review).permit(:comment, :star).
+      merge(user_id: current_user.id)
+    end
 end

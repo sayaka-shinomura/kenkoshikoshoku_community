@@ -1,5 +1,4 @@
 class Public::WantToMakeListsController < ApplicationController
-
   before_action :authenticate_user!
 
   def index
@@ -26,11 +25,7 @@ class Public::WantToMakeListsController < ApplicationController
 
 
   private
-
-
-  def want_to_make_list_params
-    params.permit(:recipe_id)
-  end
-
-
+    def want_to_make_list_params
+      params.permit(:recipe_id)
+    end
 end

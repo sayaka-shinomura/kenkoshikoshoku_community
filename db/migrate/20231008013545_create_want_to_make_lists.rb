@@ -6,8 +6,8 @@ class CreateWantToMakeLists < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    
+
     # want_to_make_listsにおいてuser_idとrecipe_idの組み合わせを一意性あるものにする
-    add_index  :want_to_make_lists, [:user_id, :recipe_id], unique: true
+    add_index :want_to_make_lists, [:user_id, :recipe_id], unique: true
   end
 end

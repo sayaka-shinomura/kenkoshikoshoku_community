@@ -15,5 +15,4 @@ class Admin::ReviewsController < ApplicationController
     flash[:notice] = "削除を実行しました"
     redirect_to admin_reviews_path
   end
-
 end

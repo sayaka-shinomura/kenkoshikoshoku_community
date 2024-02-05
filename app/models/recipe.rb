@@ -1,5 +1,4 @@
 class Recipe < ApplicationRecord
-
   belongs_to :user
 
   has_many :ingredients, dependent: :destroy
@@ -24,13 +23,13 @@ class Recipe < ApplicationRecord
   has_one_attached :recipe_image
 
 
-  #難易度評価
-  enum difficulty: { ★: 1, ★★: 2, ★★★: 3, ★★★★: 4, ★★★★★: 5}
+  # 難易度評価
+  enum difficulty: { ★: 1, ★★: 2, ★★★: 3, ★★★★: 4, ★★★★★: 5 }
 
 
-  validates :name, presence: true, length: { maximum: 20}
-  validates :summary, length: { maximum: 20}
-  validates :introduction, presence: true, length: { maximum: 200}
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :summary, length: { maximum: 20 }
+  validates :introduction, presence: true, length: { maximum: 200 }
 
   validate :require_any_ingredients
   validate :require_any_cookerys
@@ -56,13 +55,11 @@ class Recipe < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Recipe.joins(:user, :vegetables, :ingredients, vegetables: :nutrient, vegetables: [{nutrients: :effects}])
-      .where(['users.account_name LIKE(?) OR vegetables.name LIKE(?) OR summary LIKE(?) OR ingredients.content LIKE(?) OR nutrients.name LIKE(?) OR effects.name LIKE(?)',
+      Recipe.joins(:user, :vegetables, :ingredients, vegetables: :nutrient, vegetables: [{ nutrients: :effects }])
+      .where(["users.account_name LIKE(?) OR vegetables.name LIKE(?) OR summary LIKE(?) OR ingredients.content LIKE(?) OR nutrients.name LIKE(?) OR effects.name LIKE(?)",
       "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
     else
       Recipe.all
     end
   end
-
-
 end

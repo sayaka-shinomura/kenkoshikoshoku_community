@@ -1,5 +1,4 @@
 class Public::RequestsController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
@@ -40,10 +39,7 @@ class Public::RequestsController < ApplicationController
 
 
   private
-
-
-  def request_params
-    params.require(:request).permit(:user_id, :content)
-  end
-
+    def request_params
+      params.require(:request).permit(:user_id, :content)
+    end
 end

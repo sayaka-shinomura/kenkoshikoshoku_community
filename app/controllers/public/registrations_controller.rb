@@ -7,8 +7,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :ensure_normal_user, only: %i[update destroy]
 
   def ensure_normal_user
-    if resource.email == 'guest@example.com'
-      redirect_to root_path, notice: 'ゲストユーザーの更新・削除はできません。'
+    if resource.email == "guest@example.com"
+      redirect_to root_path, notice: "ゲストユーザーの更新・削除はできません。"
     end
   end
 
@@ -20,7 +20,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   # def create
   #   super
-  #end
+  # end
 
   # GET /resource/edit
   # def edit
@@ -68,6 +68,4 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
-
 end

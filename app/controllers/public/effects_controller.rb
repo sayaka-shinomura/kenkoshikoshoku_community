@@ -1,5 +1,4 @@
 class Public::EffectsController < ApplicationController
-
   def index
     @effects = Effect.all
   end
@@ -9,11 +8,10 @@ class Public::EffectsController < ApplicationController
     @nutrients = []
     @vegetables = []
     @effect.nutrients.each do |nutrient|
-       @nutrients << nutrient.name
-       nutrient.vegetables.each do |vegetable|
-         @vegetables << vegetable.name
-       end
+      @nutrients << nutrient.name
+      nutrient.vegetables.each do |vegetable|
+        @vegetables << vegetable.name
+      end
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-
   def show
     @user = current_user
     @recipes = @user.recipes
@@ -22,7 +21,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     @user.update (user_params)
-    redirect_to mypage_path, notice: 'ユーザー情報を更新しました。'
+    redirect_to mypage_path, notice: "ユーザー情報を更新しました。"
   end
 
   def check
@@ -39,10 +38,7 @@ class Public::UsersController < ApplicationController
 
 
   private
-
-
-  def user_params
-    params.require(:user).permit(:account_name, :email, :telephone_number, :birth_date, :gender)
-  end
-
+    def user_params
+      params.require(:user).permit(:account_name, :email, :telephone_number, :birth_date, :gender)
+    end
 end

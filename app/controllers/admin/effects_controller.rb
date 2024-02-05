@@ -29,7 +29,7 @@ class Admin::EffectsController < ApplicationController
   end
 
   def update
-     @effect = Effect.find(params[:id])
+    @effect = Effect.find(params[:id])
     if @effect.update(effect_params)
       redirect_to admin_effect_path(@effect.id), flash: { notice: "「#{@effect.name}」を更新しました。" }
     else
@@ -46,9 +46,7 @@ class Admin::EffectsController < ApplicationController
   end
 
   private
-
-  def effect_params
-    params.require(:effect).permit(:name, :introduction)
-  end
-
+    def effect_params
+      params.require(:effect).permit(:name, :introduction)
+    end
 end

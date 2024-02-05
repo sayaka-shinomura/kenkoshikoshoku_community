@@ -1,5 +1,4 @@
 class Vegetable < ApplicationRecord
-
   has_one_attached :vegetable_image
 
   has_many :nutrient_tags, dependent: :destroy
@@ -17,9 +16,9 @@ class Vegetable < ApplicationRecord
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @vegetable = Vegetable.where("name LIKE?","#{word}")
+      @vegetable = Vegetable.where("name LIKE?", "#{word}")
     elsif search == "partial_match"
-      @vegetable = Vegetable.where("name LIKE?","%#{word}%")
+      @vegetable = Vegetable.where("name LIKE?", "%#{word}%")
     else
       @vegetable = Vegetable.all
     end
@@ -28,12 +27,10 @@ class Vegetable < ApplicationRecord
   def self.search(search)
     if search != ""
       Vegetable.joins(:nutrients, nutrients: :effects)
-      .where(['nutrients.name LIKE(?) OR effects.name LIKE(?)',
+      .where(["nutrients.name LIKE(?) OR effects.name LIKE(?)",
       "%#{search}%", "%#{search}%"])
     else
       Vegetable.all
     end
   end
-
-
 end

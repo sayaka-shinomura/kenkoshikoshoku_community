@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #0が男性、1が女性
+  # 0が男性、1が女性
   enum gender: { man: "0", woman: "1" }
 
 
@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
+    find_or_create_by!(email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
       user.account_name = "ゲスト"
       user.telephone_number = "09012345678"
@@ -38,16 +38,14 @@ class User < ApplicationRecord
   end
 
   def self.search_for(content, method)
-    if method == 'perfect'
+    if method == "perfect"
       User.where(name: content)
-    elsif method == 'forward'
-      User.where('name LIKE ?', content + '%')
-    elsif method == 'backward'
-      User.where('name LIKE ?', '%' + content)
+    elsif method == "forward"
+      User.where("name LIKE ?", content + "%")
+    elsif method == "backward"
+      User.where("name LIKE ?", "%" + content)
     else
-      User.where('name LIKE ?', '%' + content + '%')
+      User.where("name LIKE ?", "%" + content + "%")
     end
   end
-
-
 end

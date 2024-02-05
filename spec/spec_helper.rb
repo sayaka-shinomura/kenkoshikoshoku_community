@@ -13,7 +13,7 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'capybara/rspec'
+require "capybara/rspec"
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by :rack_test
@@ -96,8 +96,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 
- config.before(:all) do
+  config.before(:all) do
     FactoryBot.reload
- end
-
+  end
 end

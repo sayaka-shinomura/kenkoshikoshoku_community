@@ -1,5 +1,4 @@
 module Public::HomesHelper
-
   def content_text
     <<-"EOS".strip_heredoc
 ご意見・ご要望を入力してください。
@@ -12,6 +11,4 @@ module Public::HomesHelper
 ※リクエストの投稿にはユーザー登録が必要です。
     EOS
   end
-
-
 end

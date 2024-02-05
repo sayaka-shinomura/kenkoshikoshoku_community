@@ -1,5 +1,4 @@
 class Admin::RequestsController < ApplicationController
-
   before_action :authenticate_admin!
 
 
@@ -17,7 +16,7 @@ class Admin::RequestsController < ApplicationController
   end
 
   def update
-     @request = Request.find(params[:id])
+    @request = Request.find(params[:id])
     if @request.update(request_params)
       redirect_to admin_request_path(@request.id)
     else
@@ -37,11 +36,7 @@ class Admin::RequestsController < ApplicationController
   end
 
   private
-
-  def request_params
-    params.require(:request).permit(:reply, :confirm)
-  end
-
-
-
+    def request_params
+      params.require(:request).permit(:reply, :confirm)
+    end
 end

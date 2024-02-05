@@ -1,5 +1,4 @@
 class Public::RecipesController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
 
@@ -72,22 +71,18 @@ class Public::RecipesController < ApplicationController
 
 
   private
-
-
-  def recipe_params
-    params.require(:recipe).permit(
-      :recipe_image,
-      :name,
-      :summary,
-      :introduction,
-      :time,
-      :difficulty,
-      :user_id,
-      vegetable_ids: [],
-      tag_ids: [],
-      ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
-      cookerys_attributes: [:id, :process, :_destroy])
-  end
-
-
+    def recipe_params
+      params.require(:recipe).permit(
+        :recipe_image,
+        :name,
+        :summary,
+        :introduction,
+        :time,
+        :difficulty,
+        :user_id,
+        vegetable_ids: [],
+        tag_ids: [],
+        ingredients_attributes: [:id, :recipe_id, :content, :quantity, :_destroy],
+        cookerys_attributes: [:id, :process, :_destroy])
+    end
 end

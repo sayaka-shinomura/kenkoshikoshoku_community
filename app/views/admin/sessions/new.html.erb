@@ -1,22 +1,23 @@
 <div class="container">
   <div calss="row">
-    <div class="col-lg-8 col-md-10 px-5 px-sm-0 mx-auto">
+    <div class="col-lg-6 col-md-10 col-sm-12 mx-auto">
       <h4 class="my-3 text-center" style="background-color: #c66358">管理者ログイン</h4>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <table class="table flex-grow">
-        <tbody>
-          <tr>
-            <td class="col-lg-2 col-md-4">メールアドレス</td>
-            <td class="col-lg-6 col-md-6"><%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width:80%" %></td>
-          </tr>
-          <tr>
-            <td>パスワード</td>
-            <td><%= f.password_field :password, autocomplete: "current-password", style: "width:80%" %></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-center"><%= f.submit "ログイン", class:"btn btn-primary w-25" %></div>
+      <div class="loginform">
+        <div class="flex-row">
+          <div class="flex-item">メールアドレス</div>
+          <div class="flex-item"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item"><%= f.label :password %></div>
+          <div class="flex-item"><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %></div>
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <%= f.submit "　ログイン　", class: "btn btn-primary" %>
+      </div>
       <% end %>
       <%= render "admin/shared/links" %>
    </div>

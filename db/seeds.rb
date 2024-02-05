@@ -14,12 +14,11 @@ Admin.find_or_create_by!(
 
 # カテゴリー
 Tag.find_or_create_by!([
-  { name: 'メイン' },
-  { name: 'スープ' },
-  { name: 'サラダ' },
-  { name: '丼・ワンプレート' },
-  { name: 'プラスワン' },
-  { name: 'おつまみ' },
-  { name: 'デザート' }
+  { name: "メイン" },
+  { name: "スープ" },
+  { name: "サラダ" },
+  { name: "丼・ワンプレート" },
+  { name: "プラスワン" },
+  { name: "おつまみ" },
+  { name: "デザート" }
 ])
-

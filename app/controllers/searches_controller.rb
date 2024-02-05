@@ -1,5 +1,4 @@
 class SearchesController < ApplicationController
-
   def search
     @range = params[:range]
 
@@ -12,8 +11,5 @@ class SearchesController < ApplicationController
     else
       @effects = Effect.looks(params[:search], params[:word])
     end
-
   end
-
-
 end

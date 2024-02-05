@@ -25,11 +25,11 @@ class Admin::NutrientsController < ApplicationController
   end
 
   def edit
-     @nutrient= Nutrient.find(params[:id])
+    @nutrient = Nutrient.find(params[:id])
   end
 
   def update
-     @nutrient = Nutrient.find(params[:id])
+    @nutrient = Nutrient.find(params[:id])
     if @nutrient.update(nutrient_params)
       redirect_to admin_nutrient_path(@nutrient.id), flash: { notice: "「#{@nutrient.name}」を更新しました。" }
     else
@@ -47,11 +47,7 @@ class Admin::NutrientsController < ApplicationController
 
 
   private
-
-
-  def nutrient_params
-    params.require(:nutrient).permit(:name, :introduction, effect_ids: [])
-  end
-
-
+    def nutrient_params
+      params.require(:nutrient).permit(:name, :introduction, effect_ids: [])
+    end
 end

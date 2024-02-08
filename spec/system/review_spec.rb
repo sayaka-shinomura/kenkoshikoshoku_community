@@ -26,7 +26,7 @@ RSpec.describe "レビュー機能", type: :system do
     context 'フォームの入力値が正常'do
       it '正常に登録される' do
         visit recipe_path(posted_recipe)
-        fill_in "review[star]", with: '4'
+        find('#post_raty', visible: false).set(1)
         fill_in "review[comment]", with: "テストレビュー"
         click_button 'レビューを投稿する'
         expect(page).to have_content("レビューを投稿しました")

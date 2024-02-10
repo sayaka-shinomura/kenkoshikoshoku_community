@@ -16,4 +16,5 @@ FactoryBot.define do
     gender { "1" }
     password { "password2" }
   end
+
 end

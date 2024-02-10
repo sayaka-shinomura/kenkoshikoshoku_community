@@ -11,8 +11,18 @@ RSpec.describe WantToMakeList, type: :model do
       it "user_idとrecipe_idがあれば保存できる" do
         expect(want_to_make_list).to be_valid
       end
+
+      it "リストに登録" do
+        expect(want_to_make_list.user_id).to eq 1
+        expect(want_to_make_list.recipe.name).to eq "テストタイトル"
+        expect(user.want_to_make_lists.count).to eq 1
+      end
+
+      it "リスト登録済みであればリスト解除可能" do
+        expect{ want_to_make_list }.to change{ WantToMakeList.count }.by(1)
+        expect{ destroy_want_to_make_list }.to change{ WantToMakeList.count }.by(-1)
+        expect(user.want_to_make_lists.count).to eq 0
+      end
     end
   end
-
-
 end

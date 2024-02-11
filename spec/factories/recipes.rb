@@ -26,7 +26,7 @@ FactoryBot.define do
       summary { "テスト要約2" }
       introduction { "テスト紹介2" }
       time { "20" }
-      difficulty { "2" }
+      difficulty { 2 }
     end
   end
 end

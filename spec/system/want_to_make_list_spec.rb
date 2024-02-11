@@ -37,6 +37,17 @@ RSpec.describe "作ってみたいリスト機能", type: :system do
         expect(page).to have_content("作ってみたいリストに登録しました。")
         expect(page).to have_content "作ってみたいリストから解除"
       end
+
+      it 'リストを解除する' do
+        visit recipe_path(recipe)
+        click_on "作ってみたいリストに登録"
+        expect(page).to have_content("作ってみたいリストに登録しました。")
+        expect(page).to have_content "作ってみたいリストから解除"
+        click_on "作ってみたいリストから解除"
+        expect(page).to have_content("作ってみたいリストから解除しました。")
+        expect(page).to have_current_path mypage_path
+        expect(page).to have_content "マイページ"
+      end
     end
   end
 end

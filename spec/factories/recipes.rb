@@ -7,6 +7,7 @@ FactoryBot.define do
     difficulty { 1 }
 
 
+
     trait :with_ingredients do
       after(:build) do |recipe|
         ingredient = build(:ingredients)

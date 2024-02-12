@@ -10,6 +10,8 @@ RSpec.describe Review, type: :model do
     it "正しくレビュー投稿できること" do
       expect(review.star).to eq 4
       expect(review.comment).to eq("テストコメント")
+
+      expect(review).to be_valid
     end
   end
 

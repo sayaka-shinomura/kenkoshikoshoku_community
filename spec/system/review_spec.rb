@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe "レビュー機能", type: :system do
   let(:user) { create(:user) }
@@ -25,7 +25,8 @@ RSpec.describe "レビュー機能", type: :system do
         expect(page).to have_content "テストタイトル"
         expect(page).to have_content "レビュー投稿はこちらから"
         expect(page).to have_selector('#post_raty', visible: false)
-        find('#post_raty', visible: false).set(4)
+        execute_script("$('#post_raty').raty('score', 4);")
+        #find('#post_raty', visible: false).set(4)
         fill_in "review[comment]", with: "テストコメント"
       end
 

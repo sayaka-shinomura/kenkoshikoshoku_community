@@ -1,7 +1,11 @@
 require "rails_helper"
 
 RSpec.describe WantToMakeList, type: :model do
-  let(:user) { create(:user) }
+  before do
+    @user = create(:user)
+  end
+
+  let(:user) { @user }
   let(:recipe) { create(:recipe, :with_ingredients, :with_cookerys, user_id: user.id) }
   let(:want_to_make_list) { user.want_to_make_lists.create(recipe_id: recipe.id)}
   let(:destroy_want_to_make_list) { user.want_to_make_lists.find_by(recipe_id: recipe.id).destroy }

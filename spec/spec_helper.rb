@@ -14,6 +14,10 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require "capybara/rspec"
+
+Capybara.default_driver = :selenium # Seleniumドライバを使用する
+Capybara.javascript_driver = :selenium # JavaScriptを有効にする
+
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by :rack_test
@@ -96,7 +100,7 @@ config.disable_monkey_patching!
   Kernel.srand config.seed
 =end
 
-  config.before(:all) do
+  config.before(:each) do
     FactoryBot.reload
   end
 

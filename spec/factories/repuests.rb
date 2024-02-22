@@ -10,5 +10,4 @@ FactoryBot.define do
     confirm { false }
     reply { "テスト対応2" }
   end
-
 end

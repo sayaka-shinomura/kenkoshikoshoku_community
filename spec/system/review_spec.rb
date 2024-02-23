@@ -34,7 +34,7 @@ RSpec.describe "レビュー機能", type: :system do
         find('input[name="commit"][value="レビューを投稿する"]').click
         #expect { click_button "レビューを投稿する" }.to change { Review.count }.by(1)
         #byebug
-        #expect(page).to have_content "レビュー一覧"
+        #expect(page).to have_content "レビュー一覧
         #expect(page).to have_content(Review.star)
         #expect(page).to have_content(Review.last.comment)
       end

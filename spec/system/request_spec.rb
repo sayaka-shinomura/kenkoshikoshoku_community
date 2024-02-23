@@ -51,11 +51,20 @@ RSpec.describe "リクエスト機能", type: :system do
 
   describe "対応機能" do
     before do
-
+      visit admin_session_path
+      admin = create(:admin, email: "admin@test.com",
+                             password: "000000")
+      sign_in admin
     end
 
     context "対応反映可能" do
       it "正常な値入力がれきていれば反映可能" do
+        posted_request
+        visit admin_requests_path
+        expect(page).to have_content "リクエスト投稿一覧【新着順】"
+        click_link "詳細"
+        expect(current_path).to eq admin_request_path(Request.last)
+        expect(page).to have_content "リクエスト詳細情報"
 
       end
     end

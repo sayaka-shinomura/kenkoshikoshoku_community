@@ -65,7 +65,25 @@ RSpec.describe "リクエスト機能", type: :system do
         click_link "詳細"
         expect(current_path).to eq admin_request_path(Request.last)
         expect(page).to have_content "リクエスト詳細情報"
+        click_link "リクエスト対応を行う"
+        expect(current_path).to eq edit_admin_request_path(Request.last)
+        expect(page).to have_content "リクエスト対応処理"
+        fill_in "request[reply]", with: request.reply
+        choose "対応済み"
+        click_button "リクエスト対応を行う"
+        expect(current_path).to eq admin_request_path(Request.last)
+        expect(page).to have_content "対応済み"
+        visit request_path(Request.last)
+        expect(page).to have_content "管理者が対応致しました"
+      end
 
+      it "対応内容が空欄で登録" do
+        posted_request
+        visit edit_admin_request_path(Request.last)
+        fill_in "request[reply]", with: nil
+        click_button "リクエスト対応を行う"
+        expect(current_path).to eq admin_request_path(Request.last)
+        expect(page).to have_content "管理者がご意見・ご要望内容を確認しております。"
       end
     end
   end

@@ -88,4 +88,21 @@ RSpec.describe "リクエスト機能", type: :system do
     end
   end
 
+  describe "削除機能" do
+    before do
+      visit admin_session_path
+      admin = create(:admin, email: "admin@test.com",
+                             password: "000000")
+      sign_in admin
+    end
+
+    it "管理者ページから削除可能" do
+      posted_request
+      visit admin_requests_path
+      expect(page).to have_content "リクエスト投稿一覧【新着順】"
+      click_link "削除"
+      expect(page).to have_content "削除を実行しました"
+    end
+  end
+
 end

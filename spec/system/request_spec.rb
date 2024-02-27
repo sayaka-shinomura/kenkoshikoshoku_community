@@ -105,4 +105,21 @@ RSpec.describe "リクエスト機能", type: :system do
     end
   end
 
+  describe "検索機能" do
+    context "検索可能" do
+      it "キーワード検索での部分一致で可能"  do
+        posted_request
+        visit requests_path
+        expect(page).to have_content "皆様からのご意見・ご要望"
+        expect(page).to have_selector('form.search-form input.search-input[placeholder="リクエストを検索"]')
+        within('.request_search') do
+          fill_in 'keyword', with: '検索キーワード'
+          click_button 'キーワード検索'
+        end
+        expect(page).to have_content "ご意見・ご要望検索結果"
+        expect(page).to have_content("投稿ユーザー")
+      end
+    end
+  end
+
 end

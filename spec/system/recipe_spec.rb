@@ -170,7 +170,7 @@ RSpec.describe "レシピ機能", type: :system do
         fill_in "keyword", match: :first, with: "sora"
         click_on "キーワード検索"
         expect(page).to have_content("レシピ検索結果")
-        expect(page).to have_content("投稿ユーザー")
+        d
       end
     end
   end

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "効能投稿機能", type: :system do
   let(:admin) { create(:admin) }
-  let(:effect) { create(:effect) }
+  let(:effect) { build(:effect) }
   let(:posted_effect) { create(:effect) }
 
   before do
@@ -55,6 +55,44 @@ RSpec.describe "効能投稿機能", type: :system do
         fill_in "effect[introduction]", with: nil
         expect { click_button "新規登録" }.to change { Effect.count }.by(0)
         expect(page).to have_content "【！】必要事項が入力されていません。"
+      end
+    end
+
+    describe "編集機能" do
+      context "変更反映可能" do
+        it "一覧画面から変更反映可能" do
+          posted_effect
+          visit admin_effects_path
+          expect(page).to have_content "効能一覧"
+          click_link "編集"
+          expect(current_path).to eq edit_admin_effect_path(Effect.last)
+          expect(page).to have_content "効能情報編集"
+          expect(page).to have_field "effect[name]", with: "テスト効能名"
+          expect(page).to have_field "effect[introduction]", with: effect.introduction
+          fill_in "effect[introduction]", with: "テスト効能概要"
+          click_button "保存"
+          expect(current_path).to eq admin_effect_path(Effect.last)
+          expect(page).to have_content "更新しました。"
+          expect(page).to have_content "テスト効能名"
+        end
+
+        it "詳細画面から変更可能" do
+          posted_effect
+          visit admin_effects_path
+          click_link "詳細"
+          expect(current_path).to eq admin_effect_path(Effect.last)
+          expect(page).to have_content "効能情報詳細"
+          click_link "編 集"
+          expect(current_path).to eq edit_admin_effect_path(Effect.last)
+          expect(page).to have_content "効能情報編集"
+          expect(page).to have_field "effect[name]", with: "テスト効能名"
+          expect(page).to have_field "effect[introduction]", with: effect.introduction
+          fill_in "effect[introduction]", with: "テスト効能概要"
+          click_button "保存"
+          expect(current_path).to eq admin_effect_path(Effect.last)
+          expect(page).to have_content "更新しました。"
+          expect(page).to have_content "テスト効能名"
+        end
       end
     end
   end

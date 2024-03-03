@@ -94,6 +94,22 @@ RSpec.describe "効能投稿機能", type: :system do
           expect(page).to have_content "テスト効能名"
         end
       end
+
+      context "フォームの入力値が異常" do
+        it "効果名を未入力にしたら変更反映不可" do
+          visit edit_admin_effect_path(posted_effect)
+          fill_in "effect[name]", with: nil
+          click_button "保存"
+          expect(page).to have_content "【！】必要事項が入力されていません。"
+        end
+
+        it "効能概要を未入力にしたら変更反映不可" do
+          visit edit_admin_effect_path(posted_effect)
+          fill_in "effect[introduction]", with: nil
+          click_button "保存"
+          expect(page).to have_content "【！】必要事項が入力されていません。"
+        end
+      end
     end
   end
 end

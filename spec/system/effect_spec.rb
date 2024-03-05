@@ -111,5 +111,15 @@ RSpec.describe "効能投稿機能", type: :system do
         end
       end
     end
+
+    describe "削除機能" do
+      it "管理者ページから削除可能" do
+        posted_effect
+        visit admin_effects_path
+        expect(page).to have_content "削除"
+        click_link "削除"
+        expect(page).to have_content "削除を実行しました"
+      end
+    end
   end
 end

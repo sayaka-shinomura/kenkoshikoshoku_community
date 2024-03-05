@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :nutrient do
-    name { "テスト栄養素" }
+    name { "テスト栄養素名" }
     introduction { "テスト栄養素詳細" }
 
     after(:build) do |nutrient|

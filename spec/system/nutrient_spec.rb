@@ -51,7 +51,16 @@ RSpec.describe "栄養素関連機能", type: :system do
         expect(page).to have_content "【！】必要事項が入力されていません。"
       end
 
-
+      it '栄養素概要が入力されていないため登録不可' do
+        effect = create(:effect, name: "テスト効能名")
+        click_link "新規登録"
+        expect(current_path).to eq new_admin_nutrient_path
+        fill_in "nutrient[name]", with: "テスト栄養素名"
+        fill_in "nutrient[introduction]", with: nil
+        check "テスト効能名"
+        expect { click_button "新規登録" }.to change { Nutrient.count }.by(0)
+        expect(page).to have_content "【！】必要事項が入力されていません。"
+      end
     end
   end
 
